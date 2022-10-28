@@ -1,6 +1,7 @@
 package com.stickpoint.devtools.common.entity;
 
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import java.util.Objects;
 
@@ -12,27 +13,27 @@ import java.util.Objects;
  * @Author puye(0303)
  * @PackageName com.stickpoint.devtools.common.entity
  */
-public class MenuItemEntity {
+public class MenuItemEntity extends AnchorPane {
 
     private Region icon;
 
     private Label name;
 
-    private Integer id;
+    private Integer menuId;
 
     public MenuItemEntity() {
     }
 
     public MenuItemEntity(MenuItemEntityBuilder menuItemEntityBuilder) {
-            this.id = menuItemEntityBuilder.getId();
+            this.menuId = menuItemEntityBuilder.getId();
             this.name = menuItemEntityBuilder.getName();
             this.icon = menuItemEntityBuilder.getIcon();
     }
 
-    public MenuItemEntity(Region icon, Label name, Integer id) {
+    public MenuItemEntity(Region icon, Label name, Integer menuId) {
         this.icon = icon;
         this.name = name;
-        this.id = id;
+        this.menuId = menuId;
     }
 
     public Region getIcon() {
@@ -53,18 +54,18 @@ public class MenuItemEntity {
         return this;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getMenuId() {
+        return menuId;
     }
 
-    public MenuItemEntity setId(Integer id) {
-        this.id = id;
+    public MenuItemEntity setMenuId(Integer menuId) {
+        this.menuId = menuId;
         return this;
     }
 
     @Override
     public String toString(){
-        if (Objects.nonNull(name.getText())&&Objects.nonNull(id)) {
+        if (Objects.nonNull(name.getText())&&Objects.nonNull(menuId)) {
             return name.getText();
         }
         return "null";
@@ -73,7 +74,7 @@ public class MenuItemEntity {
     @Override
     public int hashCode() {
         return Objects.requireNonNull(name.getText()).hashCode()
-                & Objects.requireNonNull(id).hashCode();
+                & Objects.requireNonNull(menuId).hashCode();
     }
 
     @Override
