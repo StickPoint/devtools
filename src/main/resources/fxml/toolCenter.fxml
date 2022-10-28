@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="720.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.ToolCenterController">
+   <children>
+      <AnchorPane layoutX="563.0" layoutY="6.0" prefHeight="80.0" prefWidth="705.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(105,105,105,0.20);" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
+      <AnchorPane layoutX="8.0" layoutY="183.0" prefHeight="80.0" prefWidth="705.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(105,105,105,0.20);" />
+      <AnchorPane layoutX="7.0" layoutY="380.0" prefHeight="80.0" prefWidth="705.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(105,105,105,0.20);" />
+      <AnchorPane layoutX="7.0" layoutY="579.0" prefHeight="80.0" prefWidth="705.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgba(105,105,105,0.20);" />
+   </children>
+</AnchorPane>

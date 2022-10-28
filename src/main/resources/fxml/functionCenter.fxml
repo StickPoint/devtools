@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="parentPane" prefHeight="420.0" prefWidth="153.0" stylesheets="@../css/functionCenter.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.FunctionCenterController">
+   <children>
+      <TreeView id="menuTree" fx:id="menuTree" layoutY="83.0" prefHeight="264.0" prefWidth="170.0" />
+   </children>
+</AnchorPane>
