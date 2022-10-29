@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" stylesheets="@../css/mainWindow.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.MainWindowController">
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" stylesheets="@../css/mainWindow.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.MainWindowController">
    <top>
       <AnchorPane fx:id="mainWindowHeaderPane" prefHeight="60.0" prefWidth="720.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
@@ -51,17 +51,6 @@
          </children>
       </AnchorPane>
    </top>
-   <left>
-      <AnchorPane prefHeight="420.0" prefWidth="153.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
-   </left>
-   <bottom>
-      <AnchorPane id="currentTime" prefHeight="40.0" prefWidth="720.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <children>
-            <Label id="main-user-status" layoutX="584.0" layoutY="17.0" maxHeight="8.0" maxWidth="8.0" minHeight="8.0" minWidth="8.0" prefHeight="8.0" prefWidth="8.0" text=" " />
-            <Label fx:id="ipAddress" layoutX="599.0" layoutY="13.0" text="当前IP: 10.8.16.216" />
-            <Label fx:id="currentTime" layoutX="14.0" layoutY="13.0" text="2022-10-28 13:12:45" />
-         </children></AnchorPane>
-   </bottom>
    <center>
       <ScrollPane id="scrollPane" fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>

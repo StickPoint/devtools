@@ -1,9 +1,7 @@
 package com.stickpoint.devtools.view.router;
 
 
-import com.stickpoint.devtools.view.control.FunctionCenterController;
-import com.stickpoint.devtools.view.control.MainWindowController;
-import com.stickpoint.devtools.view.control.ToolCenterController;
+import com.stickpoint.devtools.view.control.*;
 
 import java.net.URL;
 
@@ -25,7 +23,11 @@ public enum PageEnums {
 	/**
 	 * 主面板页面
 	 */
-	TOOL_CENTER(ToolCenterController.class, ToolCenterController.class.getResource("/fxml/toolCenter.fxml"),"toolCenter");
+	TOOL_CENTER(ToolCenterController.class, ToolCenterController.class.getResource("/fxml/toolCenter.fxml"),"toolCenter"),
+	/**
+	 * 底部页面
+	 */
+	BOTTOM_CENTER(BottomCenterController.class,BottomCenterController.class.getResource("/fxml/bottomCenter.fxml") , "bottomCenter");
     /**
      * 页面名称
      */

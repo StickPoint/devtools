@@ -9,7 +9,13 @@ package com.stickpoint.devtools.common.enums;
  * @since 1.5
  */
 public enum AppEnums {
-
+    /**
+     * bbb
+     */
+    FUNCTION_CENTER_MENU_ITEM_CSS_URI("菜单面板子项菜单的样式css文件的Path","/css/functionCenter.css"),
+    /**
+     * aaa
+     */
     FUNCTION_CENTER_MENU_PANE_FX_ID_INFO("菜单面板的menuTree的fx-id","menuTree");
 
     /**
