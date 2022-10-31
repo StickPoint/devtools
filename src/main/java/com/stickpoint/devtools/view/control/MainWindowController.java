@@ -7,15 +7,21 @@ import com.stickpoint.devtools.view.router.PageEnums;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URISyntaxException;
+import java.util.Objects;
+
+/**
+ * @author puye(0303)
+ */
 public class MainWindowController {
 
     private static final Logger log = LoggerFactory.getLogger(MainWindowApplication.class);
@@ -27,15 +33,7 @@ public class MainWindowController {
 
     public BorderPane mainPane;
 
-    public ScrollPane scrollPane;
-    /**
-     * 当前时间
-     */
-    public Label currentTime;
-    /**
-     * ip地址
-     */
-    public Label ipAddress;
+    public StackPane paneCenter;
 
     private double oldStageX;
 
@@ -61,9 +59,25 @@ public class MainWindowController {
             primaryStage.setY(mouseEvent.getScreenY() - oldScreenY + oldStageY);
         });
         FXMLLoader fxmlLoader = SysCache.PAGE_MAP.get(PageEnums.FUNCTION_CENTER.getRouterId());
+        Parent root = fxmlLoader.getRoot();
+        root.prefHeight(420);
+        root.minHeight(420);
+        root.maxHeight(420);
         mainPane.setLeft(fxmlLoader.getRoot());
         FXMLLoader bottomLoader = SysCache.PAGE_MAP.get(PageEnums.BOTTOM_CENTER.getRouterId());
         mainPane.setBottom(bottomLoader.getRoot());
+        FXMLLoader toolCenter = SysCache.PAGE_MAP.get(PageEnums.TOOL_CENTER.getRouterId());
+        ScrollPane scrollPane = new ScrollPane(toolCenter.getRoot());
+        paneCenter.getChildren().add(scrollPane);
+        try {
+            // 滑动pane容器设置样式
+            scrollPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/scrollPane-common.css")).toURI().toString());
+            // 界面初始化默认仪表盘在最前显示
+            scrollPane.toFront();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void showUserInfoCard(MouseEvent mouseEvent) {

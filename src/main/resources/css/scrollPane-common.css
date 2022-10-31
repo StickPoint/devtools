@@ -1,0 +1,84 @@
+
+/**
+ * 隐藏横向拖动条
+ */
+.scroll-pane .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-background-color: transparent;
+    visibility: hidden;
+    -fx-pref-height: 0;
+}
+
+/**
+ * 修改垂直拖动条
+ */
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+/**
+ * 拖动条颜色
+ */
+.scroll-pane .scroll-bar:vertical .thumb{
+    -fx-background-color: rgba(226, 226, 226, 0.65);
+    -fx-pref-width: 5;
+}
+
+/**
+ * 未滑动区域
+ */
+.scroll-pane .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+}
+
+/**
+ * 矢量进度
+ */
+.scroll-pane .scroll-bar:vertical .decrement-button{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/**
+ * 矢量箭头 向上
+ */
+.scroll-pane .scroll-bar:vertical .decrement-button .decrement-arrow{
+    -fx-background-color: rgba(226, 226, 226, 0);
+    -fx-border-color: transparent;
+}
+
+/**
+ * 增量进度
+ */
+.scroll-pane .scroll-bar:vertical .increment-button{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/**
+ * 增量箭头 向下
+ */
+.scroll-pane .scroll-bar:vertical .increment-button .increment-arrow{
+    -fx-background-color: rgba(226, 226, 226, 0);
+    -fx-border-color: transparent;
+}
+
+/**
+ * 增量进度
+ */
+.scroll-pane .scroll-bar:vertical .track-background{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/**
+ * 最底部区域
+ */
+.scroll-pane .corner {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+
+
+

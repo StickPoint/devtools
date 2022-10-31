@@ -1,0 +1,17 @@
+#loginBackground{
+    -fx-background-image: url("/img/login.png")
+    /*-fx-background-color: red;*/
+}
+
+#login-btn , #register-btn{
+    -fx-border-color: rgba(208, 208, 208, 0.56);
+    -fx-background-color: transparent;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+#mainPane {
+    -fx-background-color: rgba(227, 227, 227, 0.66);
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}

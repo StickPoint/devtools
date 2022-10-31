@@ -16,7 +16,11 @@ public enum AppEnums {
     /**
      * aaa
      */
-    FUNCTION_CENTER_MENU_PANE_FX_ID_INFO("菜单面板的menuTree的fx-id","menuTree");
+    FUNCTION_CENTER_MENU_PANE_FX_ID_INFO("菜单面板的menuTree的fx-id","menuTree"),
+
+    MENU_PANE_SELECTION_LITTLE_ID("菜单栏小菜单背景","menuPane-selection-little"),
+
+    LEFT_PANE_MENU_TEXT_ID("菜单栏文字id","menuText");
 
     /**
      * fx应用内部infoName-key
