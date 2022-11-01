@@ -66,7 +66,7 @@ public class FunctionCenterController {
         Pane currentNode = (Pane) node;
         // 获取菜单子节点
         Node currentLittleNode = currentNode.getChildren ().get (2);
-        currentLittleNode.setStyle (" -fx-background-color: rgba(215, 0, 15);");
+        currentLittleNode.setStyle (" -fx-background-color: #b7b7b7;");
         Node selectedTextNode = currentNode.getChildren().get(1);
         // 设置菜单文本高亮
         if(Objects.nonNull(selectedTextNode.getId())&& AppEnums.LEFT_PANE_MENU_TEXT_ID.getInfoValue().equals(selectedTextNode.getId())) {

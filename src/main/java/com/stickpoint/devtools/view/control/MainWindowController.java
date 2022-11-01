@@ -66,7 +66,7 @@ public class MainWindowController {
         mainPane.setLeft(fxmlLoader.getRoot());
         FXMLLoader bottomLoader = SysCache.PAGE_MAP.get(PageEnums.BOTTOM_CENTER.getRouterId());
         mainPane.setBottom(bottomLoader.getRoot());
-        FXMLLoader toolCenter = SysCache.PAGE_MAP.get(PageEnums.TOOL_CENTER.getRouterId());
+        FXMLLoader toolCenter = SysCache.PAGE_MAP.get(PageEnums.Content_CENTER.getRouterId());
         ScrollPane scrollPane = new ScrollPane(toolCenter.getRoot());
         paneCenter.getChildren().add(scrollPane);
         try {

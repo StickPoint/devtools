@@ -1,12 +1,25 @@
+.scroll-pane {
+    -fxbackground-color: transparent;
+    -fx-border-color: transparent;
+}
 
 /**
  * 隐藏横向拖动条
  */
 .scroll-pane .scroll-bar:horizontal {
     -fx-opacity: 0;
-    -fx-background-color: transparent;
-    visibility: hidden;
+    -fx-background-color: red;
+    /*visibility: hidden;*/
     -fx-pref-height: 0;
+    -fx-pref-width: 0;
+    -fx-fill-width: 0;
+    -fx-arc-width: 0;
+    -fx-max-width: 0;
+    -fx-min-width: 0;
+    -fx-border-width: 0;
+    -fx-stroke-width: 0;
+    -fx-padding: 0;
+    -fx-tick-length: 0px;
 }
 
 /**

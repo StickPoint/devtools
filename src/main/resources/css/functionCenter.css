@@ -2,6 +2,7 @@
 #parentPane {
     /*-fx-background-color: transparent;*/
     -fx-background-color:  white;
+    -fx-border-color: rgba(128,128,128,0.11);
 }
 
 #menuPane {
@@ -24,7 +25,7 @@
 
 #menuPane-selection-little:pressed,
 #menuPane-selection-little:selected{
-    -fx-background-color: rgba(215, 0, 15);
+    -fx-background-color:  #28779c;
 }
 /**
 鼠标放上的效果

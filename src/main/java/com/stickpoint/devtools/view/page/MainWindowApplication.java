@@ -37,8 +37,8 @@ public class MainWindowApplication extends Application {
 	public void init() {
         FXMLLoader mainWindowLoader = new FXMLLoader(PageEnums.MAIN_WINDOWS.getPageSource());
         SysCache.PAGE_MAP.put(PageEnums.MAIN_WINDOWS.getRouterId(), mainWindowLoader);
-        FXMLLoader toolCenterLoader = new FXMLLoader(PageEnums.TOOL_CENTER.getPageSource());
-        SysCache.PAGE_MAP.put(PageEnums.TOOL_CENTER.getRouterId(), toolCenterLoader);
+        FXMLLoader toolCenterLoader = new FXMLLoader(PageEnums.Content_CENTER.getPageSource());
+        SysCache.PAGE_MAP.put(PageEnums.Content_CENTER.getRouterId(), toolCenterLoader);
         FXMLLoader functionCenterLoader = new FXMLLoader(PageEnums.FUNCTION_CENTER.getPageSource());
         SysCache.PAGE_MAP.put(PageEnums.FUNCTION_CENTER.getRouterId(), functionCenterLoader);
         FXMLLoader bottomCenterLoader = new FXMLLoader(PageEnums.BOTTOM_CENTER.getPageSource());
