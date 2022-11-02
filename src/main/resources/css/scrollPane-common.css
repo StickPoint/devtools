@@ -1,25 +1,16 @@
 .scroll-pane {
     -fxbackground-color: transparent;
     -fx-border-color: transparent;
+    -fx-hbar-policy: never;
 }
 
 /**
  * 隐藏横向拖动条
  */
 .scroll-pane .scroll-bar:horizontal {
+    /*已经失效了，上面已经直接隐藏了 -fx-hbar-policy: never; */
     -fx-opacity: 0;
-    -fx-background-color: red;
-    /*visibility: hidden;*/
-    -fx-pref-height: 0;
-    -fx-pref-width: 0;
-    -fx-fill-width: 0;
-    -fx-arc-width: 0;
-    -fx-max-width: 0;
-    -fx-min-width: 0;
-    -fx-border-width: 0;
-    -fx-stroke-width: 0;
-    -fx-padding: 0;
-    -fx-tick-length: 0px;
+    -fx-background-color: transparent;
 }
 
 /**
@@ -33,7 +24,7 @@
  * 拖动条颜色
  */
 .scroll-pane .scroll-bar:vertical .thumb{
-    -fx-background-color: rgba(226, 226, 226, 0.65);
+    -fx-background-color: rgba(226, 226, 226, 1);
     -fx-pref-width: 5;
 }
 

@@ -23,7 +23,7 @@ public enum PageEnums {
 	/**
 	 * 主面板页面
 	 */
-	Content_CENTER(ToolCenterController.class, ToolCenterController.class.getResource("/fxml/systemStatus.fxml"),"toolCenter"),
+	SYSTEM_STATUS(SystemStatusController.class, SystemStatusController.class.getResource("/fxml/systemStatus.fxml"),"systemStatus"),
 	/**
 	 * 底部页面
 	 */

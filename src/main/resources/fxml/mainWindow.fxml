@@ -52,6 +52,6 @@
       </AnchorPane>
    </top>
    <center>
-      <StackPane id="paneCenter" fx:id="paneCenter" prefHeight="420.0" prefWidth="720.0" BorderPane.alignment="CENTER" />
+      <StackPane id="paneCenter" fx:id="contentCenter" prefHeight="420.0" prefWidth="720.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

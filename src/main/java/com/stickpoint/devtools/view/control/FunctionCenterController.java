@@ -21,15 +21,21 @@ import java.util.Objects;
 public class FunctionCenterController {
 
     public AnchorPane parentNode;
+
     public Pane statusPane;
+
     public Pane systemPane;
+
     public Pane developPane;
+
     public Pane opPane;
+
     public Pane innerNetPane;
     /**
      * 节点缓存集合
      */
     private static final List<Node> NODE_LIST = new ArrayList<>();
+
     public VBox menuPane;
 
     @FXML
@@ -64,13 +70,14 @@ public class FunctionCenterController {
                 "    -fx-effect: dropshadow(three-pass-box, #D9D9D9, 5.0,0,0, 0);" +
                 "    -fx-cursor: hand;");
         Pane currentNode = (Pane) node;
-        // 获取菜单子节点
+        // 获取菜单子节点-最左侧的垂直Pane设置它的背景色
         Node currentLittleNode = currentNode.getChildren ().get (2);
-        currentLittleNode.setStyle (" -fx-background-color: #b7b7b7;");
+        currentLittleNode.setStyle (" -fx-background-color: #f34600;");
+        // Label标签
         Node selectedTextNode = currentNode.getChildren().get(1);
-        // 设置菜单文本高亮
+        // 设置菜单文本选中颜色
         if(Objects.nonNull(selectedTextNode.getId())&& AppEnums.LEFT_PANE_MENU_TEXT_ID.getInfoValue().equals(selectedTextNode.getId())) {
-            // 菜单文字高亮
+            // 菜单文字选中颜色
             selectedTextNode.setStyle("-fx-text-fill: black");
         }
         boolean remove = NODE_LIST.remove (node);

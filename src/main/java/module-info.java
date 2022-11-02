@@ -2,13 +2,9 @@ open module com.stickpoint.devtools {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.base;
-    requires javafx.media;
-	requires javafx.graphics;
-	requires javafx.swing;
     requires rxcontrols;
-    requires javafx.web;
-    requires logback.core;
-    requires logback.classic;
-    requires slf4j.api;
+    requires ch.qos.logback.classic;
+    requires ch.qos.logback.core;
+    requires org.slf4j;
     exports com.stickpoint.devtools;
 }

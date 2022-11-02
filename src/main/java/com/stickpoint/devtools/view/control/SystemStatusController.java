@@ -9,6 +9,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 /**
@@ -19,9 +20,15 @@ import javafx.scene.paint.Color;
  * @Author puye(0303)
  * @PackageName com.stickpoint.devtools.view.control
  */
-public class ToolCenterController {
-
+public class SystemStatusController {
+    /**
+     * 分布式文件存储饼图概况一览
+     */
     public PieChart systemFileType;
+    /**
+     * 根节点
+     */
+    public AnchorPane rootPane;
 
     @FXML
     public void initialize(){
