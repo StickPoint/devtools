@@ -1,5 +1,7 @@
 package com.stickpoint.devtools.view.control;
 
+import javafx.scene.layout.AnchorPane;
+
 /**
  * description: SystemSetCenterController
  *
@@ -10,4 +12,5 @@ package com.stickpoint.devtools.view.control;
  */
 public class SystemSetCenterController {
 
+    public AnchorPane rootPane;
 }

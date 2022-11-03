@@ -1,10 +1,7 @@
 package com.stickpoint.devtools.view.control;
-
 import com.leewyatt.rxcontrols.controls.RXAvatar;
-import com.leewyatt.rxcontrols.controls.RXToggleButton;
 import com.stickpoint.devtools.common.cache.SysCache;
 import com.stickpoint.devtools.view.router.PageEnums;
-import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
@@ -13,7 +10,6 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -100,11 +96,11 @@ public class MainWindowController {
         initSystemSetCenterContext();
     }
 
-    public void showUserInfoCard(MouseEvent mouseEvent) {
+    public void showUserInfoCard() {
 
     }
 
-    public void closeUserInfoCard(MouseEvent mouseEvent) {
+    public void closeUserInfoCard() {
 
     }
 
@@ -123,12 +119,12 @@ public class MainWindowController {
      */
     private void scrollPaneMouseEventStyleChange(ScrollPane scrollPane){
         scrollPane.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
-            log.info(scrollPane.getVbarPolicy().name());
+            log.info("当前鼠标移动策略：" + scrollPane.getVbarPolicy().name());
             scrollPane.setVbarPolicy(ScrollBarPolicy.NEVER);
 
         });
         scrollPane.addEventHandler(MouseEvent.MOUSE_ENTERED,event -> {
-            log.info(scrollPane.getVbarPolicy().name());
+            log.info("当前鼠标移动策略：" + scrollPane.getVbarPolicy().name());
             scrollPane.setVbarPolicy(ScrollBarPolicy.ALWAYS);
         });
     }
@@ -151,7 +147,7 @@ public class MainWindowController {
     @FXML
     public void showSystemSetCenter() {
         Bounds bounds = systemSetCenter.localToScreen(systemSetCenter.getBoundsInLocal());
-        systemSetContext.show(getStage(),bounds.getMaxX() - 130,bounds.getMaxY() + 10);
+        systemSetContext.show(getStage(),bounds.getMaxX() - 120,bounds.getMaxY() + 10);
     }
 
     private Stage getStage(){
