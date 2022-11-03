@@ -17,6 +17,10 @@ public enum PageEnums {
      */
     MAIN_WINDOWS(MainWindowController.class, MainWindowController.class.getResource("/fxml/mainWindow.fxml"),"mainWindow"),
 	/**
+	 * 系统设置菜单
+	 */
+	SYSTEM_SET_CENTER(SystemSetCenterController.class,SystemSetCenterController.class.getResource("/fxml/systemSetCenter.fxml"),"systemSetCenter"),
+	/**
 	 * 菜单栏页面
 	 */
     FUNCTION_CENTER(FunctionCenterController.class, FunctionCenterController.class.getResource("/fxml/functionCenter.fxml"),"functionCenter"),
@@ -24,6 +28,10 @@ public enum PageEnums {
 	 * 主面板页面
 	 */
 	SYSTEM_STATUS(SystemStatusController.class, SystemStatusController.class.getResource("/fxml/systemStatus.fxml"),"systemStatus"),
+	/**
+	 * 开发助手
+	 */
+	DEV_ASSISTANT(DevAssistantController.class,DevAssistantController.class.getResource("/fxml/devAssistant.fxml"),"devAssistant"),
 	/**
 	 * 底部页面
 	 */

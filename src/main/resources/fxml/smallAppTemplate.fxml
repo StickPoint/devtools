@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:controller="com.stickpoint.devtools.view.control.SmallAppTemplateController" prefHeight="50.0" prefWidth="50.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="appLogo" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/jsonAssistant.png" />
+         </image>
+         <VBox.margin>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+         </VBox.margin>
+      </ImageView>
+      <Label fx:id="appName" graphicTextGap="5.0" text="JSON助手" textOverrun="CENTER_ELLIPSIS">
+         <VBox.margin>
+            <Insets bottom="2.0" left="2.0" top="2.0" />
+         </VBox.margin>
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>

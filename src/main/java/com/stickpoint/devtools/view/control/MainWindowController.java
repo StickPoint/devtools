@@ -1,21 +1,29 @@
 package com.stickpoint.devtools.view.control;
 
 import com.leewyatt.rxcontrols.controls.RXAvatar;
+import com.leewyatt.rxcontrols.controls.RXToggleButton;
 import com.stickpoint.devtools.common.cache.SysCache;
 import com.stickpoint.devtools.view.router.PageEnums;
+import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Parent;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Objects;
 
@@ -35,6 +43,8 @@ public class MainWindowController {
 
     public StackPane contentCenter;
 
+    public Region systemSetCenter;
+
     private double oldStageX;
 
     private double oldStageY;
@@ -42,6 +52,8 @@ public class MainWindowController {
     private double oldScreenX;
 
     private double oldScreenY;
+
+    private ContextMenu systemSetContext;
 
     @FXML
     public void initialize() {
@@ -84,6 +96,8 @@ public class MainWindowController {
         }
         // 将初始化界面生成的scrollPane装在进入缓存中去
         SysCache.NODE_MAP.put("scrollPane",scrollPane);
+        // 初始化系统菜单
+        initSystemSetCenterContext();
     }
 
     public void showUserInfoCard(MouseEvent mouseEvent) {
@@ -117,5 +131,30 @@ public class MainWindowController {
             log.info(scrollPane.getVbarPolicy().name());
             scrollPane.setVbarPolicy(ScrollBarPolicy.ALWAYS);
         });
+    }
+
+    /**
+     * 先绑定后监听显示
+     */
+    private void initSystemSetCenterContext(){
+        systemSetContext = new ContextMenu(new SeparatorMenuItem());
+        FXMLLoader systemSetCenterLoader = new FXMLLoader(PageEnums.SYSTEM_SET_CENTER.getPageSource());
+        Parent systemSetCenterRoot = null;
+        try {
+            systemSetCenterRoot = systemSetCenterLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        systemSetContext.getScene().setRoot(systemSetCenterRoot);
+    }
+
+    @FXML
+    public void showSystemSetCenter() {
+        Bounds bounds = systemSetCenter.localToScreen(systemSetCenter.getBoundsInLocal());
+        systemSetContext.show(getStage(),bounds.getMaxX() - 130,bounds.getMaxY() + 10);
+    }
+
+    private Stage getStage(){
+        return (Stage) mainPane.getScene().getWindow();
     }
 }
