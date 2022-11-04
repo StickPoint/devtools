@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 
 <AnchorPane id="currentTime" prefHeight="40.0" prefWidth="720.0" style="-fx-background-color: white; -fx-border-color: rgba(128,128,128,0.11);" stylesheets="@../css/bottomCenter.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.BottomCenterController">
    <children>
       <Label id="main-user-status" layoutX="14.0" layoutY="17.0" maxHeight="8.0" maxWidth="8.0" minHeight="8.0" minWidth="8.0" prefHeight="8.0" prefWidth="8.0" text="当前IP：X.X.X.X" />
       <Label fx:id="ipAddress" layoutX="28.0" layoutY="13.0" text="当前IP: 255.255.255.255" textOverrun="CENTER_ELLIPSIS" />
-      <Label fx:id="currentTime" layoutX="587.0" layoutY="14.0" text="2022-10-28 13:42:45" />
+      <Label fx:id="currentTime" layoutX="301.0" layoutY="13.0" text="2022-10-28 13:42:45" />
+      <HBox layoutX="618.0" prefHeight="40.0" prefWidth="100.0" spacing="10.0">
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+         <children>
+            <Region id="translate" prefHeight="18.0" prefWidth="20.0">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="2.0" top="10.0" />
+               </HBox.margin>
+            </Region>
+            <Region id="scan" prefHeight="18.0" prefWidth="20.0">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="2.0" top="10.0" />
+               </HBox.margin>
+            </Region>
+            <Region id="min" prefHeight="18.0" prefWidth="18.0">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="2.0" top="10.0" />
+               </HBox.margin>
+            </Region>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

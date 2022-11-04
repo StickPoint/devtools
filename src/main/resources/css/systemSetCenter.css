@@ -14,3 +14,9 @@
     -fx-background-radius: 8;
     -fx-border-radius: 8;
 }
+
+#menu-item:hover {
+    -fx-background-color: #efefef;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
