@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="rootPane" fx:id="rootPane" prefHeight="160.0" prefWidth="130.0" stylesheets="@../css/systemSetCenter.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.SystemSetCenterController">
+<AnchorPane id="sysSetPane" fx:id="rootPane" prefHeight="160.0" prefWidth="130.0" stylesheets="@../css/systemSetCenter.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.SystemSetCenterController">
    <children>
       <VBox id="vbox" prefHeight="160.0" prefWidth="130.0" spacing="8.0">
          <children>

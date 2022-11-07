@@ -10,17 +10,46 @@ package com.stickpoint.devtools.common.enums;
  */
 public enum AppEnums {
     /**
-     * bbb
+     * 菜单面板子项菜单的样式css文件的Path
      */
-    FUNCTION_CENTER_MENU_ITEM_CSS_URI("菜单面板子项菜单的样式css文件的Path","/css/functionCenter.css"),
+    FUNCTION_CENTER_MENU_ITEM_CSS_URI("菜单面板子项菜单的样式css文件的Path", "/css/leftMenuCenter.css" ),
     /**
-     * aaa
+     * 菜单面板的menuTree的fx-id
      */
-    FUNCTION_CENTER_MENU_PANE_FX_ID_INFO("菜单面板的menuTree的fx-id","menuTree"),
+    FUNCTION_CENTER_MENU_PANE_FX_ID_INFO("菜单面板的menuTree的fx-id","menuTree" ),
+    /**
+     * 菜单栏小菜单背景css样式id
+     */
+    MENU_PANE_SELECTION_LITTLE_ID("菜单栏小菜单背景","menuPane-selection-little" ),
+    /**
+     * 五大菜单主面板id之一：（1）sysStatusPane
+     */
+    LEFT_PANE_MENU_ID_SYS_STATUS_PANE("五大菜单主面板id之一：（1）sysStatusPane","sysStatusPane" ),
+    /**
+     * 五大菜单主面板id之一：（2）devPane
+     */
+    LEFT_PANE_MENU_ID_DEV_PANE("五大菜单主面板id之一：（2）devPane","devPane" ),
+    /**
+     * 五大菜单主面板id之一：（3）opPane
+     */
+    LEFT_PANE_MENU_ID_OP_PANE("五大菜单主面板id之一：（3）opPane","opPane" ),
+    /**
+     * 五大菜单主面板id之一：（4）webPane
+     */
+    LEFT_PANE_MENU_ID_WEB_PANE("五大菜单主面板id之一：（4）webPane","webPane" ),
+    /**
+     * 五大菜单主面板id之一：（5）sysPane
+     */
+    LEFT_PANE_MENU_ID_SYS_PANE("五大菜单主面板id之一：（5）sysPane","sysPane" ),
+    INDEX_ZERO(0),
+    /**
+     * 菜单栏文字id
+     */
+    LEFT_PANE_MENU_TEXT_ID("菜单栏文字id","menuText" );
 
-    MENU_PANE_SELECTION_LITTLE_ID("菜单栏小菜单背景","menuPane-selection-little"),
 
-    LEFT_PANE_MENU_TEXT_ID("菜单栏文字id","menuText");
+
+
 
     /**
      * fx应用内部infoName-key
@@ -30,10 +59,19 @@ public enum AppEnums {
      * fx应用内部infoValue-值
      */
     private final String infoValue;
+    
+    private final Integer numberInfo;
 
-    AppEnums(String infoName,String infoValue){
+    AppEnums(String infoName, String infoValue){
         this.infoName = infoName;
         this.infoValue=infoValue;
+        numberInfo = null;
+    }
+    
+    AppEnums(Integer numberInfo){
+        this.numberInfo = numberInfo;
+        this.infoValue = null;
+        this.infoName= null;
     }
 
     /**
@@ -55,4 +93,6 @@ public enum AppEnums {
     public String getInfoValue() {
         return infoValue;
     }
+
+    public Integer getNumberInfo(){ return numberInfo; }
 }

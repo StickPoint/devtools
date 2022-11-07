@@ -2,7 +2,7 @@
  * 系统设置页面css
  */
 
-#rootPane {
+#sysSetPane {
     -fx-background-color: white;
     -fx-background-radius: 8;
     -fx-border-radius: 8;

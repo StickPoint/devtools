@@ -2,6 +2,21 @@
  * 开发助手css样式
  */
 
-#rootPane {
+#devPane {
+    -fx-background-color: #e8e8e8;
+}
+
+#optionTopPane {
     -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+#optionMenuItem {
+    -fx-background-color: transparent;
+}
+
+#optionMenuLittleItem {
+    -fx-background-color: red;
+
 }

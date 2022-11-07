@@ -18,7 +18,7 @@ public class BottomCenterController {
 
     private static final IApplicationService applicationService = new ApplicationServiceImpl();
 
-    public Label currentTime;
+    public Label infoLabel;
 
     public Label ipAddress;
 

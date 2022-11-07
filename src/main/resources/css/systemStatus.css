@@ -1,4 +1,8 @@
-#rootPane {
+/**
+ * 系统状态面板css样式文件
+ */
+
+#sysStatusPane {
     -fx-background-color: white;
     -fx-border-color: transparent;
 }

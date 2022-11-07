@@ -1,16 +1,16 @@
 package com.stickpoint.devtools.view.control;
 import com.leewyatt.rxcontrols.controls.RXAvatar;
 import com.stickpoint.devtools.common.cache.SysCache;
+import com.stickpoint.devtools.common.enums.AppEnums;
+import com.stickpoint.devtools.view.page.MainWindowApplication;
 import com.stickpoint.devtools.view.router.PageEnums;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
@@ -18,17 +18,17 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Objects;
 
 /**
  * @author puye(0303)
  */
 public class MainWindowController {
 
-    private static final Logger log = LoggerFactory.getLogger(MainWindowController.class);
+    /**
+     * 系统日志
+     */
+    private static final Logger log = LoggerFactory.getLogger(MainWindowApplication.class);
 
     @FXML
     public RXAvatar userAvatar;
@@ -66,34 +66,51 @@ public class MainWindowController {
             primaryStage.setX(mouseEvent.getScreenX() - oldScreenX + oldStageX);
             primaryStage.setY(mouseEvent.getScreenY() - oldScreenY + oldStageY);
         });
+        mainPane.setLeft(initLeftPane());
+        mainPane.setBottom(initBottomPane());
+        // 将初始化界面生成的scrollPane装在进入缓存中去
+        contentCenter.getChildren().addAll(SysCache.MENU_LIST);
+        initCenterContent(contentCenter);
+        SysCache.NODE_MAP.put("stackPane",contentCenter);
+        // 初始化系统菜单设置
+        initSystemSetCenterContext();
+    }
+
+    /**
+     * 初始化左侧侧边栏
+     * @return 返回一个父级组件
+     */
+    private Parent initLeftPane(){
         // 首先加载左侧侧边栏菜单
-        FXMLLoader fxmlLoader = SysCache.PAGE_MAP.get(PageEnums.FUNCTION_CENTER.getRouterId());
+        FXMLLoader fxmlLoader = SysCache.PAGE_MAP.get(PageEnums.LEFT_MENU_CENTER.getRouterId());
         Parent root = fxmlLoader.getRoot();
         root.prefHeight(420);
         root.minHeight(420);
         root.maxHeight(420);
-        mainPane.setLeft(fxmlLoader.getRoot());
+        return root;
+    }
+
+    /**
+     * 初始化的
+     * @param stackPane stackPane instance
+     */
+    private void initCenterContent(StackPane stackPane){
+        // 初始化的时候，系统情况面板是处于最上面的
+        Node targetScrollPane = stackPane.getChildren()
+                .filtered(node -> AppEnums.LEFT_PANE_MENU_ID_SYS_STATUS_PANE.getInfoValue().equals(node.getId()))
+                .get(AppEnums.INDEX_ZERO.getNumberInfo());
+        log.info("初始化的时候，系统情况面板是处于最上面的 ~ 已完成界面初始化加载");
+        targetScrollPane.toFront();
+    }
+
+    /**
+     * 初始化底部菜单面板
+     * @return 返回一个底部面板
+     */
+    private Parent initBottomPane(){
         // 然后加载底部菜单
         FXMLLoader bottomLoader = SysCache.PAGE_MAP.get(PageEnums.BOTTOM_CENTER.getRouterId());
-        mainPane.setBottom(bottomLoader.getRoot());
-        // 然后加载系统面板
-        FXMLLoader systemStatus = SysCache.PAGE_MAP.get(PageEnums.SYSTEM_STATUS.getRouterId());
-        ScrollPane scrollPane = new ScrollPane(systemStatus.getRoot());
-        contentCenter.getChildren().add(scrollPane);
-        try {
-            // 滑动pane容器设置样式
-            scrollPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/scrollPane-common.css")).toURI().toString());
-            // 界面初始化默认仪表盘在最前显示
-            scrollPane.toFront();
-            // 监听鼠标移入移出
-            scrollPaneMouseEventStyleChange(scrollPane);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        // 将初始化界面生成的scrollPane装在进入缓存中去
-        SysCache.NODE_MAP.put("scrollPane",scrollPane);
-        // 初始化系统菜单
-        initSystemSetCenterContext();
+        return bottomLoader.getRoot();
     }
 
     public void showUserInfoCard() {
@@ -113,21 +130,7 @@ public class MainWindowController {
        return (Stage) rootNode.getScene().getWindow();
     }
 
-    /**
-     * 更改scrollPane的鼠标移入移出事件样式
-     * @param scrollPane 滚动面板
-     */
-    private void scrollPaneMouseEventStyleChange(ScrollPane scrollPane){
-        scrollPane.addEventHandler(MouseEvent.MOUSE_EXITED, event -> {
-            log.info("当前鼠标移动策略：" + scrollPane.getVbarPolicy().name());
-            scrollPane.setVbarPolicy(ScrollBarPolicy.NEVER);
 
-        });
-        scrollPane.addEventHandler(MouseEvent.MOUSE_ENTERED,event -> {
-            log.info("当前鼠标移动策略：" + scrollPane.getVbarPolicy().name());
-            scrollPane.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-        });
-    }
 
     /**
      * 先绑定后监听显示

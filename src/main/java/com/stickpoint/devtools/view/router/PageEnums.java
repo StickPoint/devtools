@@ -23,7 +23,7 @@ public enum PageEnums {
 	/**
 	 * 菜单栏页面
 	 */
-    FUNCTION_CENTER(FunctionCenterController.class, FunctionCenterController.class.getResource("/fxml/functionCenter.fxml"),"functionCenter"),
+    LEFT_MENU_CENTER(LeftMenuCenterController.class, LeftMenuCenterController.class.getResource("/fxml/leftMenuCenter.fxml"),"leftMenuCenter"),
 	/**
 	 * 主面板页面
 	 */
@@ -32,6 +32,18 @@ public enum PageEnums {
 	 * 开发助手
 	 */
 	DEV_ASSISTANT(DevAssistantController.class,DevAssistantController.class.getResource("/fxml/devAssistant.fxml"),"devAssistant"),
+	/**
+	 * 系统助手
+	 */
+	SYS_ASSISTANT(SysAssistantController.class,SysAssistantController.class.getResource("/fxml/sysAssistant.fxml"),"sysAssistant"),
+	/**
+	 * 运维助手
+	 */
+	OP_ASSISTANT(OptionAssistantController.class,OptionAssistantController.class.getResource("/fxml/opAssistant.fxml"),"opAssistant"),
+	/**
+	 * 网络助手
+	 */
+	WEB_ASSISTANT(WebAssistantController.class,WebAssistantController.class.getResource("/fxml/webAssistant.fxml"),"webAssistant"),
 	/**
 	 * 底部页面
 	 */

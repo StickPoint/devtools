@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="rootPane" fx:id="rootPane" stylesheets="@../css/systemStatus.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.SystemStatusController">
+<AnchorPane id="sysStatusPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="555.0" stylesheets="@../css/systemStatus.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.SystemStatusController">
    <children>
       <AnchorPane layoutX="14.0" layoutY="230.0" prefHeight="140.0" prefWidth="532.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgb(234,67,67);">
          <children>
@@ -20,7 +20,7 @@
             <Label layoutX="98.0" layoutY="92.0" prefHeight="18.0" prefWidth="55.0" text="1000次" textFill="WHITE" />
             <Region layoutX="125.0" layoutY="15.0" prefHeight="19.0" prefWidth="16.0" style="-fx-shape: &quot;M842.666667 981.333333H181.333333a53.393333 53.393333 0 0 1-53.333333-53.333333V96a53.393333 53.393333 0 0 1 53.333333-53.333333h466.746667a52.986667 52.986667 0 0 1 37.713333 15.62l194.586667 194.586666a52.986667 52.986667 0 0 1 15.62 37.713334V928a53.393333 53.393333 0 0 1-53.333333 53.333333zM181.333333 85.333333a10.666667 10.666667 0 0 0-10.666666 10.666667v832a10.666667 10.666667 0 0 0 10.666666 10.666667h661.333334a10.666667 10.666667 0 0 0 10.666666-10.666667V298.666667h-160a53.393333 53.393333 0 0 1-53.333333-53.333334V85.333333z m501.333334 30.166667V245.333333a10.666667 10.666667 0 0 0 10.666666 10.666667h129.833334z m21.333333 652.5H320a21.333333 21.333333 0 0 1 0-42.666667h384a21.333333 21.333333 0 0 1 0 42.666667z m0-213.333333H320a21.333333 21.333333 0 0 1 0-42.666667h384a21.333333 21.333333 0 0 1 0 42.666667zM490.666667 298.666667H320a21.333333 21.333333 0 0 1 0-42.666667h170.666667a21.333333 21.333333 0 0 1 0 42.666667z&quot;; -fx-background-color: white;" />
          </children></AnchorPane>
-      <PieChart fx:id="systemFileType" layoutX="18.0" layoutY="530.0" prefHeight="361.0" prefWidth="517.0" />
+      <PieChart fx:id="systemFileAnalyseChart" layoutX="18.0" layoutY="530.0" prefHeight="361.0" prefWidth="517.0" />
       <AnchorPane layoutX="14.0" layoutY="380.0" prefHeight="140.0" prefWidth="532.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: rgb(0,42,255);">
          <children>
             <Label layoutX="14.0" layoutY="14.0" prefHeight="24.0" prefWidth="78.0" text="运维服务" textFill="WHITE">

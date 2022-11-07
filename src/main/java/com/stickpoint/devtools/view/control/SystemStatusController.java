@@ -2,8 +2,6 @@ package com.stickpoint.devtools.view.control;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
@@ -24,7 +22,7 @@ public class SystemStatusController {
     /**
      * 分布式文件存储饼图概况一览
      */
-    public PieChart systemFileType;
+    public PieChart systemFileAnalyseChart;
     /**
      * 根节点
      */
@@ -32,6 +30,12 @@ public class SystemStatusController {
 
     @FXML
     public void initialize(){
+       initChart();
+    }
+
+
+
+    private void initChart(){
         ObservableList<Data> pieChartData =
                 FXCollections.observableArrayList(
                         new PieChart.Data("JSON文件", 13),
@@ -39,9 +43,9 @@ public class SystemStatusController {
                         new PieChart.Data("jar文件", 10),
                         new PieChart.Data("excel文件", 22),
                         new PieChart.Data("文本文件", 30));
-        systemFileType.setData(pieChartData);
-        systemFileType.setClockwise(true);
-        systemFileType.setTitle("系统文件存储概况：（24小时刷新一次）");
+        systemFileAnalyseChart.setData(pieChartData);
+        systemFileAnalyseChart.setClockwise(true);
+        systemFileAnalyseChart.setTitle("系统文件存储概况：（24小时刷新一次）");
         final Label caption = new Label("");
         caption.setTextFill(Color.DARKORANGE);
         caption.setStyle("-fx-font: 24 arial;");

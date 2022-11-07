@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="parentPane" fx:id="parentNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="153.0" stylesheets="@../css/functionCenter.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.FunctionCenterController">
+<AnchorPane id="parentPane" fx:id="parentNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="153.0" stylesheets="@../css/leftMenuCenter.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.LeftMenuCenterController">
    <children>
       <VBox id="menuPane" fx:id="menuPane" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#changeBackgroundStyle" prefHeight="250.0" prefWidth="153.0">
          <children>
-            <Pane id="menuPane-selection" fx:id="statusPane" prefHeight="50.0" prefWidth="200.0">
+            <Pane id="menuPane-selection" fx:id="sysStatusPane" prefHeight="50.0" prefWidth="200.0">
                <children>
                   <Region id="anchorPane-vBox-leftMenu-menu-region-findMusic" layoutX="30.0" layoutY="15.0" prefHeight="20.0" prefWidth="20.0" style="-fx-shape: &quot;M917.332951 170.667022a106.666622 106.666622 0 0 1 106.666622 106.666622v639.999734a106.666622 106.666622 0 0 1-106.666622 106.666622H106.666622a106.666622 106.666622 0 0 1-106.666622-106.666622V277.333644a106.666622 106.666622 0 0 1 106.666622-106.666622z m0 85.333298H106.666622a21.333324 21.333324 0 0 0-21.333324 21.333324v639.999734a21.333324 21.333324 0 0 0 21.333324 21.333324h810.666329a21.333324 21.333324 0 0 0 21.333325-21.333324V277.333644a21.333324 21.333324 0 0 0-21.333325-21.333324z m-300.949208 92.863961l1.002666 3.455999L673.301053 576.000187H810.666329a42.666649 42.666649 0 0 1 42.559982 39.46665L853.332978 618.666836a42.666649 42.666649 0 0 1-39.46665 42.559982L810.666329 661.333484h-170.666596a42.666649 42.666649 0 0 1-40.426649-29.013321l-0.96-3.306665-28.479988-113.855953-102.997291 308.991872c-11.349329 34.090652-56.682643 39.381317-75.946635 10.261329l-1.813332-3.029332L294.890544 661.333484H213.333244a42.666649 42.666649 0 0 1-42.559982-39.46665L170.666596 618.666836a42.666649 42.666649 0 0 1 39.46665-42.559983L213.333244 576.000187h106.666623a42.666649 42.666649 0 0 1 35.434652 18.922658l1.855999 3.029333 59.562642 107.178622 118.677284-355.946519c13.098661-39.33865 68.223972-38.378651 80.853299-0.32zM767.99968 0.000427a42.666649 42.666649 0 0 1 3.199999 85.226631L767.99968 85.333724H255.999893a42.666649 42.666649 0 0 1-3.199998-85.226631L255.999893 0.000427h511.999787z&quot;; -fx-background-color: gray;" />
                   <Label id="menuText" layoutX="60.0" layoutY="15.0" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="57.0" prefHeight="20.0" prefWidth="57.0" text="系统面板" textFill="GREY">
@@ -19,7 +19,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/functionCenter.css" />
+                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/leftMenuCenter.css" />
                </children>
             </Pane>
             <Pane id="menuPane-selection" fx:id="developPane" prefHeight="50.0" prefWidth="200.0">
@@ -30,7 +30,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/functionCenter.css" />
+                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/leftMenuCenter.css" />
                </children>
             </Pane>
             <Pane id="menuPane-selection" fx:id="opPane" prefHeight="50.0" prefWidth="200.0">
@@ -41,10 +41,10 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/functionCenter.css" />
+                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/leftMenuCenter.css" />
                </children>
             </Pane>
-            <Pane id="menuPane-selection" fx:id="innerNetPane" prefHeight="50.0" prefWidth="200.0">
+            <Pane id="menuPane-selection" fx:id="webPane" prefHeight="50.0" prefWidth="200.0">
                <children>
                   <Region id="anchorPane-vBox-leftMenu-menu-region-findMusic" layoutX="30.0" layoutY="15.0" prefHeight="20.0" prefWidth="20.0" style="-fx-shape: &quot;M736.232934 118.192202h-448.922521L62.848129 506.970675 287.309389 895.749148h448.922521l224.46126-388.778473L736.232934 118.192202zM714.634073 858.33945H308.90825l-202.862399-351.368775L308.909274 155.602924h405.725823l202.862399 351.368775L714.634073 858.33945zM680.117875 521.647048c-14.008799 0-26.808389 5.145024-36.64076 13.634057l-136.371287-77.926889A93.415201 93.415201 0 0 0 511.771674 428.121266a93.632265 93.632265 0 0 0-3.184284-24.257891l95.178332-47.589166c10.092438 9.734078 23.812501 15.731998 38.941431 15.731998 30.991985 0 56.115059-25.124098 56.115059-56.115059 0-30.991985-25.124098-56.115059-56.115059-56.115059-30.991985 0-56.115059 25.124098-56.115059 56.115059 0 2.346745 0.16075 4.653559 0.44027 6.924537l-95.186523 47.593261c-17.122434-21.805686-43.725023-35.813461-73.599949-35.813461-51.652967 0-93.525781 41.872814-93.525781 93.525781 0 39.839378 24.913178 73.854896 60.006848 87.333323l-13.646344 81.87499c-26.33945 4.618747-46.361528 27.590638-46.361528 55.252948 0 30.991985 25.124098 56.115059 56.11506 56.115059 30.991985 0 56.115059-25.124098 56.115059-56.115059 0-21.142208-11.696866-39.544499-28.96674-49.112708l13.648391-81.891372c26.64252-0.949142 50.444782-13.038156 66.891453-31.755803l136.38562 77.934055a56.411986 56.411986 0 0 0-0.907162 10.004384c0 30.991985 25.124098 56.115059 56.115059 56.115059 30.991985 0 56.115059-25.124098 56.115059-56.115059 0.002048-30.989937-25.121026-56.114035-56.113011-56.114035z&quot;; -fx-background-color: gray;" />
                   <Label id="menuText" layoutX="60.0" layoutY="15.0" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="57.0" prefHeight="20.0" prefWidth="57.0" text="内网助手" textFill="GREY">
@@ -52,7 +52,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/functionCenter.css" />
+                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/leftMenuCenter.css" />
                </children>
             </Pane>
             <Pane id="menuPane-selection" fx:id="systemPane" prefHeight="50.0" prefWidth="200.0">
@@ -63,10 +63,13 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/functionCenter.css" />
+                  <Pane id="menuPane-selection-little" layoutX="1.0" prefHeight="50.0" prefWidth="6.0" stylesheets="@../css/leftMenuCenter.css" />
                </children>
             </Pane>
          </children></VBox>
-      <Label layoutX="42.0" layoutY="344.0" text="版本：v0.0.1" textFill="GREY" />
+      <Label layoutX="42.0" layoutY="344.0" opacity="0.5" text="版本：v0.0.1" textFill="GREY">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
    </children>
 </AnchorPane>
