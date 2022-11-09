@@ -41,16 +41,30 @@ public enum AppEnums {
      * 五大菜单主面板id之一：（5）sysPane
      */
     LEFT_PANE_MENU_ID_SYS_PANE("五大菜单主面板id之一：（5）sysPane","sysPane" ),
+    /**
+     * 当前ip地址
+     */
+    INFO_CURRENT_IP("当前ip地址","当前IP："),
+    /**
+     * 下标为0
+     */
     INDEX_ZERO(0),
+    /**
+     * 普通级别Toast
+     */
+    TOAST_INFO(0),
+    /**
+     * 警告级别Toast
+     */
+    TOAST_WARNING(1),
+    /**
+     * 错误级别Toast
+     */
+    TOAST_ERROR(2),
     /**
      * 菜单栏文字id
      */
     LEFT_PANE_MENU_TEXT_ID("菜单栏文字id","menuText" );
-
-
-
-
-
     /**
      * fx应用内部infoName-key
      */

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane fx:id="accumulatePane" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-color: transparent; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <Pane fx:id="containerToast" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: rgb(232,232,232); -fx-background-radius: 10; -fx-border-color: rgb(232,232,232); -fx-border-radius: 10;">
+        <Region fx:id="icon" layoutX="10.0" layoutY="5.0" maxHeight="50.0" prefHeight="20.0" prefWidth="20.0" style="-fx-shape: &quot;M878.08 731.274667a32 32 0 0 1-54.88-32.938667A360.789333 360.789333 0 0 0 874.666667 512c0-200.298667-162.368-362.666667-362.666667-362.666667S149.333333 311.701333 149.333333 512s162.368 362.666667 362.666667 362.666667a360.789333 360.789333 0 0 0 186.314667-51.445334 32 32 0 0 1 32.928 54.88A424.778667 424.778667 0 0 1 512 938.666667C276.362667 938.666667 85.333333 747.637333 85.333333 512S276.362667 85.333333 512 85.333333s426.666667 191.029333 426.666667 426.666667c0 78.293333-21.152 153.568-60.586667 219.274667zM374.581333 489.450667l84.341334 83.989333 190.432-190.72a32 32 0 0 1 45.290666 45.226667l-213.013333 213.333333a32 32 0 0 1-45.226667 0.064l-106.986666-106.549333a32 32 0 1 1 45.162666-45.344z&quot;; -fx-background-color: whitesmoke;" />
+        <VBox alignment="CENTER" layoutX="37.0" layoutY="1.0" prefHeight="30.0" prefWidth="113.0">
+            <Label fx:id="textToast" text="Label" textFill="whitesmoke">
+            <VBox.margin>
+               <Insets top="-4.0" />
+            </VBox.margin></Label>
+        </VBox>
+    </Pane>
+</Pane>

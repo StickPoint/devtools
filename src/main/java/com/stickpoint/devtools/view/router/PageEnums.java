@@ -1,6 +1,7 @@
 package com.stickpoint.devtools.view.router;
 
 
+import com.stickpoint.devtools.view.component.ToastDialog;
 import com.stickpoint.devtools.view.control.*;
 
 import java.net.URL;
@@ -9,13 +10,17 @@ import java.net.URL;
  * @author fntp
  * @version v0.0.1
  * @date 2022/9/11
- * @description
+ * @description 页面路由中心
  */
 public enum PageEnums {
-    /**
+	/**
      * 首页页面
      */
     MAIN_WINDOWS(MainWindowController.class, MainWindowController.class.getResource("/fxml/mainWindow.fxml"),"mainWindow"),
+	/**
+	 * 系统组件--吐司弹窗
+	 */
+	COMPONENT_TOAST(ToastDialog.class, ToastDialog.class.getResource("/fxml/toast.fxml"),"toast"),
 	/**
 	 * 系统设置菜单
 	 */
@@ -77,7 +82,7 @@ public enum PageEnums {
 	/**
 	 * 
 	 * @title: getPageType 
-	 * @description:
+	 * @description: 数据类型
 	 * @return Class<?>
 	 */
     public Class<?> getPageType() {
@@ -87,8 +92,8 @@ public enum PageEnums {
 	/**
 	 * 
 	 * @title: getPageSource 
-	 * @description:
-	 * @return URL
+	 * @description: 页面内容路由
+	 * @return URL 路由地址
 	 */
     public URL getPageSource() {
         return pageSource;
