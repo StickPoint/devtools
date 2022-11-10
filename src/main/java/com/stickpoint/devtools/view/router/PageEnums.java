@@ -26,6 +26,10 @@ public enum PageEnums {
 	 */
 	SYSTEM_SET_CENTER(SystemSetCenterController.class,SystemSetCenterController.class.getResource("/fxml/systemSetCenter.fxml"),"systemSetCenter"),
 	/**
+	 * 翻译程序页面
+	 */
+	SMALL_APP_TRANSLATION(SaTranslateController.class,SaTranslateController.class.getResource("/fxml/sa_translate.fxml"),"translation"),
+	/**
 	 * 菜单栏页面
 	 */
     LEFT_MENU_CENTER(LeftMenuCenterController.class, LeftMenuCenterController.class.getResource("/fxml/leftMenuCenter.fxml"),"leftMenuCenter"),

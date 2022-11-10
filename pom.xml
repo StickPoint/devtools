@@ -13,6 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.7.1</junit.version>
         <packaging>exe</packaging>
+        <javafx-version>17.0.2</javafx-version>
     </properties>
     <repositories>
         <repository>
@@ -24,18 +25,24 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>17.0.2</version>
+            <version>${javafx-version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.2</version>
+            <version>${javafx-version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-base</artifactId>
-            <version>17.0.2</version>
+            <version>${javafx-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>${javafx-version}</version>
+        </dependency>
+        <!--   梦想哥UI组件     -->
         <dependency>
             <groupId>com.github.leewyatt</groupId>
             <artifactId>rxcontrols</artifactId>

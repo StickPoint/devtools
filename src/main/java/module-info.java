@@ -2,6 +2,7 @@ open module com.stickpoint.devtools {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.base;
+    requires javafx.swing;
     requires rxcontrols;
     requires ch.qos.logback.classic;
     requires ch.qos.logback.core;

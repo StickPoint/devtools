@@ -1,8 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="rootPane" prefHeight="200.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.SaTranslateController">
-
+<AnchorPane id="rootPane" prefHeight="300.0" prefWidth="320.0" stylesheets="@../css/translate.css"
+            xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.stickpoint.devtools.view.control.SaTranslateController">
+   <AnchorPane prefHeight="109.0" prefWidth="320.0">
+      <ComboBox id="fromLanguage" layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="120.0"/>
+      <ComboBox id="fromLanguage" layoutX="186.0" layoutY="14.0" prefHeight="30.0" prefWidth="120.0"/>
+      <Region id="translate_icon" layoutX="150.0" layoutY="19.0" prefHeight="20.0" prefWidth="20.0"/>
+   </AnchorPane>
+   <AnchorPane id="translateContent" layoutX="15.0" layoutY="50.0" prefHeight="238.0" prefWidth="290.0">
+      <HBox layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="90.0" spacing="8.0">
+         <VBox prefHeight="25.0" prefWidth="37.0">
+            <VBox id="optionMenuItem" prefHeight="20.0" prefWidth="37.0">
+               <VBox.margin>
+                  <Insets/>
+               </VBox.margin>
+               <Label contentDisplay="TOP" text="原  文">
+                  <font>
+                     <Font size="14.0"/>
+                  </font>
+               </Label>
+            </VBox>
+            <Pane id="optionMenuLittleItem" maxWidth="35.0" minHeight="3.0" minWidth="37.0" prefHeight="3.0"
+                  prefWidth="35.0"/>
+         </VBox>
+         <VBox prefHeight="25.0" prefWidth="37.0">
+            <VBox id="optionMenuItem" prefHeight="20.0" prefWidth="37.0">
+               <VBox.margin>
+                  <Insets/>
+               </VBox.margin>
+               <Label contentDisplay="TOP" text="译  文">
+                  <font>
+                     <Font size="14.0"/>
+                  </font>
+               </Label>
+            </VBox>
+            <Pane id="optionMenuLittleItem" maxWidth="37.0" minHeight="3.0" minWidth="37.0" prefHeight="3.0"
+                  prefWidth="37.0" style="-fx-background-color: white;"/>
+         </VBox>
+      </HBox>
+      <TextArea id="textContent" layoutY="44.0" prefHeight="194.0" prefWidth="290.0" wrapText="true"/>
+      <HBox layoutX="190.0" layoutY="11.0" prefHeight="25.0" prefWidth="90.0" spacing="12.0">
+         <Region id="paste" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" prefHeight="15.0"
+                 prefWidth="15.0">
+            <HBox.margin>
+               <Insets bottom="2.0" left="11.0" top="5.0"/>
+            </HBox.margin>
+         </Region>
+         <Region id="copy" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" prefHeight="15.0"
+                 prefWidth="15.0">
+            <HBox.margin>
+               <Insets top="5.0"/>
+            </HBox.margin>
+         </Region>
+         <Region id="clear" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" prefHeight="15.0"
+                 prefWidth="15.0">
+            <HBox.margin>
+               <Insets top="5.0"/>
+            </HBox.margin>
+         </Region>
+      </HBox>
+   </AnchorPane>
 </AnchorPane>
