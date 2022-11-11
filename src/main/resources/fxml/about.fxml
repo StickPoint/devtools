@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="420.0" stylesheets="@../css/about.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox layoutX="68.0" layoutY="57.0" prefHeight="100.0" prefWidth="284.0">
+         <children>
+            <Region id="showMainIcon" maxHeight="80.0" maxWidth="80.0" minHeight="80.0" minWidth="80.0" prefHeight="80.0" prefWidth="80.0">
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Region>
+            <Label id="appTitle" text="SinsyTools">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" top="25.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <Label layoutX="125.0" layoutY="179.0" text="版本号：v0.11.11-Release">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="99.0" layoutY="210.0" text="版权公告：2021-2022 鑫软助手 版权所有" textFill="#8a8a8a" />
+      <HBox alignment="CENTER" layoutX="60.0" layoutY="276.0" prefHeight="27.0" prefWidth="306.0" spacing="10.0">
+         <children>
+            <Label text="开源协议" textFill="#0f72f5" />
+            <Label text="隐私政策" textFill="#0f72f5" />
+            <Label text="官方网站" textFill="#0f72f5" />
+            <Label text="人工服务" textFill="#0f72f5" />
+         </children>
+         <padding>
+            <Insets bottom="3.0" top="7.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>

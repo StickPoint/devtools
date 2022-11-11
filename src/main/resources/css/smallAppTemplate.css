@@ -1,0 +1,9 @@
+#bottomPane{
+    -fx-background-color: transparent;
+}
+
+#rootPane {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}

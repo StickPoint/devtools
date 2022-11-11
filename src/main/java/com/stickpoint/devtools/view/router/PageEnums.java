@@ -28,7 +28,7 @@ public enum PageEnums {
 	/**
 	 * 翻译程序页面
 	 */
-	SMALL_APP_TRANSLATION(SaTranslateController.class,SaTranslateController.class.getResource("/fxml/sa_translate.fxml"),"translation"),
+	SMALL_APP_TRANSLATION(SaTranslateController.class,SaTranslateController.class.getResource("/fxml/saTranslate.fxml"),"translation"),
 	/**
 	 * 菜单栏页面
 	 */
