@@ -21,8 +21,8 @@ public class SystemTray extends TrayIcon {
      * 系统托盘实现
      * @param stage 传入一个stage
      * @param pane 传入一个stackPane
-     * @param image 传入一个image图
-     * @param tooltip 传入一个菜单
+     * @param image 传入一个image系统菜单图片
+     * @param tooltip 传入一个菜单提示
      * @param systemIcon 传入一个菜单图标
      */
     public SystemTray(Stage stage,StackPane pane,Image image, String tooltip, Region systemIcon) {
@@ -63,6 +63,7 @@ public class SystemTray extends TrayIcon {
                         stage.show();
                     } else {
                         stage.hide();
-        }});}}});
+           }});
+        }}});
     }
 }
