@@ -64,6 +64,8 @@ public class MainWindowApplication extends Application {
         SysCache.PAGE_MAP.put(PageEnums.OP_ASSISTANT.getRouterId(), optionAssistantLoader);
         FXMLLoader toastLoader = new FXMLLoader(PageEnums.COMPONENT_TOAST.getPageSource());
         SysCache.PAGE_MAP.put(PageEnums.COMPONENT_TOAST.getRouterId(), toastLoader);
+        FXMLLoader aboutLoader = new FXMLLoader(PageEnums.ABOUT_PAGE.getPageSource());
+        SysCache.PAGE_MAP.put(PageEnums.ABOUT_PAGE.getRouterId(), aboutLoader);
         log.info("装载所有页面加载器完毕"); log.info("开始加载各种页面");
         Parent sysStatusRootNode = null;
         Parent devAssistantRootNode = null;
@@ -72,6 +74,7 @@ public class MainWindowApplication extends Application {
         Parent opAssistantRootNode = null;
         try {
             toastLoader.load();
+            aboutLoader.load();
             bottomCenterLoader.load(); log.info("底部面板加载完毕~");
             leftMenuCenterLoader.load(); log.info("左侧菜单面板加载完毕~");
             sysStatusRootNode = systemStatusLoader.load(); log.info("系统面板页面加载完毕~");

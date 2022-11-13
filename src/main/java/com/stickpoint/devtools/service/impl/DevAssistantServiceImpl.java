@@ -73,13 +73,7 @@ public class DevAssistantServiceImpl implements IDevAssistantService {
      */
     @Override
     public String unicodeDataTransformToStrData(String unicodeData) {
-        Pattern pattern = Pattern.compile("(\\\\u(\\p{XDigit}{4}))");
-        Matcher matcher = pattern.matcher(unicodeData);
-        char ch;
-        while (matcher.find()) {
-            ch = (char) Integer.parseInt(matcher.group(2), 16);
-            unicodeData = unicodeData.replace(matcher.group(1), ch + "");
-        }
+
         return null;
     }
 

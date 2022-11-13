@@ -3,6 +3,7 @@ package com.stickpoint.devtools.view.router;
 
 import com.stickpoint.devtools.view.component.ToastDialog;
 import com.stickpoint.devtools.view.control.*;
+import com.stickpoint.devtools.view.page.AboutPage;
 
 import java.net.URL;
 
@@ -53,6 +54,10 @@ public enum PageEnums {
 	 * 网络助手
 	 */
 	WEB_ASSISTANT(WebAssistantController.class,WebAssistantController.class.getResource("/fxml/webAssistant.fxml"),"webAssistant"),
+	/**
+	 * 关于页面
+	 */
+	ABOUT_PAGE(AboutPage.class,AboutPage.class.getResource("/fxml/about.fxml"),"about"),
 	/**
 	 * 底部页面
 	 */
