@@ -67,10 +67,10 @@ public class SystemSetCenterController {
             }
             // 监听当前窗口焦点事件
             aboutStage.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (Boolean.TRUE.equals(observable.getValue())) {
+            if (Boolean.TRUE.equals(newValue)) {
                     log.info(oldValue.toString());
                     log.info(newValue.toString());
-                    aboutStage.close();
+                    aboutStage.hide();
                 }
             });
         });

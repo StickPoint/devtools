@@ -25,8 +25,11 @@ public interface SysCache {
     Map<String, FXMLLoader> PAGE_MAP = new ConcurrentHashMap<>(10);
     /**
      * 缓存节点
+     * (1) 主页面的StackPane stackPane
+     * (2) 系统托盘Tray tray
+     * (3) 系统Stage stage
      */
-    Map<String, Node> NODE_MAP = new ConcurrentHashMap<>(1);
+    Map<String, Object> NODE_MAP = new ConcurrentHashMap<>(3);
     /**
      * 菜单map
      */

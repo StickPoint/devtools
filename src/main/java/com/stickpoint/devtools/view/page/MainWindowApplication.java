@@ -1,7 +1,9 @@
 package com.stickpoint.devtools.view.page;
 import com.stickpoint.devtools.common.cache.SysCache;
+import com.stickpoint.devtools.common.enums.AppEnums;
 import com.stickpoint.devtools.view.router.PageEnums;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,6 +40,13 @@ public class MainWindowApplication extends Application {
         }
         stage.setScene(scene);
         stage.show();
+        Platform.setImplicitExit(false);
+        stage.setOnCloseRequest(event -> {
+            if(stage.isIconified()){
+                stage.setIconified(false);
+            }
+        });
+        SysCache.NODE_MAP.put(AppEnums.APPLICATION_MAIN_STAGE.getInfoValue(),stage);
     }
 
 
@@ -66,6 +75,8 @@ public class MainWindowApplication extends Application {
         SysCache.PAGE_MAP.put(PageEnums.COMPONENT_TOAST.getRouterId(), toastLoader);
         FXMLLoader aboutLoader = new FXMLLoader(PageEnums.ABOUT_PAGE.getPageSource());
         SysCache.PAGE_MAP.put(PageEnums.ABOUT_PAGE.getRouterId(), aboutLoader);
+        FXMLLoader systemTrayLoader = new FXMLLoader(PageEnums.SYSTEM_TRAY.getPageSource());
+        SysCache.PAGE_MAP.put(PageEnums.SYSTEM_TRAY.getRouterId(), systemTrayLoader);
         log.info("装载所有页面加载器完毕"); log.info("开始加载各种页面");
         Parent sysStatusRootNode = null;
         Parent devAssistantRootNode = null;
@@ -75,6 +86,7 @@ public class MainWindowApplication extends Application {
         try {
             toastLoader.load();
             aboutLoader.load();
+            systemTrayLoader.load();
             bottomCenterLoader.load(); log.info("底部面板加载完毕~");
             leftMenuCenterLoader.load(); log.info("左侧菜单面板加载完毕~");
             sysStatusRootNode = systemStatusLoader.load(); log.info("系统面板页面加载完毕~");

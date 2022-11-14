@@ -1,14 +1,17 @@
 package com.stickpoint.devtools.view.control;
 
+import com.stickpoint.devtools.common.cache.SysCache;
 import com.stickpoint.devtools.common.entity.IpInfoEntity;
 import com.stickpoint.devtools.common.enums.AppEnums;
 import com.stickpoint.devtools.service.IApplicationService;
 import com.stickpoint.devtools.service.impl.ApplicationServiceImpl;
+import com.stickpoint.devtools.view.component.MyTray;
 import com.stickpoint.devtools.view.component.ToastDialog;
 import com.stickpoint.devtools.view.router.PageEnums;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,6 +30,10 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.awt.AWTException;
+import java.awt.Image;
+import java.awt.SystemTray;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -81,6 +88,18 @@ public class BottomCenterController {
         ipAddress.setText(AppEnums.INFO_CURRENT_IP.getInfoValue().concat(localIpInfo.getIpv4Address()));
         initCurrentTime(infoLabel);
         initTranslation();
+        initMinSizeAddListener();
+        initInnerComponent();
+    }
+
+    private void initInnerComponent() {
+        FXMLLoader sysTrayLoader = SysCache.PAGE_MAP.get(PageEnums.SYSTEM_TRAY.getRouterId());
+        Region region = sysTrayLoader.getRoot();
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/min.png"));
+        Platform.runLater(() -> {
+            MyTray myTray = new MyTray(image,AppEnums.APPLICATION_NAME.getInfoValue(),region);
+            SysCache.NODE_MAP.put(AppEnums.APPLICATION_TRAY.getInfoValue(), myTray);
+        });
     }
 
     /**
@@ -136,4 +155,21 @@ public class BottomCenterController {
     private Stage getStage(){
         return (Stage) bottomPane.getScene().getWindow();
     }
+
+    private void initMinSizeAddListener() {
+        minimize.setOnMouseClicked(event -> {
+            SystemTray systemTray = SystemTray.getSystemTray();
+            MyTray myTray = (MyTray) SysCache.NODE_MAP.get(AppEnums.APPLICATION_TRAY.getInfoValue());
+            try {
+               systemTray.remove(myTray);
+               systemTray.add(myTray);
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
+            // 最后将主页面影藏
+            Stage mainStage = (Stage) SysCache.NODE_MAP.get(AppEnums.APPLICATION_MAIN_STAGE.getInfoValue());
+            mainStage.close();
+        });
+    }
+
 }

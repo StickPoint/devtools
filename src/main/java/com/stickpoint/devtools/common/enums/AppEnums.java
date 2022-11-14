@@ -62,6 +62,16 @@ public enum AppEnums {
      */
     TOAST_ERROR(2),
     /**
+     * 通用数字
+     */
+    COMMON_NUMBER_THREE(3),
+    COMMON_NUMBER_ONE(1),
+    COMMON_NUMBER_TWO(2),
+    APPLICATION_MAIN_STAGE("stage"),
+    APPLICATION_MAIN_STACK_PANE("stackPane"),
+    APPLICATION_TRAY("tray"),
+    APPLICATION_NAME("鑫软助手"),
+    /**
      * 菜单栏文字id
      */
     LEFT_PANE_MENU_TEXT_ID("菜单栏文字id","menuText" );
@@ -80,6 +90,12 @@ public enum AppEnums {
         this.infoName = infoName;
         this.infoValue=infoValue;
         numberInfo = null;
+    }
+
+    AppEnums(String infoValue) {
+        this.infoName = null;
+        this.infoValue=infoValue;
+        this.numberInfo=null;
     }
     
     AppEnums(Integer numberInfo){

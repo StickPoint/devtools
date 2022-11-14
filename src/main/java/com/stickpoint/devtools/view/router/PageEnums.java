@@ -2,7 +2,17 @@ package com.stickpoint.devtools.view.router;
 
 
 import com.stickpoint.devtools.view.component.ToastDialog;
-import com.stickpoint.devtools.view.control.*;
+import com.stickpoint.devtools.view.control.BottomCenterController;
+import com.stickpoint.devtools.view.control.DevAssistantController;
+import com.stickpoint.devtools.view.control.LeftMenuCenterController;
+import com.stickpoint.devtools.view.control.MainWindowController;
+import com.stickpoint.devtools.view.control.OptionAssistantController;
+import com.stickpoint.devtools.view.control.SaTranslateController;
+import com.stickpoint.devtools.view.control.SysAssistantController;
+import com.stickpoint.devtools.view.control.SystemSetCenterController;
+import com.stickpoint.devtools.view.control.SystemStatusController;
+import com.stickpoint.devtools.view.control.SystemTrayController;
+import com.stickpoint.devtools.view.control.WebAssistantController;
 import com.stickpoint.devtools.view.page.AboutPage;
 
 import java.net.URL;
@@ -58,6 +68,10 @@ public enum PageEnums {
 	 * 关于页面
 	 */
 	ABOUT_PAGE(AboutPage.class,AboutPage.class.getResource("/fxml/about.fxml"),"about"),
+	/**
+	 * 系统托盘
+	 */
+	SYSTEM_TRAY(SystemTrayController.class, SystemTrayController.class.getResource("/fxml/systemTray.fxml"),"systemTray"),
 	/**
 	 * 底部页面
 	 */

@@ -139,7 +139,7 @@ public class LeftMenuCenterController {
      */
     public void setOnListenDevPaneClicked() {
         developPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get("stackPane");
+            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get(AppEnums.APPLICATION_MAIN_STACK_PANE.getInfoValue());
             Node targetScrollPane = contentCenter.getChildren()
                     .filtered(node -> AppEnums.LEFT_PANE_MENU_ID_DEV_PANE.getInfoValue().equals(node.getId()))
                     .get(AppEnums.INDEX_ZERO.getNumberInfo());
@@ -153,7 +153,7 @@ public class LeftMenuCenterController {
      */
     public void setOnListenOpPaneClicked() {
         opPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get("stackPane");
+            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get(AppEnums.APPLICATION_MAIN_STACK_PANE.getInfoValue());
             Node targetScrollPane = contentCenter.getChildren()
                     .filtered(node -> AppEnums.LEFT_PANE_MENU_ID_OP_PANE.getInfoValue().equals(node.getId()))
                     .get(AppEnums.INDEX_ZERO.getNumberInfo());
@@ -167,7 +167,7 @@ public class LeftMenuCenterController {
      */
     public void setOnListenWebPaneClicked() {
         webPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get("stackPane");
+            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get(AppEnums.APPLICATION_MAIN_STACK_PANE.getInfoValue());
             Node targetScrollPane = contentCenter.getChildren()
                     .filtered(node -> AppEnums.LEFT_PANE_MENU_ID_WEB_PANE.getInfoValue().equals(node.getId()))
                     .get(AppEnums.INDEX_ZERO.getNumberInfo());
@@ -181,7 +181,7 @@ public class LeftMenuCenterController {
      */
     public void setOnListenSysPaneClicked() {
         systemPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get("stackPane");
+            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get(AppEnums.APPLICATION_MAIN_STACK_PANE.getInfoValue());
             Node targetScrollPane = contentCenter.getChildren()
                     .filtered(node -> AppEnums.LEFT_PANE_MENU_ID_SYS_PANE.getInfoValue().equals(node.getId()))
                     .get(AppEnums.INDEX_ZERO.getNumberInfo());
@@ -195,7 +195,7 @@ public class LeftMenuCenterController {
      */
     private void setOnListenSysStatusPaneClicked(){
         sysStatusPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get("stackPane");
+            StackPane contentCenter = (StackPane) SysCache.NODE_MAP.get(AppEnums.APPLICATION_MAIN_STACK_PANE.getInfoValue());
             Node targetScrollPane = contentCenter.getChildren()
                     .filtered(node -> AppEnums.LEFT_PANE_MENU_ID_SYS_STATUS_PANE.getInfoValue().equals(node.getId()))
                     .get(AppEnums.INDEX_ZERO.getNumberInfo());

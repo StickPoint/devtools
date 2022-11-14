@@ -71,7 +71,7 @@ public class MainWindowController {
         // 将初始化界面生成的scrollPane装在进入缓存中去
         contentCenter.getChildren().addAll(SysCache.MENU_LIST);
         initCenterContent(contentCenter);
-        SysCache.NODE_MAP.put("stackPane",contentCenter);
+        SysCache.NODE_MAP.put(AppEnums.APPLICATION_MAIN_STACK_PANE.getInfoValue(),contentCenter);
         // 初始化系统菜单设置
         initSystemSetCenterContext();
     }
