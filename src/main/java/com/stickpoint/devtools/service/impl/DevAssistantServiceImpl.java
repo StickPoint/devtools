@@ -3,10 +3,7 @@ package com.stickpoint.devtools.service.impl;
 import com.stickpoint.devtools.service.IDevAssistantService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.nio.charset.StandardCharsets;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * description: DevAssistantServiceImpl
@@ -32,7 +29,7 @@ public class DevAssistantServiceImpl implements IDevAssistantService {
     @Override
     public String strDataTransformToHexCode(String stringData) {
         char[] chars = stringData.toCharArray();
-        StringBuilder stringBuilder = new StringBuilder("");
+        StringBuilder stringBuilder = new StringBuilder();
         byte[] stringDataBytes = stringData.getBytes();
         int bit;
         for (byte stringDataByte : stringDataBytes) {

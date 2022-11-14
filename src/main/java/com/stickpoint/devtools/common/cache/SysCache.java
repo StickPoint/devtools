@@ -1,10 +1,6 @@
 package com.stickpoint.devtools.common.cache;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

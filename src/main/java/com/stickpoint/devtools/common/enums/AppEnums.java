@@ -62,14 +62,32 @@ public enum AppEnums {
      */
     TOAST_ERROR(2),
     /**
-     * 通用数字
+     * 通用数字 3
      */
     COMMON_NUMBER_THREE(3),
+    /**
+     * 通用数字 1
+     */
     COMMON_NUMBER_ONE(1),
+    /**
+     * 通用数字 2
+     */
     COMMON_NUMBER_TWO(2),
+    /**
+     * 应用主场景Stage
+     */
     APPLICATION_MAIN_STAGE("stage"),
+    /**
+     * 应用stackPane
+     */
     APPLICATION_MAIN_STACK_PANE("stackPane"),
+    /**
+     * 应用系统托盘
+     */
     APPLICATION_TRAY("tray"),
+    /**
+     * 应用名称
+     */
     APPLICATION_NAME("鑫软助手"),
     /**
      * 菜单栏文字id
@@ -83,21 +101,36 @@ public enum AppEnums {
      * fx应用内部infoValue-值
      */
     private final String infoValue;
-    
+    /**
+     * 数字枚举数值
+     */
     private final Integer numberInfo;
 
+    /**
+     * 带描述枚举
+     * @param infoName 枚举描述
+     * @param infoValue 枚举值
+     */
     AppEnums(String infoName, String infoValue){
         this.infoName = infoName;
         this.infoValue=infoValue;
         numberInfo = null;
     }
 
+    /**
+     * 单独字符串枚举不带描述
+     * @param infoValue 字符串枚举数据
+     */
     AppEnums(String infoValue) {
         this.infoName = null;
         this.infoValue=infoValue;
         this.numberInfo=null;
     }
-    
+
+    /**
+     * 单独数字枚举不带描述
+     * @param numberInfo 数字枚举数值
+     */
     AppEnums(Integer numberInfo){
         this.numberInfo = numberInfo;
         this.infoValue = null;

@@ -1,14 +1,10 @@
 package com.stickpoint.devtools.view.control;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.StageStyle;
-
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

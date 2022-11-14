@@ -1,6 +1,5 @@
 package com.stickpoint.devtools.view.component;
 import com.stickpoint.devtools.common.cache.SysCache;
-import com.stickpoint.devtools.view.control.BottomCenterController;
 import com.stickpoint.devtools.view.router.PageEnums;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -9,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
@@ -19,7 +17,6 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Objects;
 
 /**

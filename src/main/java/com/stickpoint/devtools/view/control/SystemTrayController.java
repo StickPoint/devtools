@@ -2,9 +2,7 @@ package com.stickpoint.devtools.view.control;
 
 import com.stickpoint.devtools.common.cache.SysCache;
 import com.stickpoint.devtools.common.enums.AppEnums;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 

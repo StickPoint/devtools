@@ -58,9 +58,7 @@ public class ApplicationServiceImpl implements IApplicationService {
             ret = null;
         }
         List<Inet4Address> list = getLocalIp4AddressFromNetworkInterface();
-        list.forEach(item->{
-            log.info(item.getHostName()+"--"+item.getHostAddress()+"---"+ Arrays.toString(item.getAddress()));
-        });
+        list.forEach(item-> log.info(item.getHostName()+"--"+item.getHostAddress()+"---"+ Arrays.toString(item.getAddress())));
         return IpInfoEntity.builder()
                 .setIpv6Address(ipAddress6).setIpArray(ret)
                 .setHostName(hostName)
