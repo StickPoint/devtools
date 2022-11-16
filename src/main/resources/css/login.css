@@ -10,6 +10,15 @@
     -fx-background-radius: 3;
 }
 
+/**
+ * 文本输入框css样式
+ */
+#account, #password{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+
 #mainPane {
     -fx-background-color: rgba(227, 227, 227, 0.66);
     -fx-border-radius: 15;
