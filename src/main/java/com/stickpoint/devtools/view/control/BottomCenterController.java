@@ -56,17 +56,34 @@ public class BottomCenterController {
     private static final IApplicationService applicationService = new ApplicationServiceImpl();
 
     private static final ToastDialog TOAST_DIALOG_CONTROLLER = new ToastDialog();
-
+    /**
+     * 底部Pane
+     */
     public AnchorPane bottomPane;
-
+    /**
+     * 屏幕截图快照
+     */
     public Region snapshot;
-
+    /**
+     * 最小化
+     */
     public Region minimize;
-
+    /**
+     * 金点子；提示
+     */
+    public Region tips;
+    /**
+     * 天气
+     */
+    public Region weather;
     /**
      * 翻译页面
      */
     private ContextMenu translationMenu;
+    /**
+     * 天气页面
+     */
+    private ContextMenu weatherMenu;
     /**
      * 当前时间
      */
@@ -79,7 +96,9 @@ public class BottomCenterController {
      * IP信息HBox 点击此处复制IP
      */
     public HBox ipInfoHBox;
-
+    /**
+     * 翻译
+     */
     public Region translate;
 
     @FXML
@@ -88,6 +107,7 @@ public class BottomCenterController {
         ipAddress.setText(AppEnums.INFO_CURRENT_IP.getInfoValue().concat(localIpInfo.getIpv4Address()));
         initCurrentTime(infoLabel);
         initTranslation();
+        initWeather();
         initMinSizeAddListener();
         initInnerComponent();
     }
@@ -104,10 +124,18 @@ public class BottomCenterController {
 
     /**
      * 初始化加载当前时间
+     * 注意这里有一个细节问题 yyyy-MM-dd HH:mm:ss
+     * 当渲染时间格式是：hh的时候，渲染的时间是12小时制度
+     * 只有当时间部分是：HH的时候，才是24小时制
+     *
+     * Current time of initialization load
+     * Note that there is a detail problem yyyy MM dd HH: mm: ss
+     * When the rendering time format is: hh, the rendering time is 12 hours
+     * Only when the time part is HH, it is 24-hour
      * @param timeLabel 时间便条
      */
     private void initCurrentTime(Label timeLabel){
-        DateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        DateFormat dateTimeFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
         EventHandler<ActionEvent> eventHandler = e-> timeLabel.setText(dateTimeFormat.format(System.currentTimeMillis()));
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(1000), eventHandler));
         animation.setCycleCount(Animation.INDEFINITE);
@@ -116,14 +144,16 @@ public class BottomCenterController {
 
     /**
      * 复制本机IP信息
+     * Copy native IP information
      */
     @FXML
     public void copyIpInfo() {
         // 要想复制IP信息进入系统剪切板，首先需要去看看ip信息有没有
+        // To copy the IP information into the system clipboard, you need to check whether the IP information is available
         if (Objects.nonNull(ipAddress.getText())) {
-            // 获得系统剪切板
+            // 获得系统剪切板 Obtain the system shear plate
             Clipboard clipboard = Clipboard.getSystemClipboard();
-            // 然后执行复制粘贴数据操作
+            // 然后执行复制粘贴数据操作 Then copy and paste the data
             ClipboardContent content = new ClipboardContent();
             content.putString(ipAddress.getText().replace(AppEnums.INFO_CURRENT_IP.getInfoValue(),""));
             log.info("当前机器IP信息已经写入系统剪切板了吗？写入的最终状态是：{}", clipboard.setContent(content));
@@ -146,10 +176,28 @@ public class BottomCenterController {
         translationMenu.getScene().setRoot(rootNode);
     }
 
+    public void initWeather() {
+        weatherMenu = new ContextMenu(new SeparatorMenuItem());
+        FXMLLoader weatherLoader = new FXMLLoader(PageEnums.SMALL_APP_WEATHER.getPageSource());
+        Parent rootNode = null;
+        try {
+            rootNode = weatherLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        weatherMenu.getScene().setRoot(rootNode);
+    }
+
     @FXML
-    public void showTranslate(){
+    public void showTranslate() {
         Bounds bounds = translate.localToScreen(translate.getBoundsInLocal());
-        translationMenu.show(getStage(),bounds.getMaxX() - 250,bounds.getMaxY() - 330);
+        translationMenu.show(getStage(),bounds.getMaxX()-250,bounds.getMaxY()-330);
+    }
+
+    @FXML
+    public void showWeather() {
+        Bounds bounds = weather.localToScreen(weather.getBoundsInLocal());
+        weatherMenu.show(getStage(),bounds.getMaxX()-80,bounds.getMaxY()-144);
     }
 
     private Stage getStage(){
@@ -166,7 +214,7 @@ public class BottomCenterController {
             } catch (AWTException e) {
                 e.printStackTrace();
             }
-            // 最后将主页面影藏
+            // 最后将主页面隐藏 Finally, hide the main page
             Stage mainStage = (Stage) SysCache.NODE_MAP.get(AppEnums.APPLICATION_MAIN_STAGE.getInfoValue());
             mainStage.close();
         });

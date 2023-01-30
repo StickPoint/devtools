@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<AnchorPane fx:id="bottomPane" id="currentTime" maxHeight="40.0" maxWidth="720.0" minHeight="40.0" minWidth="720.0" prefHeight="40.0" prefWidth="720.0" style="-fx-background-color: white; -fx-border-color: rgba(128,128,128,0.11);" stylesheets="@../css/bottomCenter.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.BottomCenterController">
+<AnchorPane id="currentTime" fx:id="bottomPane" maxHeight="40.0" maxWidth="720.0" minHeight="40.0" minWidth="720.0" prefHeight="40.0" prefWidth="720.0" style="-fx-background-color: white; -fx-border-color: rgba(128,128,128,0.11);" stylesheets="@../css/bottomCenter.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.BottomCenterController">
    <HBox fx:id="ipInfoHBox" onMouseClicked="#copyIpInfo" prefHeight="40.0" prefWidth="230.0">
       <Label id="main-user-status" maxHeight="8.0" maxWidth="8.0" minHeight="8.0" minWidth="8.0" prefHeight="8.0" prefWidth="8.0">
          <HBox.margin>
@@ -22,11 +22,21 @@
    <HBox alignment="CENTER" layoutX="231.0" prefHeight="40.0" prefWidth="299.0">
       <Label id="infoLabel" fx:id="infoLabel" text="2022-10-28 13:42:45" />
    </HBox>
-   <HBox layoutX="618.0" prefHeight="40.0" prefWidth="100.0" spacing="12.0">
+   <HBox layoutX="564.0" prefHeight="40.0" prefWidth="156.0" spacing="12.0">
       <padding>
          <Insets left="12.0" right="12.0" />
       </padding>
-      <Region id="translate" onMouseClicked="#showTranslate" fx:id="translate" prefHeight="15.0" prefWidth="15.0">
+      <Region id="weather" fx:id="weather" onMouseClicked="#showWeather" prefHeight="15.0" prefWidth="16.0">
+         <HBox.margin>
+            <Insets bottom="11.0" top="11.0" />
+         </HBox.margin>
+      </Region>
+      <Region id="tips" fx:id="tips" prefHeight="15.0" prefWidth="15.0">
+         <HBox.margin>
+            <Insets bottom="11.5" top="10.0" />
+         </HBox.margin>
+      </Region>
+      <Region id="translate" fx:id="translate" onMouseClicked="#showTranslate" prefHeight="15.0" prefWidth="15.0">
          <HBox.margin>
             <Insets bottom="11.5" left="2.0" top="11.5" />
          </HBox.margin>

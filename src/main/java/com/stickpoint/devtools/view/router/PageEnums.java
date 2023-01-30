@@ -69,6 +69,10 @@ public enum PageEnums {
 	 */
 	ABOUT_PAGE(AboutPage.class,AboutPage.class.getResource("/fxml/about.fxml"),"about"),
 	/**
+	 * 天气页面
+	 */
+	SMALL_APP_WEATHER(WebAssistantController.class,WebAssistantController.class.getResource("/fxml/weather.fxml"),"weather"),
+	/**
 	 * 系统托盘
 	 */
 	SYSTEM_TRAY(SystemTrayController.class, SystemTrayController.class.getResource("/fxml/systemTray.fxml"),"systemTray"),

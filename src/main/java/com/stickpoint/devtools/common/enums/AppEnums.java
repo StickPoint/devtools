@@ -10,6 +10,10 @@ package com.stickpoint.devtools.common.enums;
  */
 public enum AppEnums {
     /**
+     * 网络状态码200
+     */
+    APP_NETWORK_STATUS_OK(200),
+    /**
      * 菜单面板子项菜单的样式css文件的Path
      */
     FUNCTION_CENTER_MENU_ITEM_CSS_URI("菜单面板子项菜单的样式css文件的Path", "/css/leftMenuCenter.css" ),

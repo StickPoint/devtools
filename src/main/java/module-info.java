@@ -7,5 +7,10 @@ open module com.stickpoint.devtools {
     requires ch.qos.logback.classic;
     requires ch.qos.logback.core;
     requires org.slf4j;
+    requires java.sql;
+    requires com.google.gson;
+    requires okhttps.gson;
+    requires okhttps;
+    requires org.xerial.sqlitejdbc;
     exports com.stickpoint.devtools;
 }

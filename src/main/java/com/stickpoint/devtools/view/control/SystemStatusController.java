@@ -58,4 +58,13 @@ public class SystemStatusController {
                     });
         }
     }
+
+    /**
+     * 初始化系统Java应用程序的状态监控
+     */
+    private void initSystemInnerJavaApplicationStatus() {
+        Runtime runtime = Runtime.getRuntime();
+
+    }
+
 }

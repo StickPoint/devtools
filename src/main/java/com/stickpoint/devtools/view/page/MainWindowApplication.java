@@ -147,7 +147,14 @@ public class MainWindowApplication extends Application {
         });
     }
 
+    /**
+     * 通过加载远程系统配置然后将远程配置加载进入内存中
+     */
+    private void initSystemProperties() {
+        // TODO init systemProperties here ,while this application started
+        // TODO load systemTools
 
+    }
 
 	@Override
 	public void stop() {
