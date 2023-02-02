@@ -12,7 +12,6 @@ import java.util.List;
  * @author puye(0303)
  * @since 2023/1/11
  */
-
 public class SaWeatherController {
 
     /**
@@ -115,7 +114,7 @@ public class SaWeatherController {
      */
     @SuppressWarnings("public")
     public Label address;
-    
+
     public void initAllData(List<WeatherInfoEntity> weatherInfoList){
         // 检查一下数据长度问题
         if (weatherInfoList.size()< AppEnums.COMMON_NUMBER_SEVEN.getNumberInfo()||weatherInfoList.isEmpty()) {
