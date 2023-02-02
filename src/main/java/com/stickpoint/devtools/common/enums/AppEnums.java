@@ -78,6 +78,10 @@ public enum AppEnums {
      */
     COMMON_NUMBER_TWO(2),
     /**
+     * 天气数据长度 固定长度 7
+     */
+    WEATHER_DATA_LENGTH(7),
+    /**
      * 应用主场景Stage
      */
     APPLICATION_MAIN_STAGE("stage"),

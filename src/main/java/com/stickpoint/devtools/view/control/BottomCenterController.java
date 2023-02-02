@@ -1,7 +1,7 @@
 package com.stickpoint.devtools.view.control;
-
 import com.stickpoint.devtools.common.cache.SysCache;
 import com.stickpoint.devtools.common.entity.IpInfoEntity;
+import com.stickpoint.devtools.common.entity.WeatherInfoEntity;
 import com.stickpoint.devtools.common.enums.AppEnums;
 import com.stickpoint.devtools.service.IApplicationService;
 import com.stickpoint.devtools.service.impl.ApplicationServiceImpl;
@@ -37,6 +37,7 @@ import java.awt.Toolkit;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -53,9 +54,12 @@ public class BottomCenterController {
      */
     private static final Logger log = LoggerFactory.getLogger(BottomCenterController.class);
 
-    private static final IApplicationService applicationService = new ApplicationServiceImpl();
+    private static final IApplicationService APPLICATION_SERVICE = new ApplicationServiceImpl();
 
     private static final ToastDialog TOAST_DIALOG_CONTROLLER = new ToastDialog();
+
+    private SaWeatherController weatherController;
+
     /**
      * 底部Pane
      */
@@ -103,7 +107,7 @@ public class BottomCenterController {
 
     @FXML
     public void initialize(){
-        IpInfoEntity localIpInfo = applicationService.getLocalIpInfo();
+        IpInfoEntity localIpInfo = APPLICATION_SERVICE.getLocalIpInfo();
         ipAddress.setText(AppEnums.INFO_CURRENT_IP.getInfoValue().concat(localIpInfo.getIpv4Address()));
         initCurrentTime(infoLabel);
         initTranslation();
@@ -178,10 +182,10 @@ public class BottomCenterController {
 
     public void initWeather() {
         weatherMenu = new ContextMenu(new SeparatorMenuItem());
-        FXMLLoader weatherLoader = new FXMLLoader(PageEnums.SMALL_APP_WEATHER.getPageSource());
         Parent rootNode = null;
         try {
-            rootNode = weatherLoader.load();
+            rootNode = SysCache.PAGE_MAP.get(PageEnums.SMALL_APP_WEATHER.getRouterId()).load();
+            weatherController = SysCache.PAGE_MAP.get(PageEnums.SMALL_APP_WEATHER.getRouterId()).getController();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -197,6 +201,9 @@ public class BottomCenterController {
     @FXML
     public void showWeather() {
         Bounds bounds = weather.localToScreen(weather.getBoundsInLocal());
+        // 调用service刷新ui
+        List<WeatherInfoEntity> weatherInfoEntities = APPLICATION_SERVICE.getWeatherInfo("杭州市西湖区");
+        weatherController.initAllData(weatherInfoEntities);
         weatherMenu.show(getStage(),bounds.getMaxX()-80,bounds.getMaxY()-144);
     }
 
