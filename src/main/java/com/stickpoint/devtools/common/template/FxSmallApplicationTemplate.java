@@ -1,4 +1,4 @@
-package com.stickpoint.devtools.view.component;
+package com.stickpoint.devtools.common.template;
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -237,5 +237,33 @@ public class FxSmallApplicationTemplate implements Serializable {
 
     public void setFileSize(Integer fileSize) {
         this.fileSize = fileSize;
+    }
+
+    @Override
+    public String toString() {
+        return "FxSmallApplicationTemplate{" +
+                "fileName='" + fileName + '\'' +
+                ", fileRelativePath='" + fileRelativePath + '\'' +
+                ", appName='" + appName + '\'' +
+                ", nameSpace='" + nameSpace + '\'' +
+                ", metaData='" + metaData + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                ", version='" + version + '\'' +
+                ", creatorId='" + creatorId + '\'' +
+                ", creatorNickName='" + creatorNickName + '\'' +
+                ", smallApplicationUrl='" + smallApplicationUrl + '\'' +
+                ", briefDescription='" + briefDescription + '\'' +
+                ", detailedDescription='" + detailedDescription + '\'' +
+                ", shaOrHashCode='" + shaOrHashCode + '\'' +
+                ", appKey='" + appKey + '\'' +
+                ", appSecret='" + appSecret + '\'' +
+                ", downloadUrl='" + downloadUrl + '\'' +
+                ", updateUrl='" + updateUrl + '\'' +
+                ", fileSize=" + fileSize +
+                ", iconUrl='" + iconUrl + '\'' +
+                ", fxmlFilePath='" + fxmlFilePath + '\'' +
+                ", mark='" + mark + '\'' +
+                '}';
     }
 }

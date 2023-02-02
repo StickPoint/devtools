@@ -18,90 +18,107 @@ public class SaWeatherController {
     /**
      * 今日天气图片
      */
+    @SuppressWarnings("public")
     public ImageView todayWeather;
     /**
      * 明日天气图片
      */
+    @SuppressWarnings("public")
     public ImageView todayWeatherAfter1;
     /**
      * 后天天气图片
      */
+    @SuppressWarnings("public")
     public ImageView todayWeatherAfter2;
     /**
      * 大后天天气图片
      */
+    @SuppressWarnings("public")
     public ImageView todayWeatherAfter3;
     /**
      * 大大后天天气图片
      */
+    @SuppressWarnings("public")
     public ImageView todayWeatherAfter4;
     /**
      * 大大大后天天气图片
      */
+    @SuppressWarnings("public")
     public ImageView todayWeatherAfter5;
     /**
      * 大大大大后天天气图片
      */
+    @SuppressWarnings("public")
     public ImageView todayWeatherAfter6;
     /**
      * 今天
      */
+    @SuppressWarnings("public")
     public Label today;
     /**
      * 明天
      */
+    @SuppressWarnings("public")
     public Label todayAfter1;
     /**
      * 后天
      */
+    @SuppressWarnings("public")
     public Label todayAfter2;
     /**
      * 大后天
      */
+    @SuppressWarnings("public")
     public Label todayAfter3;
     /**
      * 大大后天
      */
+    @SuppressWarnings("public")
     public Label todayAfter4;
     /**
      * 大大大后天
      */
+    @SuppressWarnings("public")
     public Label todayAfter5;
     /**
      * 大大大大后天
      */
+    @SuppressWarnings("public")
     public Label todayAfter6;
     /**
      * 今日温度数字详情
      */
+    @SuppressWarnings("public")
     public Label todayWeatherNumber;
     /**
      * 今日温度详情：多云之类的
      */
+    @SuppressWarnings("public")
     public Label todayWeatherWord;
     /**
      * 今日风级
      */
+    @SuppressWarnings("public")
     public Label todayWind;
     /**
      * 今日空气湿度
      */
+    @SuppressWarnings("public")
     public Label todayHumidity;
     /**
      * 今日空气质量
      */
+    @SuppressWarnings("public")
     public Label todayAirQuality;
     /**
      * 定位位置
      */
+    @SuppressWarnings("public")
     public Label address;
-
-    /**
-     * 温度
-     */
+    
     public void initAllData(List<WeatherInfoEntity> weatherInfoList){
         // 检查一下数据长度问题
-        if (weatherInfoList.size()< AppEnums.WEATHER_DATA_LENGTH.getNumberInfo()||weatherInfoList.isEmpty()) {
+        if (weatherInfoList.size()< AppEnums.COMMON_NUMBER_SEVEN.getNumberInfo()||weatherInfoList.isEmpty()) {
             throw new DevToolsException(DevToolsCodeEnums.ERROR_DATA_ACCESS);
         }
         // 今日数据

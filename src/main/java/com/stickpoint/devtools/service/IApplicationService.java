@@ -28,4 +28,6 @@ public interface IApplicationService {
      */
     List<WeatherInfoEntity> getWeatherInfo(String addressStr);
 
+
+
 }

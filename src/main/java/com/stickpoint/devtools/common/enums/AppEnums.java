@@ -4,7 +4,6 @@ package com.stickpoint.devtools.common.enums;
  * @Author SunChengXin_0303
  * @ClassName AppEnums.Class
  * @PackageName com.stickpoint.devtools.common.enums
- * @jdk_version 17
  * @Date 2022年10月28日 13:13
  * @since 1.5
  */
@@ -80,7 +79,7 @@ public enum AppEnums {
     /**
      * 天气数据长度 固定长度 7
      */
-    WEATHER_DATA_LENGTH(7),
+    COMMON_NUMBER_SEVEN(7),
     /**
      * 应用主场景Stage
      */

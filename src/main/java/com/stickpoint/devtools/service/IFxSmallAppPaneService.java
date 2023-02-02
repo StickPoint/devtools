@@ -1,7 +1,7 @@
 package com.stickpoint.devtools.service;
 
 import com.stickpoint.devtools.common.exception.SmallApplicationException;
-import com.stickpoint.devtools.view.component.FxSmallApplicationTemplate;
+import com.stickpoint.devtools.common.template.FxSmallApplicationTemplate;
 
 /**
  * description: SmallAppPane
