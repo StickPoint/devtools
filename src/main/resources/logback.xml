@@ -21,7 +21,7 @@
             <maxHistory>14</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{80} %line - %msg%n</pattern>
         </encoder>
     </appender>
     <!-- Configure so that it outputs to both console and log file -->

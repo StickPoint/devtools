@@ -27,6 +27,8 @@ public class WeatherInfoEntity implements Serializable {
 
     private String wind;
 
+    private int dayOfMonth;
+
     private int pm25;
 
     private int pm10;
@@ -193,6 +195,14 @@ public class WeatherInfoEntity implements Serializable {
         return moreData;
     }
 
+    public int getDayOfMonth() {
+        return dayOfMonth;
+    }
+
+    public void setDayOfMonth(int dayOfMonth) {
+        this.dayOfMonth = dayOfMonth;
+    }
+
     @Override
     public String toString() {
         return "WeatherInfoEntity{" +
@@ -201,8 +211,9 @@ public class WeatherInfoEntity implements Serializable {
                 ", date=" + date +
                 ", weather='" + weather + '\'' +
                 ", temp=" + temp +
-                ", humidity=" + humidity +
+                ", humidity='" + humidity + '\'' +
                 ", wind='" + wind + '\'' +
+                ", dayOfMonth=" + dayOfMonth +
                 ", pm25=" + pm25 +
                 ", pm10=" + pm10 +
                 ", low=" + low +

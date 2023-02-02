@@ -71,7 +71,7 @@ public enum PageEnums {
 	/**
 	 * 天气页面
 	 */
-	SMALL_APP_WEATHER(WebAssistantController.class,WebAssistantController.class.getResource("/fxml/weather.fxml"),"weather"),
+	SMALL_APP_WEATHER(WebAssistantController.class,WebAssistantController.class.getResource("/fxml/saWeather.fxml"),"weather"),
 	/**
 	 * 系统托盘
 	 */

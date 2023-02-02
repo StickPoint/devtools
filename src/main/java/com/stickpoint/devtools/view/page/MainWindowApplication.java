@@ -77,6 +77,8 @@ public class MainWindowApplication extends Application {
         SysCache.PAGE_MAP.put(PageEnums.ABOUT_PAGE.getRouterId(), aboutLoader);
         FXMLLoader systemTrayLoader = new FXMLLoader(PageEnums.SYSTEM_TRAY.getPageSource());
         SysCache.PAGE_MAP.put(PageEnums.SYSTEM_TRAY.getRouterId(), systemTrayLoader);
+        FXMLLoader weatherLoader = new FXMLLoader(PageEnums.SMALL_APP_WEATHER.getPageSource());
+        SysCache.PAGE_MAP.put(PageEnums.SMALL_APP_WEATHER.getRouterId(), weatherLoader);
         log.info("装载所有页面加载器完毕"); log.info("开始加载各种页面");
         Parent sysStatusRootNode = null;
         Parent devAssistantRootNode = null;
@@ -87,6 +89,7 @@ public class MainWindowApplication extends Application {
             toastLoader.load();
             aboutLoader.load();
             systemTrayLoader.load();
+            // bottom内部用到的pane需要在bottom之前加载
             bottomCenterLoader.load(); log.info("底部面板加载完毕~");
             leftMenuCenterLoader.load(); log.info("左侧菜单面板加载完毕~");
             sysStatusRootNode = systemStatusLoader.load(); log.info("系统面板页面加载完毕~");

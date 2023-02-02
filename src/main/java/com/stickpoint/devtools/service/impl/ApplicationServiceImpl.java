@@ -3,7 +3,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.stickpoint.devtools.common.entity.IpInfoEntity;
@@ -16,6 +15,8 @@ import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -122,10 +123,14 @@ public class ApplicationServiceImpl implements IApplicationService {
             Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
             List<WeatherInfoEntity> infoList = gson.fromJson(dataList, new TypeToken<List<WeatherInfoEntity>>(){}.getType());
             if (Objects.nonNull(infoList)) {
+                infoList.forEach(item->{
+                    LocalDateTime todayTime = LocalDateTime.ofInstant(item.getDate().toInstant(), ZoneId.systemDefault());
+                    item.setDayOfMonth(todayTime.getDayOfMonth());
+                });
                 return infoList;
             }
         }
-        return null;
+        return Collections.emptyList();
     }
 
     /**
