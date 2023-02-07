@@ -1,10 +1,6 @@
 
-Ä
-Psrc/main/java/com/stickpoint/devtools/view/component/FxBaseSmallApplication.java,9\3\93f8c5b39bf756f2175f8285c351aecc14551ce9
 y
 Isrc/main/java/com/stickpoint/devtools/common/enums/DevToolsCodeEnums.java,9\3\933ea3388bd7b4fbe905ff14852e6a9ae5e44087
-Ö
-Usrc/main/java/com/stickpoint/devtools/common/template/FxSmallApplicationTemplate.java,b\1\b1acda8762068c7fcefda55c2e02cb1959f79f86
 n
 >src/main/java/com/stickpoint/devtools/common/utils/IdUtil.java,4\6\46120eb31a1e8e3fd860405a88576a0b6f92588b
 p
@@ -13,10 +9,6 @@ p
 Ksrc/main/java/com/stickpoint/devtools/view/control/SaWeatherController.java,4\f\4fefe2843af9b159ad056fad3f7d0ff3f3448a1f
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-y
-Isrc/main/java/com/stickpoint/devtools/service/IFxSmallAppPaneService.java,a\9\a986e2bb45b073948bb9b06377a4aa140d781541
-Å
-Qsrc/main/java/com/stickpoint/devtools/service/impl/FxSmallAppPaneServiceImpl.java,9\8\9869eba48ce9b7acb6d4685246db7bf18cf2f765
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 n

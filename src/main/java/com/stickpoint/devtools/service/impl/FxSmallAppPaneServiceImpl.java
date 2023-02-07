@@ -1,5 +1,4 @@
 package com.stickpoint.devtools.service.impl;
-
 import com.stickpoint.devtools.StickPointDevToolsApplication;
 import com.stickpoint.devtools.common.exception.SmallApplicationException;
 import com.stickpoint.devtools.service.IFxSmallAppPaneService;
@@ -24,6 +23,7 @@ import java.util.Objects;
  * @Author puye(0303)
  * @PackageName smallApplication.saPane
  */
+@SuppressWarnings("unused")
 public class FxSmallAppPaneServiceImpl implements IFxSmallAppPaneService {
 
     /**
