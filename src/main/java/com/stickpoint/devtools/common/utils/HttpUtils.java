@@ -37,7 +37,6 @@ public class HttpUtils {
      * 私有化构造，启用单例模式
      */
     private HttpUtils() {
-        throw new IllegalStateException("Utility class");
     }
 
     /**

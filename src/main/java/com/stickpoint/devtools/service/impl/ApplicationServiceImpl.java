@@ -6,6 +6,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.stickpoint.devtools.common.entity.IpInfoEntity;
+import com.stickpoint.devtools.common.entity.SystemInfoEntity;
+import com.stickpoint.devtools.common.entity.VersionEntity;
 import com.stickpoint.devtools.common.entity.WeatherInfoEntity;
 import com.stickpoint.devtools.common.utils.HttpUtils;
 import com.stickpoint.devtools.service.IApplicationService;
@@ -134,10 +136,36 @@ public class ApplicationServiceImpl implements IApplicationService {
     }
 
     /**
+     * 检查软件版本更新
+     *
+     * @return 返回一个版本信息
+     */
+    @Override
+    public VersionEntity checkVersionForUpdate() {
+        // 第一步 获得远程配置信息
+        // 第二步 请求获得版本信息
+        // 第三步 比较版本差异，决定是否进入版本更新
+        // 第四步 版本更新：1、差异增量更新；2、覆盖全量更新；
+        // 第四步 启动提示UI 引导用户进入软件更新程序
+
+        return null;
+    }
+
+    /**
+     * 检查系统状态
+     *
+     * @return
+     */
+    @Override
+    public SystemInfoEntity checkSystemInfo() {
+        return null;
+    }
+
+    /**
      * 获取本机所有网卡信息   得到所有IPv4信息
      * @return 返回一个网卡信息
      */
-    public static List<Inet4Address> getLocalIp4AddressFromNetworkInterface()  {
+    private static List<Inet4Address> getLocalIp4AddressFromNetworkInterface()  {
         List<Inet4Address> addresses = new ArrayList<>(10);
         Enumeration<NetworkInterface> networkInterfaces = null;
         try {

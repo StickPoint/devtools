@@ -1,6 +1,8 @@
 package com.stickpoint.devtools.view.page;
 import com.stickpoint.devtools.common.cache.SysCache;
 import com.stickpoint.devtools.common.enums.AppEnums;
+import com.stickpoint.devtools.common.utils.YamlUtil;
+import com.stickpoint.devtools.view.component.ToastDialog;
 import com.stickpoint.devtools.view.router.PageEnums;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -40,6 +42,7 @@ public class MainWindowApplication extends Application {
         }
         stage.setScene(scene);
         stage.show();
+        initSystemProperties(scene);
         Platform.setImplicitExit(false);
         stage.setOnCloseRequest(event -> {
             if(stage.isIconified()){
@@ -79,6 +82,8 @@ public class MainWindowApplication extends Application {
         SysCache.PAGE_MAP.put(PageEnums.SYSTEM_TRAY.getRouterId(), systemTrayLoader);
         FXMLLoader weatherLoader = new FXMLLoader(PageEnums.SMALL_APP_WEATHER.getPageSource());
         SysCache.PAGE_MAP.put(PageEnums.SMALL_APP_WEATHER.getRouterId(), weatherLoader);
+        FXMLLoader updateLoader = new FXMLLoader(PageEnums.UPDATE_PAGE.getPageSource());
+        SysCache.PAGE_MAP.put(PageEnums.UPDATE_PAGE.getRouterId(),updateLoader);
         log.info("装载所有页面加载器完毕"); log.info("开始加载各种页面");
         Parent sysStatusRootNode = null;
         Parent devAssistantRootNode = null;
@@ -153,10 +158,18 @@ public class MainWindowApplication extends Application {
     /**
      * 通过加载远程系统配置然后将远程配置加载进入内存中
      */
-    private void initSystemProperties() {
+    private void initSystemProperties(Scene scene) {
         // TODO init systemProperties here ,while this application started
-        // TODO load systemTools
-
+        log.info("开始加载软件远程核心配置");
+        YamlUtil yaml = new YamlUtil(System.getProperty(AppEnums.APP_REMOTE_YAML_PATH_KEY.getInfoValue()));
+        String updateId = yaml.get(AppEnums.SYSTEM_VERSION_ID.getInfoValue());
+        String localVersionId = System.getProperty(AppEnums.SYSTEM_VERSION_ID.getInfoValue());
+        log.info(updateId);
+        log.info(localVersionId);
+        if (!updateId.equals(localVersionId)){
+            ToastDialog toastDialog = new ToastDialog();
+            toastDialog.showToastByScene(AppEnums.TOAST_WARNING.getNumberInfo(),scene,"系统存在更新！");
+        }
     }
 
 	@Override

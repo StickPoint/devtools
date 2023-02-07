@@ -49,6 +49,10 @@ public enum AppEnums {
      */
     INFO_CURRENT_IP("当前ip地址","当前IP："),
     /**
+     * 配置文件地址头
+     */
+    FILE_PATH_HEADER("http"),
+    /**
      * 下标为0
      */
     INDEX_ZERO(0),
@@ -96,6 +100,14 @@ public enum AppEnums {
      * 应用名称
      */
     APPLICATION_NAME("鑫软助手"),
+    /**
+     * 系统远程Yaml文件配置
+     */
+    APP_REMOTE_YAML_PATH_KEY("systemPropertiesFileUrl"),
+    /**
+     * 系统版本id
+     */
+    SYSTEM_VERSION_ID("system.version.id"),
     /**
      * 菜单栏文字id
      */

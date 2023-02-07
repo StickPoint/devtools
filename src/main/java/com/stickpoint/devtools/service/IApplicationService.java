@@ -1,6 +1,8 @@
 package com.stickpoint.devtools.service;
 
 import com.stickpoint.devtools.common.entity.IpInfoEntity;
+import com.stickpoint.devtools.common.entity.SystemInfoEntity;
+import com.stickpoint.devtools.common.entity.VersionEntity;
 import com.stickpoint.devtools.common.entity.WeatherInfoEntity;
 
 import java.util.List;
@@ -28,6 +30,16 @@ public interface IApplicationService {
      */
     List<WeatherInfoEntity> getWeatherInfo(String addressStr);
 
+    /**
+     * 检查软件版本更新
+     * @return 返回一个版本信息
+     */
+    VersionEntity checkVersionForUpdate();
 
+    /**
+     * 检查系统状态
+     * @return
+     */
+    SystemInfoEntity checkSystemInfo();
 
 }

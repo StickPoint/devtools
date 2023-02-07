@@ -161,7 +161,7 @@ public class BottomCenterController {
             ClipboardContent content = new ClipboardContent();
             content.putString(ipAddress.getText().replace(AppEnums.INFO_CURRENT_IP.getInfoValue(),""));
             log.info("当前机器IP信息已经写入系统剪切板了吗？写入的最终状态是：{}", clipboard.setContent(content));
-            TOAST_DIALOG_CONTROLLER.showToast(AppEnums.TOAST_INFO.getNumberInfo(), ipAddress,"信息已复制~");
+            TOAST_DIALOG_CONTROLLER.showDialogByControl(AppEnums.TOAST_INFO.getNumberInfo(), ipAddress,"信息已复制~");
         }
     }
 

@@ -12,6 +12,7 @@ import com.stickpoint.devtools.view.control.SysAssistantController;
 import com.stickpoint.devtools.view.control.SystemSetCenterController;
 import com.stickpoint.devtools.view.control.SystemStatusController;
 import com.stickpoint.devtools.view.control.SystemTrayController;
+import com.stickpoint.devtools.view.control.UpdateController;
 import com.stickpoint.devtools.view.control.WebAssistantController;
 import com.stickpoint.devtools.view.page.AboutPage;
 
@@ -76,6 +77,7 @@ public enum PageEnums {
 	 * 系统托盘
 	 */
 	SYSTEM_TRAY(SystemTrayController.class, SystemTrayController.class.getResource("/fxml/systemTray.fxml"),"systemTray"),
+	UPDATE_PAGE(UpdateController.class,UpdateController.class.getResource("/fxml/update.fxml"),"update"),
 	/**
 	 * 底部页面
 	 */

@@ -17,7 +17,29 @@ public class VersionEntity implements Serializable {
      * 版本id 组成为 hash{文件个数} + 版本发布日期时间戳-13位 + {八位字母+数字组合随机}
      */
     private String versionId;
-
-    private String aaa;
+    /**
+     * 版本号码 v0.0.1.20230203.a
+     */
+    private String version;
+    /**
+     * 版本法布时间
+     */
+    private String publishTime;
+    /**
+     * 新版本软件大小 单位 MB
+     */
+    private String softwareSize;
+    /**
+     * 版本描述
+     */
+    private String desc;
+    /**
+     * 新版本下载地址
+     */
+    private String downloadUrl;
+    /**
+     * 备用下载地址
+     */
+    private String downloadUrlBak;
 
 }
