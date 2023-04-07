@@ -198,6 +198,9 @@ public class BottomCenterController {
         translationMenu.show(getStage(),bounds.getMaxX()-250,bounds.getMaxY()-330);
     }
 
+    /**
+     * 2023 墨迹天气接口挂了
+     */
     @FXML
     public void showWeather() {
         Bounds bounds = weather.localToScreen(weather.getBoundsInLocal());

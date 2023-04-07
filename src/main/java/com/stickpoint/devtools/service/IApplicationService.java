@@ -5,6 +5,7 @@ import com.stickpoint.devtools.common.entity.SystemInfoEntity;
 import com.stickpoint.devtools.common.entity.VersionEntity;
 import com.stickpoint.devtools.common.entity.WeatherInfoEntity;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -38,8 +39,9 @@ public interface IApplicationService {
 
     /**
      * 检查系统状态
-     * @return
+     * @return 返回一个系统面板信息
+     * @throws IOException 抛出IO异常
      */
-    SystemInfoEntity checkSystemInfo();
+    SystemInfoEntity checkSystemInfo() throws IOException;
 
 }

@@ -1,5 +1,4 @@
 package com.stickpoint.devtools.view.control;
-
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
@@ -12,12 +11,21 @@ import javafx.scene.image.ImageView;
  * @PackageName com.stickpoint.devtools.view.control
  */
 public class SmallAppTemplateController {
+
     /**
      * 应用Logo
+     * 应用logo需要使用使用公网url地址
      */
+    @SuppressWarnings("unused")
     public ImageView appLogo;
+
     /**
      * 应用名字
+     * 应用名字最多支持八个字符
+     *
      */
+    @SuppressWarnings("unused")
     public Label appName;
+
+
 }

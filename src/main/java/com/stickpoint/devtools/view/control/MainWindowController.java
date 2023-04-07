@@ -1,9 +1,12 @@
 package com.stickpoint.devtools.view.control;
+import animatefx.animation.FadeInDown;
 import com.leewyatt.rxcontrols.controls.RXAvatar;
 import com.stickpoint.devtools.common.cache.SysCache;
 import com.stickpoint.devtools.common.enums.AppEnums;
 import com.stickpoint.devtools.view.page.MainWindowApplication;
 import com.stickpoint.devtools.view.router.PageEnums;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
@@ -11,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
@@ -41,6 +45,8 @@ public class MainWindowController {
 
     public Region systemSetCenter;
 
+    public TextField searchTextInput;
+
     private double oldStageX;
 
     private double oldStageY;
@@ -50,6 +56,8 @@ public class MainWindowController {
     private double oldScreenY;
 
     private ContextMenu systemSetContext;
+
+    private ContextMenu searchContextMenu;
 
     @FXML
     public void initialize() {
@@ -74,6 +82,8 @@ public class MainWindowController {
         SysCache.NODE_MAP.put(AppEnums.APPLICATION_MAIN_STACK_PANE.getInfoValue(),contentCenter);
         // 初始化系统菜单设置
         initSystemSetCenterContext();
+        initSearchBar();
+        showSearchContextDetail();
     }
 
     /**
@@ -101,6 +111,34 @@ public class MainWindowController {
                 .get(AppEnums.INDEX_ZERO.getNumberInfo());
         log.info("初始化的时候，系统情况面板是处于最上面的 ~ 已完成界面初始化加载");
         targetScrollPane.toFront();
+    }
+
+    public void initSearchBar(){
+        searchContextMenu = new ContextMenu(new SeparatorMenuItem());
+        FXMLLoader searchContextLoader = new FXMLLoader(PageEnums.SEARCH_CONTEXT_MENU.getPageSource());
+        Parent searchContextRoot = null;
+        try {
+            searchContextRoot = searchContextLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        searchContextMenu.getScene().setRoot(searchContextRoot);
+    }
+
+    /**
+     * // 设置监听
+     */
+    private void showSearchContextDetail(){
+        searchTextInput.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (Boolean.TRUE.equals(newValue)) {
+                Bounds bounds = searchTextInput.localToScreen(searchTextInput.getBoundsInLocal());
+                FadeInDown fadeInDown = new FadeInDown(searchContextMenu.getScene().getRoot());
+                searchContextMenu.show(getStage(),bounds.getMaxX()- searchContextMenu.getWidth(),
+                        bounds.getMaxY()-searchTextInput.getHeight());
+                fadeInDown.play();
+            }
+        });
+
     }
 
     /**

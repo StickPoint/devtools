@@ -1,34 +1,51 @@
 package com.stickpoint.devtools.common.entity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author puye(0303)
  * @since 2023/2/3
  */
+@Data
+@Builder
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class SystemInfoEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -2728529885622403860L;
     /**
-     * 系统已经开放的端口
+     * Java服务进程详情
      */
-    private int[] openedPorts;
+    private List<JavaAppInfoEntity> javaAppInfoEntity;
     /**
-     * 当前防火墙协议状态
+     * 本机端口详情
      */
-    private String firewallPolicy;
+    private LocalPortInfoEntity localPortInfoEntity;
     /**
-     * java服务情况
+     * 本机网关详情
      */
-    private String javaServerInfo;
+    private String gatewayInfo;
     /**
-     * 安全软件接入情况
+     * 内网IP详情
      */
-    private String securitySoftwareInfo;
+    private List<String> otherIpaddressInfo;
     /**
-     * 本地网络集群情况
+     * 系统详情面板
      */
-    private String localNetGroup;
+    private SystemDetailInfoEntity systemDetailInfoEntity;
+    /**
+     * 防火墙信息
+     */
+    private FireWallInfoEntity fireWallInfo;
 
 }

@@ -1,5 +1,11 @@
 package com.stickpoint.devtools.common.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,6 +18,11 @@ import java.util.Objects;
  * @Author puye(0303)
  * @PackageName com.stickpoint.devtools.common.entity
  */
+@Data
+@Builder
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class IpInfoEntity implements Serializable {
 
     @Serial

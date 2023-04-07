@@ -13,6 +13,18 @@ public enum AppEnums {
      */
     APP_NETWORK_STATUS_OK(200),
     /**
+     * 网络端口数量
+     */
+    APP_NETWORK_POSTS_NUMBER(65535),
+    /**
+     * 端口占用列表-key
+     */
+    APP_SYSTEM_INFO_PORT_ALREADY_IN_USED_LIST("alreadyInUsedPortList"),
+    /**
+     * 端口可用列表-key
+     */
+    APP_SYSTEM_INFO_PORT_CAN_BE_USED_LIST("canBeUsedPortList"),
+    /**
      * 菜单面板子项菜单的样式css文件的Path
      */
     FUNCTION_CENTER_MENU_ITEM_CSS_URI("菜单面板子项菜单的样式css文件的Path", "/css/leftMenuCenter.css" ),
@@ -56,6 +68,10 @@ public enum AppEnums {
      * 下标为0
      */
     INDEX_ZERO(0),
+    /**
+     * 通用数字 256
+     */
+    COMMON_NUMBER_256(256),
     /**
      * 普通级别Toast
      */

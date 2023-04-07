@@ -84,6 +84,8 @@ public class MainWindowApplication extends Application {
         SysCache.PAGE_MAP.put(PageEnums.SMALL_APP_WEATHER.getRouterId(), weatherLoader);
         FXMLLoader updateLoader = new FXMLLoader(PageEnums.UPDATE_PAGE.getPageSource());
         SysCache.PAGE_MAP.put(PageEnums.UPDATE_PAGE.getRouterId(),updateLoader);
+        FXMLLoader searchContextMenu = new FXMLLoader(PageEnums.SEARCH_CONTEXT_MENU.getPageSource());
+        SysCache.PAGE_MAP.put(PageEnums.SEARCH_CONTEXT_MENU.getRouterId(),searchContextMenu);
         log.info("装载所有页面加载器完毕"); log.info("开始加载各种页面");
         Parent sysStatusRootNode = null;
         Parent devAssistantRootNode = null;
