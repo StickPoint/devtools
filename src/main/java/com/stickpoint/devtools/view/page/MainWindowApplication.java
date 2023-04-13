@@ -163,8 +163,8 @@ public class MainWindowApplication extends Application {
     private void initSystemProperties(Scene scene) {
         // TODO init systemProperties here ,while this application started
         log.info("开始加载软件远程核心配置");
-        YamlUtil yaml = new YamlUtil(System.getProperty(AppEnums.APP_REMOTE_YAML_PATH_KEY.getInfoValue()));
-        String updateId = yaml.get(AppEnums.SYSTEM_VERSION_ID.getInfoValue());
+        SysCache.SYS_PROP.putAll(new YamlUtil(System.getProperty(AppEnums.APP_REMOTE_YAML_PATH_KEY.getInfoValue())));
+        String updateId = SysCache.SYS_PROP.get(AppEnums.SYSTEM_VERSION_ID.getInfoValue());
         String localVersionId = System.getProperty(AppEnums.SYSTEM_VERSION_ID.getInfoValue());
         log.info(updateId);
         log.info(localVersionId);

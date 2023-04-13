@@ -26,10 +26,9 @@ public interface IApplicationService {
 
     /**
      * 根据地域位置信息，获得当地天气
-     * @param addressStr 传入一个地域信息，比如：中大银座
      * @return 返回七日内天气信息
      */
-    List<WeatherInfoEntity> getWeatherInfo(String addressStr);
+    List<WeatherInfoEntity> getWeatherInfo();
 
     /**
      * 检查软件版本更新

@@ -1,11 +1,4 @@
 package com.stickpoint.devtools.common.entity;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -13,11 +6,7 @@ import java.io.Serializable;
  * @author puye(0303)
  * @since 2023/2/16
  */
-@Builder
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+
 public class FireWallInfoEntity implements Serializable {
 
     @Serial
@@ -38,6 +27,27 @@ public class FireWallInfoEntity implements Serializable {
      */
     private String publicNetworkStatus;
 
+    public String getSiteNetworkStatus() {
+        return siteNetworkStatus;
+    }
 
+    public void setSiteNetworkStatus(String siteNetworkStatus) {
+        this.siteNetworkStatus = siteNetworkStatus;
+    }
 
+    public String getProfessionalNetworkStatus() {
+        return professionalNetworkStatus;
+    }
+
+    public void setProfessionalNetworkStatus(String professionalNetworkStatus) {
+        this.professionalNetworkStatus = professionalNetworkStatus;
+    }
+
+    public String getPublicNetworkStatus() {
+        return publicNetworkStatus;
+    }
+
+    public void setPublicNetworkStatus(String publicNetworkStatus) {
+        this.publicNetworkStatus = publicNetworkStatus;
+    }
 }

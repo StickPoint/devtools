@@ -46,6 +46,8 @@ public class YamlUtil extends LinkedHashMap<String, String> {
         this.load(ymlFilePath);
     }
 
+    public YamlUtil () {}
+
     /**
      * 加载指定地址的yaml文件
      * @param ymlFilePath 传入一个yaml文件地址

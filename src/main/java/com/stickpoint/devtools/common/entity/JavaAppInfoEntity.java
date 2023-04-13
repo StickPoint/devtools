@@ -1,10 +1,6 @@
 package com.stickpoint.devtools.common.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -16,11 +12,8 @@ import java.io.Serializable;
  * @Author puye(0303)
  * @PackageName systemp
  */
-@Builder
-@Data
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+
+
 public class JavaAppInfoEntity implements Serializable {
 
     @Serial
@@ -39,4 +32,60 @@ public class JavaAppInfoEntity implements Serializable {
     private Integer pid;
 
     private String[] runtimeInfo;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getRunningPort() {
+        return runningPort;
+    }
+
+    public void setRunningPort(Integer runningPort) {
+        this.runningPort = runningPort;
+    }
+
+    public String getApplicationNameSpace() {
+        return applicationNameSpace;
+    }
+
+    public void setApplicationNameSpace(String applicationNameSpace) {
+        this.applicationNameSpace = applicationNameSpace;
+    }
+
+    public String getJvmParams() {
+        return jvmParams;
+    }
+
+    public void setJvmParams(String jvmParams) {
+        this.jvmParams = jvmParams;
+    }
+
+    public String getMainMethodParameters() {
+        return mainMethodParameters;
+    }
+
+    public void setMainMethodParameters(String mainMethodParameters) {
+        this.mainMethodParameters = mainMethodParameters;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
+
+    public String[] getRuntimeInfo() {
+        return runtimeInfo;
+    }
+
+    public void setRuntimeInfo(String[] runtimeInfo) {
+        this.runtimeInfo = runtimeInfo;
+    }
 }

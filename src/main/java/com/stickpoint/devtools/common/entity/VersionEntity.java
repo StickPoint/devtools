@@ -1,11 +1,6 @@
 package com.stickpoint.devtools.common.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -14,12 +9,8 @@ import java.io.Serializable;
  * @author puye(0303)
  * @since 2023/2/2
  */
-@Data
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+
+
 public class VersionEntity implements Serializable {
 
     @Serial
@@ -55,4 +46,59 @@ public class VersionEntity implements Serializable {
      */
     private String downloadUrlBak;
 
+    public String getVersionId() {
+        return versionId;
+    }
+
+    public void setVersionId(String versionId) {
+        this.versionId = versionId;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(String publishTime) {
+        this.publishTime = publishTime;
+    }
+
+    public String getSoftwareSize() {
+        return softwareSize;
+    }
+
+    public void setSoftwareSize(String softwareSize) {
+        this.softwareSize = softwareSize;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getDownloadUrl() {
+        return downloadUrl;
+    }
+
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl;
+    }
+
+    public String getDownloadUrlBak() {
+        return downloadUrlBak;
+    }
+
+    public void setDownloadUrlBak(String downloadUrlBak) {
+        this.downloadUrlBak = downloadUrlBak;
+    }
 }

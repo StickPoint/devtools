@@ -1,7 +1,9 @@
 package com.stickpoint.devtools.common.cache;
+import com.stickpoint.devtools.common.utils.YamlUtil;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -30,5 +32,9 @@ public interface SysCache {
      * 菜单map
      */
     List<Node> MENU_LIST = new ArrayList<>();
+    /**
+     * 系统远程配置
+     */
+    YamlUtil SYS_PROP = new YamlUtil();
 
 }

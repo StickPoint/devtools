@@ -3,20 +3,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-import com.stickpoint.devtools.common.entity.FireWallInfoEntity;
-import com.stickpoint.devtools.common.entity.FireWallInfoEntity.FireWallInfoEntityBuilder;
-import com.stickpoint.devtools.common.entity.IpInfoEntity;
-import com.stickpoint.devtools.common.entity.JavaAppInfoEntity;
-import com.stickpoint.devtools.common.entity.LocalPortInfoEntity;
-import com.stickpoint.devtools.common.entity.SystemDetailInfoEntity;
-import com.stickpoint.devtools.common.entity.SystemInfoEntity;
-import com.stickpoint.devtools.common.entity.VersionEntity;
-import com.stickpoint.devtools.common.entity.WeatherInfoEntity;
-import com.stickpoint.devtools.common.enums.AppEnums;
-import com.stickpoint.devtools.common.utils.HttpUtils;
-import com.stickpoint.devtools.common.utils.ThreadUtil;
 import com.stickpoint.devtools.service.IApplicationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,13 +25,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
+import com.stickpoint.devtools.common.cache.SysCache;
+import com.stickpoint.devtools.common.entity.FireWallInfoEntity;
+import com.stickpoint.devtools.common.entity.IpInfoEntity;
+import com.stickpoint.devtools.common.entity.JavaAppInfoEntity;
+import com.stickpoint.devtools.common.entity.LocalPortInfoEntity;
+import com.stickpoint.devtools.common.entity.SystemDetailInfoEntity;
+import com.stickpoint.devtools.common.entity.SystemInfoEntity;
+import com.stickpoint.devtools.common.entity.VersionEntity;
+import com.stickpoint.devtools.common.entity.WeatherInfoEntity;
+import com.stickpoint.devtools.common.enums.AppEnums;
+import com.stickpoint.devtools.common.enums.DevToolsCodeEnums;
+import com.stickpoint.devtools.common.exception.DevToolsException;
+import com.stickpoint.devtools.common.utils.HttpUtils;
+import com.stickpoint.devtools.common.utils.ThreadUtil;
 
 /**
  * description: ApplicationServiceImpl
@@ -104,50 +104,56 @@ public class ApplicationServiceImpl implements IApplicationService {
     /**
      * 根据地域位置信息，获得当地天气
      *
-     * @param addressStr 传入一个地域信息，比如：中大银座
      * @return 返回七日内天气信息
      */
     @Override
-    public List<WeatherInfoEntity> getWeatherInfo(String addressStr) {
+    public List<WeatherInfoEntity> getWeatherInfo() {
         // 首先根据传入的字符串查询经纬度信息
-        Map<String,String> requestParamMap = new LinkedHashMap<>();
-        requestParamMap.put("output","json");
-        requestParamMap.put("ak","ItmA0TLauLZVEUnNQEqknQAHLPhIYYtl");
-        requestParamMap.put("address",addressStr);
-        String responseJson = HTTP.doNormalGet("https://api.map.baidu.com/geocoder/v2/", requestParamMap);
-        log.info(responseJson);
-        JsonElement jsonElement = JsonParser.parseString(responseJson);
-        JsonElement location = jsonElement.getAsJsonObject().get("result").getAsJsonObject().get("location");
-        long lng = 0;
-        long lat = 0;
-        if (location.isJsonObject()) {
-            lng = location.getAsJsonObject().get("lng").getAsLong();
-            lat = location.getAsJsonObject().get("lat").getAsLong();
+        String addressUrl = SysCache.SYS_PROP.get("system.weather.address");
+        if (Objects.isNull(addressUrl)) {
+            // 如果地址url是空的话 抛出异常
+            throw new DevToolsException(DevToolsCodeEnums.ERROR_PROP_URL_ERROR);
         }
-        Map<String,Object> weatherParamMap = new LinkedHashMap<>();
-        weatherParamMap.put("target","http%3A//autodev.openspeech.cn/csp/api/v2.1/weather%3FopenId%3Daiuicus%26clientType%3Dandroid%26sign%3Dandroid%26city%3D%25E4%25B8%258A%25E6%25B5%25B7%26latitude%3D39.902895%26longitude%3D116.427915%26needMoreData%3Dtrue%26pageNo%3D1%26pageSize%3D7");
-        weatherParamMap.put("openId","aiuicus");
-        weatherParamMap.put("clientType","android");
-        weatherParamMap.put("sign","android");
-        weatherParamMap.put("latitude",lat);
-        weatherParamMap.put("longitude",lng);
-        weatherParamMap.put("needMoreData",true);
-        weatherParamMap.put("pageNo",1);
-        weatherParamMap.put("pageSize",7);
-        String result = HTTP.doNormalGet("https://autodev.openspeech.cn/csp/api/v2.1/weather", weatherParamMap);
-        log.info(result);
+        // 拿到请求的json响应
+        String responseBody = HttpUtils.getInstance().doMsAddressGet(addressUrl);
+        JsonElement respArray = JsonParser.parseString(responseBody);
+        JsonObject addressJson = respArray.getAsJsonArray().get(0).getAsJsonObject();
+        log.info(addressJson.toString());
+        // 首先根据传入的字符串查询经纬度信息
+        String infoUrl = SysCache.SYS_PROP.get("system.weather.info");
+        if (Objects.isNull(infoUrl)) {
+            // 如果地址url是空的话 抛出异常
+            throw new DevToolsException(DevToolsCodeEnums.ERROR_PROP_URL_ERROR);
+        }
+        log.info(infoUrl);
+        String replace = infoUrl.replace("paramLat", addressJson.get("longitude").getAsString());
+        String finalUrl =  replace.replace("paramLng",addressJson.get("latitude").getAsString());
+        log.info(finalUrl);
+        String result = HTTP.doMsWeatherInfoGet(finalUrl);
         JsonElement resultJson = JsonParser.parseString(result);
         if (resultJson.isJsonObject()) {
-            JsonArray dataList = resultJson.getAsJsonObject().get("data").getAsJsonObject().get("list").getAsJsonArray();
+            JsonArray dataList = resultJson.getAsJsonObject().get("responses")
+                    .getAsJsonArray().get(0).getAsJsonObject()
+                    .get("weather").getAsJsonArray()
+                    .get(0).getAsJsonObject()
+                    .get("forecast").getAsJsonObject()
+                    .get("days").getAsJsonArray();
+            JsonObject current = resultJson.getAsJsonObject().get("responses")
+                    .getAsJsonArray().get(0).getAsJsonObject()
+                    .get("weather").getAsJsonArray()
+                    .get(0).getAsJsonObject().get("current").getAsJsonObject();
             Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-            List<WeatherInfoEntity> infoList = gson.fromJson(dataList, new TypeToken<List<WeatherInfoEntity>>(){}.getType());
-            if (Objects.nonNull(infoList)) {
-                infoList.forEach(item->{
-                    LocalDateTime todayTime = LocalDateTime.ofInstant(item.getDate().toInstant(), ZoneId.systemDefault());
-                    item.setDayOfMonth(todayTime.getDayOfMonth());
-                });
-                return infoList;
+            List<WeatherInfoEntity> featureDays = new ArrayList<>();
+            WeatherInfoEntity today = gson.fromJson(current, WeatherInfoEntity.class);
+            featureDays.add(today);
+            for (int i = 1; i <= 7; i++) {
+                JsonObject asJsonObject = dataList.get(i).getAsJsonObject();
+                WeatherInfoEntity featureDay = gson.fromJson(asJsonObject, WeatherInfoEntity.class);
+                LocalDateTime todayTime = LocalDateTime.ofInstant(featureDay.getValid().toInstant(), ZoneId.systemDefault());
+                featureDay.setDayOfMonth(todayTime.getDayOfMonth());
+                featureDays.add(featureDay);
             }
+            return featureDays;
         }
         return Collections.emptyList();
     }
@@ -179,14 +185,14 @@ public class ApplicationServiceImpl implements IApplicationService {
      */
     @Override
     public SystemInfoEntity checkSystemInfo() throws IOException {
-        return SystemInfoEntity.builder()
-                .systemDetailInfoEntity(getLocalSystemDetailInfo())
-                .otherIpaddressInfo(getLocalOtherIpaddress())
-                .gatewayInfo(getGatewayIpaddressInfo())
-                .javaAppInfoEntity(getLocalJavaApplicationsInfo())
-                .localPortInfoEntity(getSystemPortsInfo(ThreadUtil.getPool()))
-                .fireWallInfo(getLocalFirewallInfo())
-                .build();
+        SystemInfoEntity systemInfoEntity = new SystemInfoEntity();
+        systemInfoEntity.setSystemDetailInfoEntity(getLocalSystemDetailInfo());
+        systemInfoEntity.setOtherIpaddressInfo(getLocalOtherIpaddress());
+        systemInfoEntity.setGatewayInfo(getGatewayIpaddressInfo());
+        systemInfoEntity.setJavaAppInfoEntity(getLocalJavaApplicationsInfo());
+        systemInfoEntity.setLocalPortInfoEntity(getSystemPortsInfo(ThreadUtil.getPool()));
+        systemInfoEntity.setFireWallInfo(getLocalFirewallInfo());
+        return systemInfoEntity;
     }
 
     /**
@@ -284,12 +290,12 @@ public class ApplicationServiceImpl implements IApplicationService {
         }
         alreadyInUsedPortList.sort(Integer::compareTo);
         canBeUsedPortList.sort(Integer::compareTo);
-        return LocalPortInfoEntity.builder()
-                .canBeUsedPortList(canBeUsedPortList)
-                .alreadyInUsePorts(alreadyInUsedPortList)
-                .alreadyInUsePortsCounts(alreadyInUsedPortList.size())
-                .canBeUsedPortListCounts(canBeUsedPortList.size())
-                .build();
+        LocalPortInfoEntity localPortInfoEntity = new LocalPortInfoEntity();
+        localPortInfoEntity.setCanBeUsedPortList(canBeUsedPortList);
+        localPortInfoEntity.setAlreadyInUsePorts(alreadyInUsedPortList);
+        localPortInfoEntity.setCanBeUsedPortListCounts(canBeUsedPortList.size());
+        localPortInfoEntity.setAlreadyInUsePortsCounts(alreadyInUsedPortList.size());
+        return localPortInfoEntity;
     }
 
     /**
@@ -374,7 +380,7 @@ public class ApplicationServiceImpl implements IApplicationService {
     @SuppressWarnings("unused")
     public static FireWallInfoEntity getLocalFirewallInfo() throws IOException{
         Runtime runtime = Runtime.getRuntime();
-        FireWallInfoEntityBuilder builder = FireWallInfoEntity.builder();
+        FireWallInfoEntity fireWallInfoEntity = new FireWallInfoEntity();
         Process jps = runtime.exec("netsh advfirewall show allprofiles state");
         if (Objects.nonNull(jps)) {
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(jps.getInputStream(),StandardCharsets.UTF_8))){
@@ -383,9 +389,9 @@ public class ApplicationServiceImpl implements IApplicationService {
                 while ((lineMes = bufferedReader.readLine()) != null) {
                     if (lineMes.contains("状态")||lineMes.contains("status")) {
                         switch (times.getAndAdd(1)) {
-                            case 1 -> builder.siteNetworkStatus(lineMes.substring(lineMes.indexOf("状态")));
-                            case 2 -> builder.professionalNetworkStatus(lineMes.substring(lineMes.indexOf("状态")));
-                            default -> builder.publicNetworkStatus(lineMes.substring(lineMes.indexOf("状态")));
+                            case 1 -> fireWallInfoEntity.setSiteNetworkStatus(lineMes.substring(lineMes.indexOf("状态")));
+                            case 2 -> fireWallInfoEntity.setProfessionalNetworkStatus(lineMes.substring(lineMes.indexOf("状态")));
+                            default -> fireWallInfoEntity.setPublicNetworkStatus(lineMes.substring(lineMes.indexOf("状态")));
                         }
                     }
                 }
@@ -397,7 +403,7 @@ public class ApplicationServiceImpl implements IApplicationService {
                 Thread.currentThread().interrupt();
             }
         }
-        return builder.build();
+        return fireWallInfoEntity;
     }
 
     /**
@@ -406,14 +412,14 @@ public class ApplicationServiceImpl implements IApplicationService {
      */
     @SuppressWarnings("unused")
     private static SystemDetailInfoEntity getLocalSystemDetailInfo(){
-       return SystemDetailInfoEntity.builder()
-               .runtimeSystemFramework(System.getProperty("os.arch"))
-               .runtimeSystemOsVersion(System.getProperty("os.name").concat(System.getProperty("os.version")))
-               .runtimeCurrentDir(System.getProperty("user.dir"))
-               .runtimeJavaVersion(System.getProperty("java.version"))
-               .runtimeJavaServerProvider(System.getProperty("java.vendor"))
-               .runtimeJavaHomePath(System.getProperty("java.home"))
-               .build();
+        SystemDetailInfoEntity systemDetailInfoEntity = new SystemDetailInfoEntity();
+        systemDetailInfoEntity.setRuntimeSystemFramework(System.getProperty("os.arch"));
+        systemDetailInfoEntity.setRuntimeSystemOsVersion(System.getProperty("os.name").concat(System.getProperty("os.version")));
+        systemDetailInfoEntity.setRuntimeCurrentDir(System.getProperty("user.dir"));
+        systemDetailInfoEntity.setRuntimeJavaVersion(System.getProperty("java.version"));
+        systemDetailInfoEntity.setRuntimeJavaServerProvider(System.getProperty("java.vendor"));
+        systemDetailInfoEntity.setRuntimeJavaHomePath(System.getProperty("java.home"));
+        return systemDetailInfoEntity;
     }
 
 }

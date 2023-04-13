@@ -1,9 +1,5 @@
 package com.stickpoint.devtools.common.entity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -11,11 +7,8 @@ import java.io.Serializable;
  * @author puye(0303)
  * @since 2023/2/17
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Builder
+
+
 public class SystemDetailInfoEntity implements Serializable {
 
     @Serial
@@ -44,4 +37,52 @@ public class SystemDetailInfoEntity implements Serializable {
      * 用户的当前工作目录
      */
     private String runtimeCurrentDir;
+
+    public String getRuntimeJavaVersion() {
+        return runtimeJavaVersion;
+    }
+
+    public void setRuntimeJavaVersion(String runtimeJavaVersion) {
+        this.runtimeJavaVersion = runtimeJavaVersion;
+    }
+
+    public String getRuntimeJavaHomePath() {
+        return runtimeJavaHomePath;
+    }
+
+    public void setRuntimeJavaHomePath(String runtimeJavaHomePath) {
+        this.runtimeJavaHomePath = runtimeJavaHomePath;
+    }
+
+    public String getRuntimeJavaServerProvider() {
+        return runtimeJavaServerProvider;
+    }
+
+    public void setRuntimeJavaServerProvider(String runtimeJavaServerProvider) {
+        this.runtimeJavaServerProvider = runtimeJavaServerProvider;
+    }
+
+    public String getRuntimeSystemOsVersion() {
+        return runtimeSystemOsVersion;
+    }
+
+    public void setRuntimeSystemOsVersion(String runtimeSystemOsVersion) {
+        this.runtimeSystemOsVersion = runtimeSystemOsVersion;
+    }
+
+    public String getRuntimeSystemFramework() {
+        return runtimeSystemFramework;
+    }
+
+    public void setRuntimeSystemFramework(String runtimeSystemFramework) {
+        this.runtimeSystemFramework = runtimeSystemFramework;
+    }
+
+    public String getRuntimeCurrentDir() {
+        return runtimeCurrentDir;
+    }
+
+    public void setRuntimeCurrentDir(String runtimeCurrentDir) {
+        this.runtimeCurrentDir = runtimeCurrentDir;
+    }
 }

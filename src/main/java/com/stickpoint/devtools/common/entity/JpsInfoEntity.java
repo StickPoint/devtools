@@ -1,10 +1,6 @@
 package com.stickpoint.devtools.common.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -12,11 +8,7 @@ import java.io.Serializable;
  * @author puye(0303)
  * @since 2023/2/16
  */
-@Data
-@Builder
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+@SuppressWarnings("unused")
 public class JpsInfoEntity implements Serializable {
 
     @Serial
@@ -46,4 +38,51 @@ public class JpsInfoEntity implements Serializable {
      */
     private Integer pid;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getRunningPort() {
+        return runningPort;
+    }
+
+    public void setRunningPort(Integer runningPort) {
+        this.runningPort = runningPort;
+    }
+
+    public String getApplicationNameSpace() {
+        return applicationNameSpace;
+    }
+
+    public void setApplicationNameSpace(String applicationNameSpace) {
+        this.applicationNameSpace = applicationNameSpace;
+    }
+
+    public String getJvmParams() {
+        return jvmParams;
+    }
+
+    public void setJvmParams(String jvmParams) {
+        this.jvmParams = jvmParams;
+    }
+
+    public String getMainMethodParameters() {
+        return mainMethodParameters;
+    }
+
+    public void setMainMethodParameters(String mainMethodParameters) {
+        this.mainMethodParameters = mainMethodParameters;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
 }

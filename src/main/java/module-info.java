@@ -9,9 +9,6 @@ open module com.stickpoint.devtools {
     requires org.slf4j;
     requires java.sql;
     requires com.google.gson;
-    requires okhttps;
-    requires okhttps.gson;
-    requires lombok;
     requires com.jfoenix;
     requires animatefx;
     requires org.xerial.sqlitejdbc;

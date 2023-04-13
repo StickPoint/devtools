@@ -205,8 +205,8 @@ public class BottomCenterController {
     public void showWeather() {
         Bounds bounds = weather.localToScreen(weather.getBoundsInLocal());
         // 调用service刷新ui
-        List<WeatherInfoEntity> weatherInfoEntities = APPLICATION_SERVICE.getWeatherInfo("杭州市西湖区");
-        weatherController.initAllData(weatherInfoEntities);
+        List<WeatherInfoEntity> weatherInfoEntities = APPLICATION_SERVICE.getWeatherInfo();
+        //weatherController.initAllData(weatherInfoEntities);
         weatherMenu.show(getStage(),bounds.getMaxX()-80,bounds.getMaxY()-144);
     }
 

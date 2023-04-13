@@ -1,10 +1,6 @@
 package com.stickpoint.devtools.common.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
@@ -13,11 +9,8 @@ import java.util.List;
  * @author puye(0303)
  * @since 2023/2/16
  */
-@Data
-@Builder
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+
+
 public class LocalPortInfoEntity implements Serializable {
 
     @Serial
@@ -31,4 +24,35 @@ public class LocalPortInfoEntity implements Serializable {
 
     private List<Integer> alreadyInUsePorts;
 
+    public int getCanBeUsedPortListCounts() {
+        return canBeUsedPortListCounts;
+    }
+
+    public void setCanBeUsedPortListCounts(int canBeUsedPortListCounts) {
+        this.canBeUsedPortListCounts = canBeUsedPortListCounts;
+    }
+
+    public int getAlreadyInUsePortsCounts() {
+        return alreadyInUsePortsCounts;
+    }
+
+    public void setAlreadyInUsePortsCounts(int alreadyInUsePortsCounts) {
+        this.alreadyInUsePortsCounts = alreadyInUsePortsCounts;
+    }
+
+    public List<Integer> getCanBeUsedPortList() {
+        return canBeUsedPortList;
+    }
+
+    public void setCanBeUsedPortList(List<Integer> canBeUsedPortList) {
+        this.canBeUsedPortList = canBeUsedPortList;
+    }
+
+    public List<Integer> getAlreadyInUsePorts() {
+        return alreadyInUsePorts;
+    }
+
+    public void setAlreadyInUsePorts(List<Integer> alreadyInUsePorts) {
+        this.alreadyInUsePorts = alreadyInUsePorts;
+    }
 }

@@ -115,39 +115,39 @@ public class SaWeatherController {
     @SuppressWarnings("public")
     public Label address;
 
-    public void initAllData(List<WeatherInfoEntity> weatherInfoList){
-        // 检查一下数据长度问题
-        if (weatherInfoList.size()< AppEnums.COMMON_NUMBER_SEVEN.getNumberInfo()||weatherInfoList.isEmpty()) {
-            throw new DevToolsException(DevToolsCodeEnums.ERROR_DATA_ACCESS);
-        }
-        // 今日数据
-        WeatherInfoEntity todayInfo = weatherInfoList.get(0);
-        address.setText(todayInfo.getProvince().concat("·").concat(todayInfo.getCity()));
-        todayAirQuality.setText("空气质量："+todayInfo.getAirQuality());
-        todayWind.setText(todayInfo.getWind());
-        todayWeatherWord.setText(todayInfo.getWeather());
-        todayHumidity.setText("空气湿度："+todayInfo.getHumidity());
-        todayWeatherNumber.setText(String.valueOf(todayInfo.getLow()).concat("~").concat(String.valueOf(todayInfo.getHigh())).concat("℃"));
-        today.setText(String.valueOf(todayInfo.getDayOfMonth()).concat("日"));
-        todayWeather.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayInfo.getWeather()).concat(".png")))));
-        // 未来七天数据
-        WeatherInfoEntity todayAfter1Info = weatherInfoList.get(1);
-        todayAfter1.setText(String.valueOf(todayAfter1Info.getDayOfMonth()).concat("日"));
-        todayWeatherAfter1.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter1Info.getWeather()).concat(".png")))));
-        WeatherInfoEntity todayAfter2Info = weatherInfoList.get(2);
-        todayAfter2.setText(String.valueOf(todayAfter2Info.getDayOfMonth()).concat("日"));
-        todayWeatherAfter2.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter2Info.getWeather()).concat(".png")))));
-        WeatherInfoEntity todayAfter3Info = weatherInfoList.get(3);
-        todayAfter3.setText(String.valueOf(todayAfter3Info.getDayOfMonth()).concat("日"));
-        todayWeatherAfter3.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter3Info.getWeather()).concat(".png")))));
-        WeatherInfoEntity todayAfter4Info = weatherInfoList.get(4);
-        todayAfter4.setText(String.valueOf(todayAfter4Info.getDayOfMonth()).concat("日"));
-        todayWeatherAfter4.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter4Info.getWeather()).concat(".png")))));
-        WeatherInfoEntity todayAfter5Info = weatherInfoList.get(5);
-        todayAfter5.setText(String.valueOf(todayAfter5Info.getDayOfMonth()).concat("日"));
-        todayWeatherAfter5.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter5Info.getWeather()).concat(".png")))));
-        WeatherInfoEntity todayAfter6Info = weatherInfoList.get(6);
-        todayAfter6.setText(String.valueOf(todayAfter6Info.getDayOfMonth()).concat("日"));
-        todayWeatherAfter6.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter6Info.getWeather()).concat(".png")))));
-    }
+    //public void initAllData(List<WeatherInfoEntity> weatherInfoList){
+    //    // 检查一下数据长度问题
+    //    if (weatherInfoList.size()< AppEnums.COMMON_NUMBER_SEVEN.getNumberInfo()||weatherInfoList.isEmpty()) {
+    //        throw new DevToolsException(DevToolsCodeEnums.ERROR_DATA_ACCESS);
+    //    }
+    //    // 今日数据
+    //    WeatherInfoEntity todayInfo = weatherInfoList.get(0);
+    //    address.setText(todayInfo.getProvince().concat("·").concat(todayInfo.getCity()));
+    //    todayAirQuality.setText("空气质量："+todayInfo.getAirQuality());
+    //    todayWind.setText(todayInfo.getWind());
+    //    todayWeatherWord.setText(todayInfo.getWeather());
+    //    todayHumidity.setText("空气湿度："+todayInfo.getHumidity());
+    //    todayWeatherNumber.setText(String.valueOf(todayInfo.getLow()).concat("~").concat(String.valueOf(todayInfo.getHigh())).concat("℃"));
+    //    today.setText(String.valueOf(todayInfo.getDayOfMonth()).concat("日"));
+    //    todayWeather.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayInfo.getWeather()).concat(".png")))));
+    //    // 未来七天数据
+    //    WeatherInfoEntity todayAfter1Info = weatherInfoList.get(1);
+    //    todayAfter1.setText(String.valueOf(todayAfter1Info.getDayOfMonth()).concat("日"));
+    //    todayWeatherAfter1.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter1Info.getWeather()).concat(".png")))));
+    //    WeatherInfoEntity todayAfter2Info = weatherInfoList.get(2);
+    //    todayAfter2.setText(String.valueOf(todayAfter2Info.getDayOfMonth()).concat("日"));
+    //    todayWeatherAfter2.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter2Info.getWeather()).concat(".png")))));
+    //    WeatherInfoEntity todayAfter3Info = weatherInfoList.get(3);
+    //    todayAfter3.setText(String.valueOf(todayAfter3Info.getDayOfMonth()).concat("日"));
+    //    todayWeatherAfter3.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter3Info.getWeather()).concat(".png")))));
+    //    WeatherInfoEntity todayAfter4Info = weatherInfoList.get(4);
+    //    todayAfter4.setText(String.valueOf(todayAfter4Info.getDayOfMonth()).concat("日"));
+    //    todayWeatherAfter4.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter4Info.getWeather()).concat(".png")))));
+    //    WeatherInfoEntity todayAfter5Info = weatherInfoList.get(5);
+    //    todayAfter5.setText(String.valueOf(todayAfter5Info.getDayOfMonth()).concat("日"));
+    //    todayWeatherAfter5.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter5Info.getWeather()).concat(".png")))));
+    //    WeatherInfoEntity todayAfter6Info = weatherInfoList.get(6);
+    //    todayAfter6.setText(String.valueOf(todayAfter6Info.getDayOfMonth()).concat("日"));
+    //    todayWeatherAfter6.setImage(new Image(String.valueOf(SaWeatherController.class.getResource("/img/".concat(todayAfter6Info.getWeather()).concat(".png")))));
+    //}
 }
