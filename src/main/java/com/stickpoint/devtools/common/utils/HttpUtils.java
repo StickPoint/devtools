@@ -77,20 +77,18 @@ public class HttpUtils {
             connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36");
             connection.setRequestProperty("Accept", "*/*");
             connection.setRequestProperty("Host", "assets.msn.cn");
-            connection.setRequestProperty("Accept-Encoding", "gzip, deflate, br");
             connection.setRequestProperty("Connection", "keep-alive");
+            connection.setRequestProperty("Content-Type", "text/plain");
             int responseCode = connection.getResponseCode();
             log.info("请求状态码 {}",responseCode);
-            BufferedReader inputReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader inputReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
             StringBuilder responseBuilder = new StringBuilder();
             String line;
             while ((line = inputReader.readLine()) != null) {
                 responseBuilder.append(line);
             }
             inputReader.close();
-            String response = responseBuilder.toString();
-            log.info("响应结果：{}",response);
-            return response;
+            return responseBuilder.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }

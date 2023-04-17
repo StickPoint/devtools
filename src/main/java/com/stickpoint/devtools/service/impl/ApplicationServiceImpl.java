@@ -19,11 +19,14 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Objects;
@@ -103,11 +106,11 @@ public class ApplicationServiceImpl implements IApplicationService {
 
     /**
      * 根据地域位置信息，获得当地天气
-     *
+     * @exception ParseException 解析异常
      * @return 返回七日内天气信息
      */
     @Override
-    public List<WeatherInfoEntity> getWeatherInfo() {
+    public List<WeatherInfoEntity> getWeatherInfo() throws ParseException {
         // 首先根据传入的字符串查询经纬度信息
         String addressUrl = SysCache.SYS_PROP.get("system.weather.address");
         if (Objects.isNull(addressUrl)) {
@@ -118,22 +121,21 @@ public class ApplicationServiceImpl implements IApplicationService {
         String responseBody = HttpUtils.getInstance().doMsAddressGet(addressUrl);
         JsonElement respArray = JsonParser.parseString(responseBody);
         JsonObject addressJson = respArray.getAsJsonArray().get(0).getAsJsonObject();
-        log.info(addressJson.toString());
         // 首先根据传入的字符串查询经纬度信息
         String infoUrl = SysCache.SYS_PROP.get("system.weather.info");
         if (Objects.isNull(infoUrl)) {
             // 如果地址url是空的话 抛出异常
             throw new DevToolsException(DevToolsCodeEnums.ERROR_PROP_URL_ERROR);
         }
-        log.info(infoUrl);
         String replace = infoUrl.replace("paramLat", addressJson.get("longitude").getAsString());
         String finalUrl =  replace.replace("paramLng",addressJson.get("latitude").getAsString());
         log.info(finalUrl);
         String result = HTTP.doMsWeatherInfoGet(finalUrl);
         JsonElement resultJson = JsonParser.parseString(result);
         if (resultJson.isJsonObject()) {
-            JsonArray dataList = resultJson.getAsJsonObject().get("responses")
-                    .getAsJsonArray().get(0).getAsJsonObject()
+            JsonObject sourceRoot = resultJson.getAsJsonObject().get("responses")
+                    .getAsJsonArray().get(0).getAsJsonObject();
+            JsonArray dataList = sourceRoot.getAsJsonObject()
                     .get("weather").getAsJsonArray()
                     .get(0).getAsJsonObject()
                     .get("forecast").getAsJsonObject()
@@ -145,10 +147,20 @@ public class ApplicationServiceImpl implements IApplicationService {
             Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
             List<WeatherInfoEntity> featureDays = new ArrayList<>();
             WeatherInfoEntity today = gson.fromJson(current, WeatherInfoEntity.class);
+            JsonObject locationJson = sourceRoot.get("source").getAsJsonObject().get("location").getAsJsonObject();
+            String stateCode = locationJson.get("StateCode").getAsString();
+            String name = locationJson.get("Name").getAsString();
+            today.setAddress(stateCode+" · "+name);
             featureDays.add(today);
             for (int i = 1; i <= 7; i++) {
-                JsonObject asJsonObject = dataList.get(i).getAsJsonObject();
-                WeatherInfoEntity featureDay = gson.fromJson(asJsonObject, WeatherInfoEntity.class);
+                WeatherInfoEntity featureDay = new WeatherInfoEntity();
+                JsonObject dailyJson = dataList.get(i).getAsJsonObject().get("daily").getAsJsonObject();
+                String cap = dailyJson.get("day").getAsJsonObject().get("cap").getAsString();
+                featureDay.setCap(cap);
+                String validTime = dailyJson.get("valid").getAsString();
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+                Date date = format.parse(validTime);
+                featureDay.setValid(date);
                 LocalDateTime todayTime = LocalDateTime.ofInstant(featureDay.getValid().toInstant(), ZoneId.systemDefault());
                 featureDay.setDayOfMonth(todayTime.getDayOfMonth());
                 featureDays.add(featureDay);

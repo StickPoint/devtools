@@ -12,6 +12,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -36,6 +38,7 @@ import java.awt.SystemTray;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +48,7 @@ import java.util.Objects;
  * @BelongsPackage: com.stickpoint.devtools.view.control
  * @Author: fntp
  * @CreateTime: 2022-10-29  10:40
- * @Description: TODO
+ * @Description:
  * @Version: 1.0
  */
 public class BottomCenterController {
@@ -59,6 +62,8 @@ public class BottomCenterController {
     private static final ToastDialog TOAST_DIALOG_CONTROLLER = new ToastDialog();
 
     private SaWeatherController weatherController;
+
+    private ProgressIndicator progressIndicator;
 
     /**
      * 底部Pane
@@ -107,6 +112,7 @@ public class BottomCenterController {
 
     @FXML
     public void initialize(){
+        progressIndicator = new ProgressIndicator();
         IpInfoEntity localIpInfo = APPLICATION_SERVICE.getLocalIpInfo();
         ipAddress.setText(AppEnums.INFO_CURRENT_IP.getInfoValue().concat(localIpInfo.getIpv4Address()));
         initCurrentTime(infoLabel);
@@ -131,7 +137,6 @@ public class BottomCenterController {
      * 注意这里有一个细节问题 yyyy-MM-dd HH:mm:ss
      * 当渲染时间格式是：hh的时候，渲染的时间是12小时制度
      * 只有当时间部分是：HH的时候，才是24小时制
-     *
      * Current time of initialization load
      * Note that there is a detail problem yyyy MM dd HH: mm: ss
      * When the rendering time format is: hh, the rendering time is 12 hours
@@ -200,20 +205,43 @@ public class BottomCenterController {
 
     /**
      * 2023 墨迹天气接口挂了
+     * 2023-04-07 新增微软接口查询天气信息
      */
     @FXML
     public void showWeather() {
         Bounds bounds = weather.localToScreen(weather.getBoundsInLocal());
         // 调用service刷新ui
-        List<WeatherInfoEntity> weatherInfoEntities = APPLICATION_SERVICE.getWeatherInfo();
-        //weatherController.initAllData(weatherInfoEntities);
+        try {
+            List<WeatherInfoEntity> weatherInfoEntities = APPLICATION_SERVICE.getWeatherInfo();
+            weatherController.initAllData(weatherInfoEntities);
+        } catch (ParseException e) {
+            log.error(e.getMessage());
+        }
         weatherMenu.show(getStage(),bounds.getMaxX()-80,bounds.getMaxY()-144);
     }
 
+    private void showLoading(Runnable selfWork) {
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                selfWork.run();
+                return null;
+            }
+        };
+        progressIndicator.visibleProperty().bind(task.runningProperty());
+    }
+
+    /**
+     * 获取Stage
+     * @return stage舞台
+     */
     private Stage getStage(){
         return (Stage) bottomPane.getScene().getWindow();
     }
 
+    /**
+     * 点击了最小化按钮的点击监听事件
+     */
     private void initMinSizeAddListener() {
         minimize.setOnMouseClicked(event -> {
             SystemTray systemTray = SystemTray.getSystemTray();

@@ -1,5 +1,7 @@
 package com.sinsy;
 
+import org.junit.Test;
+
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -16,14 +18,15 @@ import java.util.Arrays;
  */
 public class MyTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void test01() {
         try {
             InetAddress localHost = InetAddress.getLocalHost();
             System.out.println(Arrays.toString(localHost.getAddress()));
             System.out.println(localHost.getHostAddress());
             System.out.println(localHost.getHostName());
             System.out.println(localHost.getCanonicalHostName());
-        //    -------------------------------------------------
+            //    -------------------------------------------------
             System.out.println("-------------------------------------------------");
             InetAddress ip4 = Inet4Address.getLocalHost();
             InetAddress ip6 = Inet6Address.getLocalHost();

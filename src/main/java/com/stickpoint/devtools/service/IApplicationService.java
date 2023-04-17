@@ -6,6 +6,7 @@ import com.stickpoint.devtools.common.entity.VersionEntity;
 import com.stickpoint.devtools.common.entity.WeatherInfoEntity;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -27,8 +28,9 @@ public interface IApplicationService {
     /**
      * 根据地域位置信息，获得当地天气
      * @return 返回七日内天气信息
+     * @exception ParseException 解析异常
      */
-    List<WeatherInfoEntity> getWeatherInfo();
+    List<WeatherInfoEntity> getWeatherInfo() throws ParseException;
 
     /**
      * 检查软件版本更新

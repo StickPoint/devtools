@@ -47,4 +47,12 @@ public class SimpleTest {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    public void testSubString(){
+        int index = "空气质量不太好".indexOf("量");
+        log.info(index+"");
+        String result = "空气质量不太好".substring( index + 1);
+        log.info(result);
+    }
 }

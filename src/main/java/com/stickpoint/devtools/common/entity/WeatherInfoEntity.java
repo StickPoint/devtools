@@ -49,6 +49,7 @@ public class WeatherInfoEntity implements Serializable {
     private int cloudCover;
     private Date valid;
     private int dayOfMonth;
+    private String address;
 
     public int getBaro() {
         return baro;
@@ -296,5 +297,51 @@ public class WeatherInfoEntity implements Serializable {
 
     public void setDayOfMonth(int dayOfMonth) {
         this.dayOfMonth = dayOfMonth;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "WeatherInfoEntity{" +
+                "baro=" + baro +
+                ", cap='" + cap + '\'' +
+                ", capAbbr='" + capAbbr + '\'' +
+                ", daytime='" + daytime + '\'' +
+                ", dewPt=" + dewPt +
+                ", feels=" + feels +
+                ", rh=" + rh +
+                ", icon=" + icon +
+                ", symbol='" + symbol + '\'' +
+                ", pvdrIcon='" + pvdrIcon + '\'' +
+                ", urlIcon='" + urlIcon + '\'' +
+                ", wx='" + wx + '\'' +
+                ", sky='" + sky + '\'' +
+                ", temp=" + temp +
+                ", uv=" + uv +
+                ", uvDesc='" + uvDesc + '\'' +
+                ", vis=" + vis +
+                ", windDir=" + windDir +
+                ", windSpd=" + windSpd +
+                ", created=" + created +
+                ", pvdrCap='" + pvdrCap + '\'' +
+                ", pvdrWindDir='" + pvdrWindDir + '\'' +
+                ", pvdrWindSpd='" + pvdrWindSpd + '\'' +
+                ", aqi=" + aqi +
+                ", aqiSeverity='" + aqiSeverity + '\'' +
+                ", aqLevel=" + aqLevel +
+                ", primaryPollutant='" + primaryPollutant + '\'' +
+                ", aqiValidTime=" + aqiValidTime +
+                ", cloudCover=" + cloudCover +
+                ", valid=" + valid +
+                ", dayOfMonth=" + dayOfMonth +
+                ", address='" + address + '\'' +
+                '}';
     }
 }
