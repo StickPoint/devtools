@@ -3,6 +3,7 @@ import com.stickpoint.devtools.common.cache.SysCache;
 import com.stickpoint.devtools.common.entity.IpInfoEntity;
 import com.stickpoint.devtools.common.entity.WeatherInfoEntity;
 import com.stickpoint.devtools.common.enums.AppEnums;
+import com.stickpoint.devtools.common.utils.ThreadUtil;
 import com.stickpoint.devtools.service.IApplicationService;
 import com.stickpoint.devtools.service.impl.ApplicationServiceImpl;
 import com.stickpoint.devtools.view.component.MyTray;
@@ -38,10 +39,10 @@ import java.awt.SystemTray;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @BelongsProject: devtools
@@ -209,27 +210,51 @@ public class BottomCenterController {
      */
     @FXML
     public void showWeather() {
-        Bounds bounds = weather.localToScreen(weather.getBoundsInLocal());
+        showLoading();
         // 调用service刷新ui
-        try {
-            List<WeatherInfoEntity> weatherInfoEntities = APPLICATION_SERVICE.getWeatherInfo();
-            weatherController.initAllData(weatherInfoEntities);
-        } catch (ParseException e) {
-            log.error(e.getMessage());
-        }
-        weatherMenu.show(getStage(),bounds.getMaxX()-80,bounds.getMaxY()-144);
-    }
-
-    private void showLoading(Runnable selfWork) {
-        Task<Void> task = new Task<>() {
+        Task<List<WeatherInfoEntity>> getWeatherTask = new Task<List<WeatherInfoEntity>>() {
             @Override
-            protected Void call() throws Exception {
-                selfWork.run();
-                return null;
+            protected List<WeatherInfoEntity> call() throws Exception {
+                // 执行耗时的操作
+                return APPLICATION_SERVICE.getWeatherInfo();
+            }
+            @Override
+            protected void succeeded() {
+                // 耗时操作完成后，更新UI线程
+                try {
+                    List<WeatherInfoEntity> weatherInfoEntities = get();
+                    weatherController.initAllData(weatherInfoEntities);
+                    // 判断当前Stage是否还在显示，如果是则显示ContextMenu
+                    if (getStage().isShowing()) {
+                        Bounds bounds = weather.localToScreen(weather.getBoundsInLocal());
+                        weatherMenu.show(getStage(),bounds.getMaxX()-80,bounds.getMaxY()-144);
+                    }
+                } catch (ExecutionException | InterruptedException e) {
+                    log.error(e.getMessage());
+                    Thread.currentThread().interrupt();
+                }
+                // 隐藏loading画面
+                hideLoading();
             }
         };
-        progressIndicator.visibleProperty().bind(task.runningProperty());
+        ThreadUtil.getPool().submit(getWeatherTask);
     }
+
+    /**
+     * 显示loading画面
+     */
+    private void showLoading() {
+        progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+        bottomPane.getChildren().add(progressIndicator);
+    }
+
+    /**
+     * 隐藏loading画面
+     */
+    private void hideLoading() {
+        bottomPane.getChildren().remove(progressIndicator);
+    }
+
 
     /**
      * 获取Stage
