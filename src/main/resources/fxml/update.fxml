@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.leewyatt.rxcontrols.controls.RXFillButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="root" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/update.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.UpdateController">
+   <children>
+      <Label layoutX="98.0" layoutY="124.0" text="发现新版本">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="102.0" layoutY="158.0" text="v2023-02-06.a" />
+      <HBox layoutY="289.0" prefHeight="110.0" prefWidth="300.0" spacing="60.0">
+         <children>
+            <RXFillButton prefHeight="35.0" prefWidth="90.0" text="忽略更新">
+               <HBox.margin>
+                  <Insets bottom="40.0" left="30.0" top="30.0" />
+               </HBox.margin>
+            </RXFillButton>
+            <RXFillButton prefHeight="85.0" prefWidth="90.0" text="立即更新">
+               <HBox.margin>
+                  <Insets bottom="40.0" right="30.0" top="30.0" />
+               </HBox.margin>
+            </RXFillButton>
+         </children>
+      </HBox>
+      <Label layoutX="58.0" layoutY="213.0" prefHeight="15.0" prefWidth="184.0" text="优化了使用体验，优化了启动页面" wrapText="true" />
+   </children>
+</AnchorPane>

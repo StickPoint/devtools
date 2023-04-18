@@ -1,0 +1,5 @@
+#root{
+    -fx-background-image: url('../img/update_bg.png');
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}

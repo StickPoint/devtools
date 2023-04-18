@@ -1,5 +1,6 @@
 package com.stickpoint.devtools.common.entity;
 
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
@@ -8,191 +9,286 @@ import java.util.Date;
  * @author puye(0303)
  * @since 2023/1/11
  */
+
+
 public class WeatherInfoEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8209584321083573403L;
-
-    private String city;
-
-    private Date lastUpdateTime;
-
-    private Date date;
-
-    private String weather;
-
+    /**
+     * 城市
+     */
+    private int baro;
+    private String cap;
+    private String capAbbr;
+    private String daytime;
+    private int dewPt;
+    private int feels;
+    private int rh;
+    private int icon;
+    private String symbol;
+    private String pvdrIcon;
+    private String urlIcon;
+    private String wx;
+    private String sky;
     private int temp;
-
-    private String humidity;
-
-    private String wind;
-
+    private int uv;
+    private String uvDesc;
+    private int vis;
+    private int windDir;
+    private int windSpd;
+    private Date created;
+    private String pvdrCap;
+    private String pvdrWindDir;
+    private String pvdrWindSpd;
+    private int aqi;
+    private String aqiSeverity;
+    private int aqLevel;
+    private String primaryPollutant;
+    private Date aqiValidTime;
+    private int cloudCover;
+    private Date valid;
     private int dayOfMonth;
+    private String address;
 
-    private int pm25;
-
-    private int pm10;
-
-    private int low;
-
-    private int high;
-
-    private String airData;
-
-    private String airQuality;
-
-    private long dateLong;
-
-    private int weatherType;
-
-    private int windLevel;
-
-    private String province;
-
-    private WeatherInfoMetaEntity moreData;
-
-    public void setCity(String city) {
-        this.city = city;
+    public int getBaro() {
+        return baro;
     }
 
-    public String getCity() {
-        return city;
+    public void setBaro(int baro) {
+        this.baro = baro;
     }
 
-    public void setLastUpdateTime(Date lastUpdateTime) {
-        this.lastUpdateTime = lastUpdateTime;
+    public String getCap() {
+        return cap;
     }
 
-    public Date getLastUpdateTime() {
-        return lastUpdateTime;
+    public void setCap(String cap) {
+        this.cap = cap;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public String getCapAbbr() {
+        return capAbbr;
     }
 
-    public Date getDate() {
-        return date;
+    public void setCapAbbr(String capAbbr) {
+        this.capAbbr = capAbbr;
     }
 
-    public void setWeather(String weather) {
-        this.weather = weather;
+    public String getDaytime() {
+        return daytime;
     }
 
-    public String getWeather() {
-        return weather;
+    public void setDaytime(String daytime) {
+        this.daytime = daytime;
     }
 
-    public void setTemp(int temp) {
-        this.temp = temp;
+    public int getDewPt() {
+        return dewPt;
+    }
+
+    public void setDewPt(int dewPt) {
+        this.dewPt = dewPt;
+    }
+
+    public int getFeels() {
+        return feels;
+    }
+
+    public void setFeels(int feels) {
+        this.feels = feels;
+    }
+
+    public int getRh() {
+        return rh;
+    }
+
+    public void setRh(int rh) {
+        this.rh = rh;
+    }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public String getPvdrIcon() {
+        return pvdrIcon;
+    }
+
+    public void setPvdrIcon(String pvdrIcon) {
+        this.pvdrIcon = pvdrIcon;
+    }
+
+    public String getUrlIcon() {
+        return urlIcon;
+    }
+
+    public void setUrlIcon(String urlIcon) {
+        this.urlIcon = urlIcon;
+    }
+
+    public String getWx() {
+        return wx;
+    }
+
+    public void setWx(String wx) {
+        this.wx = wx;
+    }
+
+    public String getSky() {
+        return sky;
+    }
+
+    public void setSky(String sky) {
+        this.sky = sky;
     }
 
     public int getTemp() {
         return temp;
     }
 
-    public void setHumidity(String humidity) {
-        this.humidity = humidity;
+    public void setTemp(int temp) {
+        this.temp = temp;
     }
 
-    public String getHumidity() {
-        return humidity;
+    public int getUv() {
+        return uv;
     }
 
-    public void setWind(String wind) {
-        this.wind = wind;
+    public void setUv(int uv) {
+        this.uv = uv;
     }
 
-    public String getWind() {
-        return wind;
+    public String getUvDesc() {
+        return uvDesc;
     }
 
-    public void setPm25(int pm25) {
-        this.pm25 = pm25;
+    public void setUvDesc(String uvDesc) {
+        this.uvDesc = uvDesc;
     }
 
-    public int getPm25() {
-        return pm25;
+    public int getVis() {
+        return vis;
     }
 
-    public void setPm10(int pm10) {
-        this.pm10 = pm10;
+    public void setVis(int vis) {
+        this.vis = vis;
     }
 
-    public int getPm10() {
-        return pm10;
+    public int getWindDir() {
+        return windDir;
     }
 
-    public void setLow(int low) {
-        this.low = low;
+    public void setWindDir(int windDir) {
+        this.windDir = windDir;
     }
 
-    public int getLow() {
-        return low;
+    public int getWindSpd() {
+        return windSpd;
     }
 
-    public void setHigh(int high) {
-        this.high = high;
+    public void setWindSpd(int windSpd) {
+        this.windSpd = windSpd;
     }
 
-    public int getHigh() {
-        return high;
+    public Date getCreated() {
+        return created;
     }
 
-    public void setAirData(String airData) {
-        this.airData = airData;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public String getAirData() {
-        return airData;
+    public String getPvdrCap() {
+        return pvdrCap;
     }
 
-    public void setAirQuality(String airQuality) {
-        this.airQuality = airQuality;
+    public void setPvdrCap(String pvdrCap) {
+        this.pvdrCap = pvdrCap;
     }
 
-    public String getAirQuality() {
-        return airQuality;
+    public String getPvdrWindDir() {
+        return pvdrWindDir;
     }
 
-    public void setDateLong(long dateLong) {
-        this.dateLong = dateLong;
+    public void setPvdrWindDir(String pvdrWindDir) {
+        this.pvdrWindDir = pvdrWindDir;
     }
 
-    public long getDateLong() {
-        return dateLong;
+    public String getPvdrWindSpd() {
+        return pvdrWindSpd;
     }
 
-    public void setWeatherType(int weatherType) {
-        this.weatherType = weatherType;
+    public void setPvdrWindSpd(String pvdrWindSpd) {
+        this.pvdrWindSpd = pvdrWindSpd;
     }
 
-    public int getWeatherType() {
-        return weatherType;
+    public int getAqi() {
+        return aqi;
     }
 
-    public void setWindLevel(int windLevel) {
-        this.windLevel = windLevel;
+    public void setAqi(int aqi) {
+        this.aqi = aqi;
     }
 
-    public int getWindLevel() {
-        return windLevel;
+    public String getAqiSeverity() {
+        return aqiSeverity;
     }
 
-    public void setProvince(String province) {
-        this.province = province;
+    public void setAqiSeverity(String aqiSeverity) {
+        this.aqiSeverity = aqiSeverity;
     }
 
-    public String getProvince() {
-        return province;
+    public int getAqLevel() {
+        return aqLevel;
     }
 
-    public void setMoreData(WeatherInfoMetaEntity moreData) {
-        this.moreData = moreData;
+    public void setAqLevel(int aqLevel) {
+        this.aqLevel = aqLevel;
     }
 
-    public WeatherInfoMetaEntity getMoreData() {
-        return moreData;
+    public String getPrimaryPollutant() {
+        return primaryPollutant;
+    }
+
+    public void setPrimaryPollutant(String primaryPollutant) {
+        this.primaryPollutant = primaryPollutant;
+    }
+
+    public Date getAqiValidTime() {
+        return aqiValidTime;
+    }
+
+    public void setAqiValidTime(Date aqiValidTime) {
+        this.aqiValidTime = aqiValidTime;
+    }
+
+    public int getCloudCover() {
+        return cloudCover;
+    }
+
+    public void setCloudCover(int cloudCover) {
+        this.cloudCover = cloudCover;
+    }
+
+    public Date getValid() {
+        return valid;
+    }
+
+    public void setValid(Date valid) {
+        this.valid = valid;
     }
 
     public int getDayOfMonth() {
@@ -203,28 +299,49 @@ public class WeatherInfoEntity implements Serializable {
         this.dayOfMonth = dayOfMonth;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "WeatherInfoEntity{" +
-                "city='" + city + '\'' +
-                ", lastUpdateTime=" + lastUpdateTime +
-                ", date=" + date +
-                ", weather='" + weather + '\'' +
+                "baro=" + baro +
+                ", cap='" + cap + '\'' +
+                ", capAbbr='" + capAbbr + '\'' +
+                ", daytime='" + daytime + '\'' +
+                ", dewPt=" + dewPt +
+                ", feels=" + feels +
+                ", rh=" + rh +
+                ", icon=" + icon +
+                ", symbol='" + symbol + '\'' +
+                ", pvdrIcon='" + pvdrIcon + '\'' +
+                ", urlIcon='" + urlIcon + '\'' +
+                ", wx='" + wx + '\'' +
+                ", sky='" + sky + '\'' +
                 ", temp=" + temp +
-                ", humidity='" + humidity + '\'' +
-                ", wind='" + wind + '\'' +
+                ", uv=" + uv +
+                ", uvDesc='" + uvDesc + '\'' +
+                ", vis=" + vis +
+                ", windDir=" + windDir +
+                ", windSpd=" + windSpd +
+                ", created=" + created +
+                ", pvdrCap='" + pvdrCap + '\'' +
+                ", pvdrWindDir='" + pvdrWindDir + '\'' +
+                ", pvdrWindSpd='" + pvdrWindSpd + '\'' +
+                ", aqi=" + aqi +
+                ", aqiSeverity='" + aqiSeverity + '\'' +
+                ", aqLevel=" + aqLevel +
+                ", primaryPollutant='" + primaryPollutant + '\'' +
+                ", aqiValidTime=" + aqiValidTime +
+                ", cloudCover=" + cloudCover +
+                ", valid=" + valid +
                 ", dayOfMonth=" + dayOfMonth +
-                ", pm25=" + pm25 +
-                ", pm10=" + pm10 +
-                ", low=" + low +
-                ", high=" + high +
-                ", airData='" + airData + '\'' +
-                ", airQuality='" + airQuality + '\'' +
-                ", dateLong=" + dateLong +
-                ", weatherType=" + weatherType +
-                ", windLevel=" + windLevel +
-                ", province='" + province + '\'' +
-                ", moreData=" + moreData +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

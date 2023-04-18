@@ -36,7 +36,7 @@
                         <Insets bottom="3.0" left="15.0" right="12.0" top="3.0" />
                      </HBox.margin>
                   </Region>
-                  <Label text="检查更新">
+                  <Label fx:id="checkForUpdate" onMouseClicked="#checkForUpdate" text="检查更新">
                      <font>
                         <Font size="16.0" />
                      </font>

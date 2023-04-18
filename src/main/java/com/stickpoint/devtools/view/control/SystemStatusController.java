@@ -28,6 +28,18 @@ public class SystemStatusController {
      */
     public AnchorPane rootPane;
 
+    public Label systemFramework;
+
+    public Label currentUserHomePath;
+
+    public Label windowsSystemVersion;
+
+    public Label javaRuntimeVersion;
+
+    public Label javaRuntimeEnvProvider;
+
+    public Label javaInstallPath;
+
     @FXML
     public void initialize(){
        initChart();
@@ -59,12 +71,5 @@ public class SystemStatusController {
         }
     }
 
-    /**
-     * 初始化系统Java应用程序的状态监控
-     */
-    private void initSystemInnerJavaApplicationStatus() {
-        Runtime runtime = Runtime.getRuntime();
-
-    }
 
 }

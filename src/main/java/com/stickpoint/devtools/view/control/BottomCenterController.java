@@ -3,6 +3,7 @@ import com.stickpoint.devtools.common.cache.SysCache;
 import com.stickpoint.devtools.common.entity.IpInfoEntity;
 import com.stickpoint.devtools.common.entity.WeatherInfoEntity;
 import com.stickpoint.devtools.common.enums.AppEnums;
+import com.stickpoint.devtools.common.utils.ThreadUtil;
 import com.stickpoint.devtools.service.IApplicationService;
 import com.stickpoint.devtools.service.impl.ApplicationServiceImpl;
 import com.stickpoint.devtools.view.component.MyTray;
@@ -12,6 +13,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,6 +22,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -39,13 +42,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @BelongsProject: devtools
  * @BelongsPackage: com.stickpoint.devtools.view.control
  * @Author: fntp
  * @CreateTime: 2022-10-29  10:40
- * @Description: TODO
+ * @Description:
  * @Version: 1.0
  */
 public class BottomCenterController {
@@ -59,6 +63,8 @@ public class BottomCenterController {
     private static final ToastDialog TOAST_DIALOG_CONTROLLER = new ToastDialog();
 
     private SaWeatherController weatherController;
+
+    private ProgressIndicator progressIndicator;
 
     /**
      * 底部Pane
@@ -107,6 +113,7 @@ public class BottomCenterController {
 
     @FXML
     public void initialize(){
+        progressIndicator = new ProgressIndicator();
         IpInfoEntity localIpInfo = APPLICATION_SERVICE.getLocalIpInfo();
         ipAddress.setText(AppEnums.INFO_CURRENT_IP.getInfoValue().concat(localIpInfo.getIpv4Address()));
         initCurrentTime(infoLabel);
@@ -131,7 +138,6 @@ public class BottomCenterController {
      * 注意这里有一个细节问题 yyyy-MM-dd HH:mm:ss
      * 当渲染时间格式是：hh的时候，渲染的时间是12小时制度
      * 只有当时间部分是：HH的时候，才是24小时制
-     *
      * Current time of initialization load
      * Note that there is a detail problem yyyy MM dd HH: mm: ss
      * When the rendering time format is: hh, the rendering time is 12 hours
@@ -161,7 +167,7 @@ public class BottomCenterController {
             ClipboardContent content = new ClipboardContent();
             content.putString(ipAddress.getText().replace(AppEnums.INFO_CURRENT_IP.getInfoValue(),""));
             log.info("当前机器IP信息已经写入系统剪切板了吗？写入的最终状态是：{}", clipboard.setContent(content));
-            TOAST_DIALOG_CONTROLLER.showToast(AppEnums.TOAST_INFO.getNumberInfo(), ipAddress,"信息已复制~");
+            TOAST_DIALOG_CONTROLLER.showDialogByControl(AppEnums.TOAST_INFO.getNumberInfo(), ipAddress,"信息已复制~");
         }
     }
 
@@ -198,19 +204,69 @@ public class BottomCenterController {
         translationMenu.show(getStage(),bounds.getMaxX()-250,bounds.getMaxY()-330);
     }
 
+    /**
+     * 2023 墨迹天气接口挂了
+     * 2023-04-07 新增微软接口查询天气信息
+     */
     @FXML
     public void showWeather() {
-        Bounds bounds = weather.localToScreen(weather.getBoundsInLocal());
+        showLoading();
         // 调用service刷新ui
-        List<WeatherInfoEntity> weatherInfoEntities = APPLICATION_SERVICE.getWeatherInfo("杭州市西湖区");
-        weatherController.initAllData(weatherInfoEntities);
-        weatherMenu.show(getStage(),bounds.getMaxX()-80,bounds.getMaxY()-144);
+        Task<List<WeatherInfoEntity>> getWeatherTask = new Task<List<WeatherInfoEntity>>() {
+            @Override
+            protected List<WeatherInfoEntity> call() throws Exception {
+                // 执行耗时的操作
+                return APPLICATION_SERVICE.getWeatherInfo();
+            }
+            @Override
+            protected void succeeded() {
+                // 耗时操作完成后，更新UI线程
+                try {
+                    List<WeatherInfoEntity> weatherInfoEntities = get();
+                    weatherController.initAllData(weatherInfoEntities);
+                    // 判断当前Stage是否还在显示，如果是则显示ContextMenu
+                    if (getStage().isShowing()) {
+                        Bounds bounds = weather.localToScreen(weather.getBoundsInLocal());
+                        weatherMenu.show(getStage(),bounds.getMaxX()-80,bounds.getMaxY()-144);
+                    }
+                } catch (ExecutionException | InterruptedException e) {
+                    log.error(e.getMessage());
+                    Thread.currentThread().interrupt();
+                }
+                // 隐藏loading画面
+                hideLoading();
+            }
+        };
+        ThreadUtil.getPool().submit(getWeatherTask);
     }
 
+    /**
+     * 显示loading画面
+     */
+    private void showLoading() {
+        progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+        bottomPane.getChildren().add(progressIndicator);
+    }
+
+    /**
+     * 隐藏loading画面
+     */
+    private void hideLoading() {
+        bottomPane.getChildren().remove(progressIndicator);
+    }
+
+
+    /**
+     * 获取Stage
+     * @return stage舞台
+     */
     private Stage getStage(){
         return (Stage) bottomPane.getScene().getWindow();
     }
 
+    /**
+     * 点击了最小化按钮的点击监听事件
+     */
     private void initMinSizeAddListener() {
         minimize.setOnMouseClicked(event -> {
             SystemTray systemTray = SystemTray.getSystemTray();

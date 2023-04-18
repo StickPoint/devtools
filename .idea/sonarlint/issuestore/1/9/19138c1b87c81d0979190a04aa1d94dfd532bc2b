@@ -1,7 +1,0 @@
-
-j
-java:S1104%"TMake rootPane a static final constant or non-public and provide accessors if needed.(µ™‹á
-l
-java:S1104)"VMake exitSystem a static final constant or non-public and provide accessors if needed.(à‘˜
-t
-java:S18459"YRename method "exitSystem" to prevent any misunderstanding/clash with field "exitSystem".(ØÁ›ºúÿÿÿÿ

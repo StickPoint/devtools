@@ -8,10 +8,12 @@ import com.stickpoint.devtools.view.control.LeftMenuCenterController;
 import com.stickpoint.devtools.view.control.MainWindowController;
 import com.stickpoint.devtools.view.control.OptionAssistantController;
 import com.stickpoint.devtools.view.control.SaTranslateController;
+import com.stickpoint.devtools.view.control.SearchContextMenuController;
 import com.stickpoint.devtools.view.control.SysAssistantController;
 import com.stickpoint.devtools.view.control.SystemSetCenterController;
 import com.stickpoint.devtools.view.control.SystemStatusController;
 import com.stickpoint.devtools.view.control.SystemTrayController;
+import com.stickpoint.devtools.view.control.UpdateController;
 import com.stickpoint.devtools.view.control.WebAssistantController;
 import com.stickpoint.devtools.view.page.AboutPage;
 
@@ -68,6 +70,7 @@ public enum PageEnums {
 	 * 关于页面
 	 */
 	ABOUT_PAGE(AboutPage.class,AboutPage.class.getResource("/fxml/about.fxml"),"about"),
+	SEARCH_CONTEXT_MENU(SearchContextMenuController.class,SearchContextMenuController.class.getResource("/fxml/searchContextMenu.fxml"),"searchContext"),
 	/**
 	 * 天气页面
 	 */
@@ -76,6 +79,7 @@ public enum PageEnums {
 	 * 系统托盘
 	 */
 	SYSTEM_TRAY(SystemTrayController.class, SystemTrayController.class.getResource("/fxml/systemTray.fxml"),"systemTray"),
+	UPDATE_PAGE(UpdateController.class,UpdateController.class.getResource("/fxml/update.fxml"),"update"),
 	/**
 	 * 底部页面
 	 */
@@ -83,7 +87,7 @@ public enum PageEnums {
     /**
      * 页面名称
      */
-    private final Class<?> pageType;
+    private final Class<?> pageController;
     /**
      * 页面路由
      */
@@ -96,24 +100,24 @@ public enum PageEnums {
 	/**
 	 * 
 	 * 构建构造方法
-	 * @param pageType 页面类型，以页面的class来区分
+	 * @param pageController 页面类型，以页面的class来区分
 	 * @param pageSource 页面数据源URL，classpath下的文件
 	 * @param routerId 路由id，字符串，作为组件路由的关键key
 	 */
-    PageEnums(Class<?> pageType, URL pageSource,String routerId){
-        this.pageType = pageType;
+    PageEnums(Class<?> pageController, URL pageSource, String routerId){
+        this.pageController = pageController;
         this.pageSource = pageSource;
         this.routerId = routerId;
     }
     
 	/**
-	 * 
 	 * @title: getPageType 
 	 * @description: 数据类型
 	 * @return Class<?>
 	 */
-    public Class<?> getPageType() {
-        return pageType;
+	@SuppressWarnings("unused")
+    public Class<?> getPageController() {
+        return pageController;
     }
     
 	/**

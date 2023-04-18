@@ -58,6 +58,8 @@ public enum DevToolsCodeEnums {
     ERROR_ACCESS_TOKEN_IS_NULL(20018,"accessToken为空"),
     ERROR_FXML_NULL(20019,"fxml文件解析失败"),
     ERROR_DATA_ACCESS(20020,"数据解析失败"),
+    ERROR_MOVED_BACKWARD(20021,"Clock moved backwards.  Refusing to generate id"),
+    ERROR_PROP_URL_ERROR(20022,"远程配置文件出错，请检查"),
     ;
     /**
      * 状态码

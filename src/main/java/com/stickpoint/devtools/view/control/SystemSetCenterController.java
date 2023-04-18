@@ -1,12 +1,25 @@
 package com.stickpoint.devtools.view.control;
+import com.stickpoint.devtools.common.cache.SysCache;
+import com.stickpoint.devtools.common.enums.AppEnums;
+import com.stickpoint.devtools.common.utils.YamlUtil;
+import com.stickpoint.devtools.view.component.ToastDialog;
 import com.stickpoint.devtools.view.page.AboutPage;
+import com.stickpoint.devtools.view.router.PageEnums;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 /**
  * description: SystemSetCenterController
@@ -22,6 +35,8 @@ public class SystemSetCenterController {
      * 系统日志
      */
     private static final Logger log = LoggerFactory.getLogger(SystemSetCenterController.class);
+
+    public Label checkForUpdate;
 
     /**
      * 这里引用了关于页面
@@ -74,5 +89,29 @@ public class SystemSetCenterController {
                 }
             });
         });
+    }
+
+    @FXML
+    public void checkForUpdate(){
+        YamlUtil yaml = new YamlUtil(System.getProperty(AppEnums.APP_REMOTE_YAML_PATH_KEY.getInfoValue()));
+        String updateId = yaml.get(AppEnums.SYSTEM_VERSION_ID.getInfoValue());
+        String localVersionId = System.getProperty(AppEnums.SYSTEM_VERSION_ID.getInfoValue());
+        log.info(updateId);
+        log.info(localVersionId);
+        if (!updateId.equals(localVersionId)){
+            FXMLLoader fxmlLoader = SysCache.PAGE_MAP.get(PageEnums.UPDATE_PAGE.getRouterId());
+            try {
+              // 展示检查更新页面
+             fxmlLoader.load();
+             Stage stage = new Stage();
+                Scene scene = new Scene(fxmlLoader.getRoot());
+                stage.initStyle(StageStyle.TRANSPARENT);
+                stage.setScene(scene);
+             stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 }

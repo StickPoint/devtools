@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="230.0" prefWidth="215.0" style="-fx-background-radius: 15; -fx-background-color: rgba(220,220,220,0.35);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.stickpoint.devtools.view.control.SearchContextMenuController">
+
+</AnchorPane>

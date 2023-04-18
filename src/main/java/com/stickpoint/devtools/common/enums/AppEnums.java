@@ -4,7 +4,6 @@ package com.stickpoint.devtools.common.enums;
  * @Author SunChengXin_0303
  * @ClassName AppEnums.Class
  * @PackageName com.stickpoint.devtools.common.enums
- * @jdk_version 17
  * @Date 2022年10月28日 13:13
  * @since 1.5
  */
@@ -13,6 +12,18 @@ public enum AppEnums {
      * 网络状态码200
      */
     APP_NETWORK_STATUS_OK(200),
+    /**
+     * 网络端口数量
+     */
+    APP_NETWORK_POSTS_NUMBER(65535),
+    /**
+     * 端口占用列表-key
+     */
+    APP_SYSTEM_INFO_PORT_ALREADY_IN_USED_LIST("alreadyInUsedPortList"),
+    /**
+     * 端口可用列表-key
+     */
+    APP_SYSTEM_INFO_PORT_CAN_BE_USED_LIST("canBeUsedPortList"),
     /**
      * 菜单面板子项菜单的样式css文件的Path
      */
@@ -50,9 +61,17 @@ public enum AppEnums {
      */
     INFO_CURRENT_IP("当前ip地址","当前IP："),
     /**
+     * 配置文件地址头
+     */
+    FILE_PATH_HEADER("http"),
+    /**
      * 下标为0
      */
     INDEX_ZERO(0),
+    /**
+     * 通用数字 256
+     */
+    COMMON_NUMBER_256(256),
     /**
      * 普通级别Toast
      */
@@ -80,7 +99,7 @@ public enum AppEnums {
     /**
      * 天气数据长度 固定长度 7
      */
-    WEATHER_DATA_LENGTH(7),
+    COMMON_NUMBER_SEVEN(7),
     /**
      * 应用主场景Stage
      */
@@ -97,6 +116,14 @@ public enum AppEnums {
      * 应用名称
      */
     APPLICATION_NAME("鑫软助手"),
+    /**
+     * 系统远程Yaml文件配置
+     */
+    APP_REMOTE_YAML_PATH_KEY("systemPropertiesFileUrl"),
+    /**
+     * 系统版本id
+     */
+    SYSTEM_VERSION_ID("system.version.id"),
     /**
      * 菜单栏文字id
      */

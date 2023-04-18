@@ -1,5 +1,4 @@
 package com.stickpoint.devtools;
-
 import com.stickpoint.devtools.view.page.MainWindowApplication;
 import javafx.application.Application;
 import org.slf4j.Logger;

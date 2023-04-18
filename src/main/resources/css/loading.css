@@ -1,0 +1,19 @@
+.progress-indicator {
+    -fx-padding: 2;
+}
+
+.progress-indicator .track {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-background-radius: 2;
+}
+
+.progress-indicator .bar {
+    -fx-background-color: linear-gradient(to right, #8CEBFF, #007CD7);
+    -fx-background-insets: 2;
+    -fx-background-radius: 2;
+}
+
+.progress-indicator .text {
+    -fx-fill: #FFF;
+    -fx-font-size: 12px;
+}

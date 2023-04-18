@@ -12,6 +12,7 @@ import java.sql.SQLException;
  * @PackageName com.stickpoint.devtools.mapper
  */
 public interface RowMapper<T> {
+
     /**
      * 行操作
      * @param rs 结果集

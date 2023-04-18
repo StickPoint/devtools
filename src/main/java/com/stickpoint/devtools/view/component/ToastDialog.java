@@ -37,9 +37,14 @@ public class ToastDialog {
      * @param control 控件
      * @param content 内容
      */
-    public void showToast(int toastType, Control control, String content){
+    public void showDialogByControl(int toastType, Control control, String content){
+        showToastByScene(toastType,control.getScene(),content);
+    }
+
+
+    public void showToastByScene(int toastType, Scene scene, String content){
         Stage dialog = new Stage();
-        dialog.initOwner(control.getScene().getWindow());
+        dialog.initOwner(scene.getWindow());
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setResizable(false);
         dialog.initStyle(StageStyle.TRANSPARENT);
