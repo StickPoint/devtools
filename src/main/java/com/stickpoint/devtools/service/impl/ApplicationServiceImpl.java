@@ -151,6 +151,7 @@ public class ApplicationServiceImpl implements IApplicationService {
             String stateCode = locationJson.get("StateCode").getAsString();
             String name = locationJson.get("Name").getAsString();
             today.setAddress(stateCode+" · "+name);
+            today.setDayOfMonth(LocalDateTime.ofInstant(new Date().toInstant(),ZoneId.systemDefault()).getDayOfMonth());
             featureDays.add(today);
             for (int i = 1; i <= 7; i++) {
                 WeatherInfoEntity featureDay = new WeatherInfoEntity();

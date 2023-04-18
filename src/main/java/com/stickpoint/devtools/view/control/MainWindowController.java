@@ -7,6 +7,7 @@ import com.stickpoint.devtools.view.page.MainWindowApplication;
 import com.stickpoint.devtools.view.router.PageEnums;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
@@ -15,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
@@ -32,7 +34,7 @@ public class MainWindowController {
     /**
      * 系统日志
      */
-    private static final Logger log = LoggerFactory.getLogger(MainWindowApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(MainWindowController.class);
 
     @FXML
     public RXAvatar userAvatar;
@@ -129,14 +131,14 @@ public class MainWindowController {
      * // 设置监听
      */
     private void showSearchContextDetail(){
-        searchTextInput.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (Boolean.TRUE.equals(newValue)) {
-                Bounds bounds = searchTextInput.localToScreen(searchTextInput.getBoundsInLocal());
-                FadeInDown fadeInDown = new FadeInDown(searchContextMenu.getScene().getRoot());
-                searchContextMenu.show(getStage(),bounds.getMaxX()- searchContextMenu.getWidth(),
-                        bounds.getMaxY()-searchTextInput.getHeight());
-                fadeInDown.play();
-            }
+        searchTextInput.setOnMouseClicked(event -> {
+            Bounds bounds = searchTextInput.localToScreen(searchTextInput.getBoundsInLocal());
+            log.info(String.valueOf(bounds.getMaxX()- searchContextMenu.getWidth()));
+            log.info(String.valueOf(bounds.getMaxY()-searchTextInput.getHeight()));
+            FadeInDown fadeInDown = new FadeInDown(searchContextMenu.getScene().getRoot());
+            searchContextMenu.show(getStage(),bounds.getMaxX()- searchContextMenu.getWidth(),
+                    bounds.getMaxY()-searchTextInput.getHeight());
+            fadeInDown.play();
         });
 
     }
@@ -192,6 +194,6 @@ public class MainWindowController {
     }
 
     private Stage getStage(){
-        return (Stage) mainPane.getScene().getWindow();
+        return (Stage) mainWindowHeaderPane.getScene().getWindow();
     }
 }
