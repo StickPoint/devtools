@@ -1,0 +1,13 @@
+#searchInput{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+#searchInput .highlight {
+    /* 设置选中文本的底色 */
+    -fx-control-inner-background: rgb(166,255,210);
+}
+#rootPane{
+    -fx-background-color: white;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+}

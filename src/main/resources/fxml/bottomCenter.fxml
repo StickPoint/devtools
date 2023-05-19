@@ -22,13 +22,13 @@
    <HBox alignment="CENTER" layoutX="231.0" prefHeight="40.0" prefWidth="299.0">
       <Label id="infoLabel" fx:id="infoLabel" text="2022-10-28 13:42:45" />
    </HBox>
-   <HBox layoutX="564.0" prefHeight="40.0" prefWidth="156.0" spacing="12.0">
+   <HBox layoutX="538.0" prefHeight="40.0" prefWidth="182.0" spacing="12.0">
       <padding>
-         <Insets left="12.0" right="12.0" />
+         <Insets right="12.0" />
       </padding>
       <Region id="weather" fx:id="weather" onMouseClicked="#showWeather" prefHeight="15.0" prefWidth="16.0">
          <HBox.margin>
-            <Insets bottom="11.0" top="11.0" />
+            <Insets bottom="11.0" left="12.0" top="11.0" />
          </HBox.margin>
       </Region>
       <Region id="tips" fx:id="tips" prefHeight="15.0" prefWidth="15.0">
@@ -49,6 +49,11 @@
       <Region id="min" fx:id="minimize" prefHeight="15.0" prefWidth="15.0">
          <HBox.margin>
             <Insets bottom="11.5" left="2.0" top="11.5" />
+         </HBox.margin>
+      </Region>
+      <Region id="new" fx:id="tips1" maxHeight="17.0" maxWidth="16.0" minHeight="17.0" minWidth="16.0" prefHeight="17.0" prefWidth="16.0">
+         <HBox.margin>
+            <Insets bottom="11.0" top="10.0" />
          </HBox.margin>
       </Region>
    </HBox>

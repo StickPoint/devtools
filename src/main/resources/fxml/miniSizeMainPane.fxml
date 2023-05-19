@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="rootPane" fx:id="rootPane" prefHeight="60.0" prefWidth="800.0"
+            stylesheets="@../css/miniSizeMainPane.css" xmlns="http://javafx.com/javafx/18"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.stickpoint.devtools.view.control.MiniSizeMainPaneController">
+   <TextField id="searchInput" fx:id="searchInput" layoutX="14.0" layoutY="10.0" maxHeight="44.0" maxWidth="780.0"
+              minHeight="44.0" minWidth="780.0" prefHeight="44.0" prefWidth="780.0" AnchorPane.bottomAnchor="8.0"
+              AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="8.0">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </TextField>
+   <Label fx:id="promoteText" layoutX="24.0" layoutY="17.0" text="Hello SinsyTools~" textFill="#00000078">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Label>
+</AnchorPane>

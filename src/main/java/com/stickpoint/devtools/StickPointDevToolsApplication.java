@@ -1,5 +1,6 @@
 package com.stickpoint.devtools;
 import com.stickpoint.devtools.view.page.MainWindowApplication;
+import com.stickpoint.devtools.view.page.MiniSizeMainPanePage;
 import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,7 @@ public class StickPointDevToolsApplication{
 	 * 系统日志
 	 */
 	private static final Logger log = LoggerFactory.getLogger(StickPointDevToolsApplication.class);
-	
+
 	/**
 	 * 内网助手入口：启动内网助手
 	 * @param args 调配java-jvm & java-env环境参数 jvm-maxSize jvm-minSize jvm-stackSize
@@ -33,7 +34,9 @@ public class StickPointDevToolsApplication{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Application.launch(MainWindowApplication.class,args);
+		// 默认主页面
+		//Application.launch(MainWindowApplication.class,args);
+		Application.launch(MiniSizeMainPanePage.class,args);
 	}
 
 }
